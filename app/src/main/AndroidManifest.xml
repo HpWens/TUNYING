@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.tunyin">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/BaseAppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+
+
+        <activity
+            android:name=".ui.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.activity.index.GuideActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.activity.mine.MyWalletActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.activity.mine.TransactionRecordsActivity" />
+        <activity android:name=".ui.activity.mine.TunYinVIPDepositActivity" />
+        <activity android:name=".ui.activity.mine.MyVoucherActivity" />
+        <activity android:name=".ui.activity.mine.MyCollectActivity" />
+        <activity android:name=".ui.activity.mine.MyMsgActivity" />
+        <activity android:name=".ui.activity.mine.MyOrderActivity" />
+        <activity android:name=".ui.activity.mine.RegisterActivity" />
+        <activity android:name=".ui.activity.mine.LoginActivity" />
+        <activity
+            android:name=".ui.activity.index.PlayerActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.activity.index.SearchActivity" />
+        <activity android:name=".ui.activity.index.SearchResultActivity" />
+        <activity android:name=".ui.activity.index.PayStuffActivity" />
+        <activity android:name=".ui.activity.mine.ForgetPwdActivity" />
+        <activity android:name=".ui.activity.index.RankingListActivity" />
+        <activity android:name=".ui.activity.mine.OrderDetailActivity" />
+        <activity android:name=".base.WebActivity" />
+
+        <service android:name=".myservice.PlayService" />
+        <service android:name=".MyPlayService"/>
+
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.tunyin.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

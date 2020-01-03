@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:roundiv="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/tv_order_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="订单编号：456456456456" />
+
+
+    <RelativeLayout
+        android:id="@+id/rl_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_order_no">
+
+        <com.tunyin.widget.CustomRoundAngleImageView
+            android:id="@+id/image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="10dp"
+            android:scaleType="centerCrop"
+            android:src="#fed256"
+            roundiv:radius="5dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_stop_trangel" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_order_no"
+        android:layout_toEndOf="@+id/rl_image"
+        android:singleLine="true"
+        android:text="深度睡眠"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/rl_image"
+        android:singleLine="true"
+        android:text="2019-10-12"
+        android:textSize="16sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_image"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tv_price_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="实付：" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/tv_price_tip"
+            android:textColor="@color/color_F85252"
+            tools:text="199音符" />
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shape_bg_red_corners"
+            android:paddingStart="25dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="25dp"
+            android:paddingBottom="5dp"
+            android:text="删除"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tv_date"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@+id/tv_title"-->
+    <!--        android:layout_alignParentRight="true"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:singleLine="true"-->
+    <!--        android:text="2019-10-12"-->
+    <!--        android:textSize="16sp" />-->
+</RelativeLayout>

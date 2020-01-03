@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_gradient_blue"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="250dp"
+        android:background="@color/white" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/shape_gradient_blue"
+        app:contentInsetStart="0dp"
+        app:navigationIcon="@mipmap/left_arrow"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title=" ">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:text="标题" />
+
+        <TextView
+            android:id="@+id/tv_right_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:visibility="gone"
+            tools:text="右标题"
+            tools:visibility="visible" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <www.linwg.org.lib.LCardView
+        android:id="@+id/cv_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginEnd="20dp"
+        app:cardUseCompatPadding="true"
+        app:cornerRadius="13dp"
+        app:elevationAffectShadowColor="false"
+        app:elevationAffectShadowSize="true"
+        app:shadowSize="8dp"
+        app:shadowStartAlpha="30">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:src="#fed256" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="未开始"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/icon_stop_trangel" />
+
+
+        </RelativeLayout>
+
+    </www.linwg.org.lib.LCardView>
+
+    <www.linwg.org.lib.LCardView
+        android:id="@+id/cv_order_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cv_image"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        app:cardUseCompatPadding="true"
+        app:cornerRadius="13dp"
+        app:shadowSize="8dp"
+        app:shadowStartAlpha="30">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="12dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/tv_title_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="夜晚,时间黑完"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_order_no_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title_content"
+                android:layout_marginTop="60dp"
+                android:text="订单编号"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_order_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="60dp"
+                android:text="201565554656555"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_order_date_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_order_no_tip"
+                android:layout_marginTop="10dp"
+                android:text="下单时间"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_order_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_order_no_tip"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:text="2019-10-15"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_order_price_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_order_date_tip"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="50dp"
+                android:text="实付钻石"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_order_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_order_date_tip"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:text="56"
+                android:textColor="@color/black" />
+
+        </RelativeLayout>
+
+    </www.linwg.org.lib.LCardView>
+
+    <TextView
+        android:id="@+id/tv_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cv_order_detail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-20dp"
+        android:background="@drawable/shape_bg_red_corners"
+        android:paddingStart="50dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="50dp"
+        android:paddingBottom="5dp"
+        android:text="删除订单"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

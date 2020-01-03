@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:id="@+id/ly_contain"
+    android:paddingTop="20dp"
+    android:layout_margin="7dp"
+    android:background="@drawable/shape_bg_frame_gray_oval_3dp">
+
+    <TextView
+        android:id="@+id/tv_vip_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="贵族·骑士"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="14sp"
+        android:textColor="@color/black"/>
+    <ImageView
+        android:id="@+id/iv_select_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_vip_select_tip"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        />
+
+
+</RelativeLayout>

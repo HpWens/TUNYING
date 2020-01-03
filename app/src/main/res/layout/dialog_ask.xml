@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/solid_radis_white">
+
+        <TextView
+            android:id="@+id/ask_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="15dp"
+            android:text="标题"
+            android:textColor="#444243"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/ask_tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ask_tv_title"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="标题"
+            android:textColor="#7C7C7C"
+            android:textSize="16sp" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ask_tv_content"
+            android:elevation="1dp">
+
+            <TextView
+                android:id="@+id/ask_tv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/ask_tv_confirm"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:elevation="1dp"
+                android:gravity="center"
+                android:paddingBottom="20dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:text="取消"
+                android:textColor="#2F5BCA" />
+
+
+            <TextView
+                android:id="@+id/ask_tv_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:elevation="1dp"
+                android:paddingBottom="20dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="20dp"
+                android:text="确定"
+                android:textColor="#2F5BCA" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
