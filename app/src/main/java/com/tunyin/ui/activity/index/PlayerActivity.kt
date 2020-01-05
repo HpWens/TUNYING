@@ -532,6 +532,7 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
     override fun cerateOrderCallBack(createOrderEntity: CreateOrderEntity) {
         PaySucDialog.getInstance().show(fragmentManager, "1")
         hideLoading()
+        tryEnd=false
         mPresenter.getMusic(mMusicId!!)
     }
 

@@ -184,7 +184,7 @@ public class MyAudioPlayer {
 
             if (!TextUtils.isEmpty(mListeningTime)) {
                 if (mListeningTime.equals(EventBusUtil.INSTANCE.formatSecond((int) getAudioPosition()))) {
-                    pausePlayer();
+                    // pausePlayer();
                 }
             }
 

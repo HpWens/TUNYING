@@ -5,7 +5,6 @@ import android.content.Intent
 import android.view.View
 import com.tunyin.R
 import com.tunyin.ToastUtils
-import com.tunyin.base.BaseActivity
 import com.tunyin.base.BaseInjectActivity
 import com.tunyin.mvp.contract.mine.OrderContract
 import com.tunyin.mvp.model.mine.OrderEntity
@@ -99,7 +98,7 @@ class OrderDetailActivity : BaseInjectActivity<OrderPresenter>(), OrderContract.
     companion object {
         fun newInstance(context: Context?,
                         id: String,
-                        title: String,
+                        title: String?,
                         imageUrl: String,
                         orderNo: String,
                         orderDate: String,
