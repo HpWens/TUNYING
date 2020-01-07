@@ -9,7 +9,11 @@ import java.util.List;
 public class OrderEntity {
     /**
      * total : 3
-     * list : [{"image":"https://hxzoss.oss-cn-beijing.aliyuncs.com/8dacecad-d398-4f99-8b4f-cb5914fe24d2.jpg","createDateFormat":"2019-11-07 01:01:10","orderNo":"GO2019110701010900003","totalPrice":10,"id":8,"title":"渡我不渡她 - 苏谭谭","songId":6,"createDate":"2019-11-07"},{"image":"https://hxzoss.oss-cn-beijing.aliyuncs.com/01955e29-26c5-440b-b4b1-39057ce4f756.jpg","createDateFormat":"2019-11-07 01:01:07","orderNo":"GO2019110701010600002","totalPrice":10,"id":7,"title":"别知己 - 海来阿木、阿呷拉古、曲比阿且","songId":2,"createDate":"2019-11-07"},{"image":"https://hxzoss.oss-cn-beijing.aliyuncs.com/fda17c94-f8b9-4163-bb45-187d406cf8e6.jpg","createDateFormat":"2019-11-07 01:01:03","orderNo":"GO2019110701010300001","totalPrice":5,"id":6,"title":"百花香 - 魏新雨","songId":1,"createDate":"2019-11-07"}]
+     * list : [{"image":"https://hxzoss.oss-cn-beijing.aliyuncs.com/8dacecad-d398-4f99-8b4f-cb5914fe24d2.jpg","createDateFormat":"2019-11-07 01:01:10",
+     * "orderNo":"GO2019110701010900003","totalPrice":10,"id":8,"title":"渡我不渡她 - 苏谭谭","songId":6,"createDate":"2019-11-07"},{"image":"https://hxzoss.oss-cn-beijing.aliyuncs
+     * .com/01955e29-26c5-440b-b4b1-39057ce4f756.jpg","createDateFormat":"2019-11-07 01:01:07","orderNo":"GO2019110701010600002","totalPrice":10,"id":7,"title":"别知己 -
+     * 海来阿木、阿呷拉古、曲比阿且","songId":2,"createDate":"2019-11-07"},{"image":"https://hxzoss.oss-cn-beijing.aliyuncs.com/fda17c94-f8b9-4163-bb45-187d406cf8e6.jpg",
+     * "createDateFormat":"2019-11-07 01:01:03","orderNo":"GO2019110701010300001","totalPrice":5,"id":6,"title":"百花香 - 魏新雨","songId":1,"createDate":"2019-11-07"}]
      */
 
     private String total;
@@ -43,14 +47,14 @@ public class OrderEntity {
          * createDate : 2019-11-07
          */
 
-        private String image;
-        private String createDateFormat;
-        private String orderNo;
-        private String totalPrice;
-        private String id;
-        private String title;
-        private String songId;
-        private String createDate;
+        private String image = "";
+        private String createDateFormat = "";
+        private String orderNo = "";
+        private String totalPrice = "";
+        private String id = "";
+        private String title = "";
+        private String songId = "";
+        private String createDate = "";
 
         public String getImage() {
             return image;

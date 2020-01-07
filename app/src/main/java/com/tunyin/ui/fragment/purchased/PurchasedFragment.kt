@@ -33,14 +33,22 @@ class PurchasedFragment : BaseRefreshFragment<OrderPresenter, OrderEntity>(), Or
         recycler?.adapter = mAdapter
         mAdapter?.notifyDataSetChanged()
         mAdapter?.setOnItemClickListener { v, position ->
-            startActivity(OrderDetailActivity.newInstance(mContext, mAdapter!!.dataList[position].id,
-                    mAdapter!!.dataList[position].title,
-                    mAdapter!!.dataList[position].image,
-                    mAdapter!!.dataList[position].orderNo,
-                    mAdapter!!.dataList[position].createDateFormat,
-                    mAdapter!!.dataList[position].totalPrice,
-                    mAdapter!!.dataList[position].songId
-            ))
+            mAdapter!!.dataList?.let {
+                var title = it.get(position)?.title ?: ""
+                var image = it.get(position)?.image ?: ""
+                var orderNo = it.get(position)?.orderNo ?: ""
+                var createDateFormat = it.get(position)?.createDateFormat ?: ""
+                var totalPrice = it.get(position)?.totalPrice ?: ""
+                var songId = it.get(position)?.songId ?: ""
+                startActivity(OrderDetailActivity.newInstance(mContext, mAdapter!!.dataList[position].id,
+                        title,
+                        image,
+                        orderNo,
+                        createDateFormat,
+                        totalPrice,
+                        songId
+                ))
+            }
         }
         mAdapter!!.setOnDeleteClickListener(object : OrderAdapter.OnDeleteClickLister {
             override fun onDeleteClick(position: Int) {
