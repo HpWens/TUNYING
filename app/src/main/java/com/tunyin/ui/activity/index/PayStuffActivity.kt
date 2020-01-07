@@ -27,6 +27,7 @@ class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContra
 
     private val mBannerList = ArrayList<PayStaffBannerEntity.ListBean>() // 顶部
     private val mPayStuffList = ArrayList<PayStuffEntity>() //
+
     private var mDiscoveryRVAdapter: DiscoveryRVAdapter? = null
 
     override fun initInject() = activityComponent.inject(this)
@@ -36,7 +37,7 @@ class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContra
 
     override fun showBannerData(payStaffBannerEntity: PayStaffBannerEntity) {
         mBannerList.addAll(payStaffBannerEntity.list)
-        mPresenter.getPayStaff("0", "10")
+        mPresenter.getPayStaff("0", "200")
 
     }
 

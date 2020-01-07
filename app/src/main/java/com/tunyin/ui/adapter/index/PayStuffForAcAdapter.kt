@@ -14,12 +14,23 @@ import kotlinx.android.synthetic.main.item_pay_stuff_ac.view.*
  *
  **/
 class PayStuffForAcAdapter : BaseAdapter<PayStuffEntity.ListBean>() {
+
+    var loadMore = true
+
     override fun layoutId(): Int {
         return R.layout.item_pay_stuff_ac
     }
 
     override fun getViewHolder(view: View): BaseViewHolder<*> {
         return ViewHolder(view)
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return super.getItemViewType(position)
+    }
+
+    override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
+        super.onBindViewHolder(holder, position)
     }
 
     inner class ViewHolder(itemView: View) : BaseViewHolder<PayStuffEntity.ListBean>(itemView) {
@@ -30,5 +41,6 @@ class PayStuffForAcAdapter : BaseAdapter<PayStuffEntity.ListBean>() {
             itemView.tv_sub_title.text = itemBean.content
             itemView.tv_diamond_num.text = itemBean.price
         }
+
     }
 }

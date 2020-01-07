@@ -1,17 +1,17 @@
 package com.tunyin.ui.fragment.index
 
 import android.os.Bundle
-import com.tunyin.BaseFragment
-import com.tunyin.BaseInjectFragment
+import android.text.Html
 import com.tunyin.R
 import com.tunyin.base.BaseRefreshFragment
 import com.tunyin.mvp.contract.index.PlayDetailSingleContract
-import com.tunyin.mvp.contract.index.PlayerContract
-import com.tunyin.mvp.model.index.MusicEntity
+import com.tunyin.mvp.model.Event
 import com.tunyin.mvp.model.index.PalyDetailSingleEntity
 import com.tunyin.mvp.presenter.index.PlayerDetailSinglePresenter
-import com.tunyin.mvp.presenter.index.PlayerPresenter
+import com.tunyin.utils.MImageGetter
 import kotlinx.android.synthetic.main.fragment_player_detail.*
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 /**
  * 播放——详情
@@ -26,7 +26,9 @@ class PlayerDetailFragment : BaseRefreshFragment<PlayerDetailSinglePresenter, St
 
     override fun getMusicDetialSingleData(palyDetailSingleEntity: PalyDetailSingleEntity) {
 
-        tv_detail.text = palyDetailSingleEntity.detail
+        tv_detail.text = Html.fromHtml(palyDetailSingleEntity.detail, MImageGetter(tv_detail, mContext), null)
+
+        // showDetailContent(palyDetailSingleEntity.detail)
 
 //        tv_detail.text = "加拿大（英语/法语：Canada），位于北美洲最北端，英联邦国家之一，素有“枫叶之国”的美誉，首都是渥太华。 [1] \n" +
 //                "加拿大西抵太平洋，东迄大西洋，北至北冰洋，东北部和丹麦领地格陵兰岛相望，东部和法属圣皮埃尔和密克隆群岛相望，南方与美国本土接壤，西北方与美国阿拉斯加州为邻。领土面积为998.467万平方公里，位居世界第二，人口主要集中在南部五大湖沿岸。著名城市有多伦多、温哥华等。官方语言有英语和法语两种，是典型的双语国家。 [1] \n" +
@@ -52,6 +54,9 @@ class PlayerDetailFragment : BaseRefreshFragment<PlayerDetailSinglePresenter, St
 //
     }
 
+    fun showDetailContent(content: String): Unit {
+    }
+
     override fun showError(msg: String) {
     }
 
@@ -72,6 +77,30 @@ class PlayerDetailFragment : BaseRefreshFragment<PlayerDetailSinglePresenter, St
             args.putString("mMusicId", mMusicId)
             fragment.arguments = args
             return fragment
+        }
+    }
+
+    override fun isRegisterEventBus(): Boolean {
+        return true
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onUpdateDetail(event: Event<*>?) {
+        if (event?.code == 101 && event?.data is String) {
+            musicId = event.data.toString()
+            if (mPresenter != null) {
+                musicId?.let { mPresenter.getMusicDetialSingle(it) }
+            }
+        }
+    }
+
+    private fun getImageGetter(): Html.ImageGetter {
+        return Html.ImageGetter { source ->
+            activity?.let {
+                val drawable = it.resources.getDrawable(Integer.parseInt(source))
+                drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight())
+                drawable
+            }
         }
     }
 

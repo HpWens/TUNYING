@@ -54,7 +54,7 @@ class RankingListFragment : BaseRefreshFragment<RankListPresenter, RankListEntit
 
     override fun initDatas() {
         mType = arguments!!.getString("type")
-        mPresenter.getRankList("0", "10", mType)
+        mPresenter.getRankList("0", "20", mType)
 
     }
 

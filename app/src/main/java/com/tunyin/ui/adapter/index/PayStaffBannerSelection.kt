@@ -10,7 +10,8 @@ import com.tunyin.widget.section.StatelessSection
 import com.tunyin.widget.section.ViewHolder
 import com.zhouwei.mzbanner.MZBannerView
 
-class PayStaffBannerSelection(private val list: ArrayList<PayStaffBannerEntity.ListBean>?) : StateBroadcast<Nothing>(R.layout.layout_banner, R.layout.layout_empty) {
+class PayStaffBannerSelection(private val list: ArrayList<PayStaffBannerEntity.ListBean>?) : StateBroadcast<Nothing>(
+        R.layout.layout_banner, R.layout.layout_empty) {
 
     override fun onBindHeaderViewHolder(holder: ViewHolder) {
         if (list?.size == 1) {

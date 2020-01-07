@@ -1,4 +1,5 @@
 package com.tunyin
+
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
@@ -13,6 +14,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.trello.rxlifecycle2.components.support.RxFragment
 import com.tunyin.mvp.model.Event
 import com.tunyin.utils.EventBusUtil
+import org.greenrobot.eventbus.EventBus
 
 /**
  * @author: ym  作者 E-mail: 15622113269@163.com
@@ -43,10 +45,10 @@ abstract class BaseFragment : RxFragment() {
 //            val parent = mView?.parent as ViewGroup
 //            parent.removeView(mView)
 //        } else {
-            mView = inflater.inflate(getLayoutId(), container, false)
-            mActivity = getSupportActivity()
-            mContext = mActivity
-            this.mInflater = inflater
+        mView = inflater.inflate(getLayoutId(), container, false)
+        mActivity = getSupportActivity()
+        mContext = mActivity
+        this.mInflater = inflater
 //        }
 
         return mView
@@ -54,7 +56,7 @@ abstract class BaseFragment : RxFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (isRegisterEventBus()) {
+        if (isRegisterEventBus() && !EventBus.getDefault().isRegistered(this)) {
             EventBusUtil.register(this)
         }
         initInject()
@@ -93,10 +95,10 @@ abstract class BaseFragment : RxFragment() {
      * 解绑EventBus
      */
     override fun onDestroy() {
-        super.onDestroy()
-        if (isRegisterEventBus()) {
+        if (isRegisterEventBus() && EventBus.getDefault().isRegistered(this)) {
             EventBusUtil.unregister(this)
         }
+        super.onDestroy()
     }
 
     /**

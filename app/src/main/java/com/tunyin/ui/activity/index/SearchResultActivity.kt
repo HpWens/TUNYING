@@ -3,7 +3,10 @@ package com.tunyin.ui.activity.index
 import android.content.Context
 import android.content.Intent
 import android.text.TextUtils
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.tunyin.R
@@ -43,8 +46,7 @@ class SearchResultActivity : BaseInjectActivity<SearchResultPresenter>(), TabLay
         }
 
         showLoading()
-        mPresenter.search("0", "10", mSearchContent, "")
-
+        mPresenter.search("0", "20", mSearchContent, "")
 
     }
 
@@ -74,11 +76,27 @@ class SearchResultActivity : BaseInjectActivity<SearchResultPresenter>(), TabLay
         mAdapter?.setOnItemClickListener { v, position ->
             startActivity(mContext?.let { PlayerActivity.newInstance(it, mAdapter!!.dataList[position].id) })
         }
+
+        et_search_content.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    var keyword = et_search_content.text.toString().trim()
+                    if (!TextUtils.isEmpty(keyword)) {
+                        showLoading()
+                        mSearchContent = keyword
+                        mPresenter.search("0", "20", mSearchContent, "")
+                    }
+                    return true;
+                }
+                return false
+            }
+
+        })
     }
 
     override fun onTabReselected(p0: TabLayout.Tab?) {
         showLoading()
-        mPresenter.search("0", "10", et_search_content.text.trim().toString(), "1")
+        mPresenter.search("0", "20", et_search_content.text.trim().toString(), "1")
     }
 
     override fun onTabUnselected(p0: TabLayout.Tab?) {

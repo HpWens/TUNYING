@@ -23,7 +23,7 @@ class PurchasedFragment : BaseRefreshFragment<OrderPresenter, OrderEntity>(), Or
 
     override fun initInject() = fragmentComponent.inject(this)
 
-    override fun lazyLoadData() = mPresenter.getOrderList("0", "10")
+    override fun lazyLoadData() = mPresenter.getOrderList("0", "20")
 
 
     override fun showOrderList(orderEntity: OrderEntity) {
@@ -77,7 +77,7 @@ class PurchasedFragment : BaseRefreshFragment<OrderPresenter, OrderEntity>(), Or
 
     override fun onResume() {
         super.onResume()
-        mPresenter.getOrderList("0", "10")
+        mPresenter.getOrderList("0", "20")
     }
 
     companion object {

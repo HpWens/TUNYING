@@ -2,12 +2,10 @@ package com.tunyin
 
 import android.content.Intent
 import android.view.Gravity
-import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.NonNull
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.flyco.tablayout.listener.CustomTabEntity
@@ -172,15 +170,16 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(event: MessageEvent) {
-        if (drawer_layout.isDrawerOpen(Gravity.LEFT)){
-            drawer_layout.closeDrawer(Gravity.LEFT)
-        }else{
-            drawer_layout.openDrawer(Gravity.LEFT)
-        }
-
-
+        switchDrawer()
     }
 
+    fun switchDrawer(): Unit {
+        if (drawer_layout.isDrawerOpen(Gravity.LEFT)) {
+            drawer_layout.closeDrawer(Gravity.LEFT)
+        } else {
+            drawer_layout.openDrawer(Gravity.LEFT)
+        }
+    }
 
     override fun onClick(p0: View?) {
         when (p0) {

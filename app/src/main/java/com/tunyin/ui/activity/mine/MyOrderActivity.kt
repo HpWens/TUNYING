@@ -68,7 +68,7 @@ class MyOrderActivity : BaseInjectActivity<OrderPresenter>(), OrderContract.View
     override fun initWidget() {
         StatusBarUtil.setColorNoTranslucent(this, AppUtils.getColor(R.color.white))
         tv_title.text = "我的订单"
-        mPresenter.getOrderList("0", "10")
+        mPresenter.getOrderList("0", "20")
     }
 
     companion object {

@@ -58,7 +58,7 @@ class MyCollectActivity : BaseInjectActivity<CollectPresenter>(), CollectContrac
         recycler?.adapter = mAdapter
 
         showLoading()
-        mPresenter.getCollect("0", "10")
+        mPresenter.getCollect("0", "20")
     }
 
     companion object {

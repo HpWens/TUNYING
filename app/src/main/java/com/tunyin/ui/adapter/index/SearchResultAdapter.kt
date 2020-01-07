@@ -27,6 +27,7 @@ class SearchResultAdapter : BaseAdapter<SearchEntity.ListBean>() {
         override fun bindData(itemBean: SearchEntity.ListBean) {
             itemView.tv_title.text = itemBean.title
             itemView.tv_sub_title.text = itemBean.content
+            itemView.tv_price.text = itemBean.price ?: "0"
             ImageUtil.load(itemBean.image).on(itemView.image)
 
         }

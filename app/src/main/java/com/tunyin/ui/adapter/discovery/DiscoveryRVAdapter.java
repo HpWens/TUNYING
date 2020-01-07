@@ -16,13 +16,15 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class DiscoveryRVAdapter  extends RecyclerView.Adapter<ViewHolder> {
+public class DiscoveryRVAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     public final static int VIEW_TYPE_HEADER = 0;
     public final static int VIEW_TYPE_FOOTER = 1;
     public final static int VIEW_TYPE_ITEM_LOADED = 2;
     public final static int VIEW_TYPE_LOADING = 3;
     public final static int VIEW_TYPE_FAILED = 4;
+
+    public final static int VIEW_TYPE_LOAD_MORE = 5;
 
     private LinkedHashMap<String, Discovery> sections;
     private HashMap<String, Integer> sectionViewTypeNumbers;

@@ -4,10 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import android.text.TextUtils
 import android.view.View
-import com.tunyin.BaseFragment
 import com.tunyin.BaseInjectFragment
+import com.tunyin.MainActivity
 import com.tunyin.R
-import com.tunyin.ToastUtils
 import com.tunyin.mvp.contract.UploadFileContract
 import com.tunyin.mvp.model.SelfBean
 import com.tunyin.mvp.model.UploadFileEntity
@@ -19,10 +18,10 @@ import com.tunyin.utils.PermissionHelper
 import com.tunyin.utils.UriUtil
 import com.zhihu.matisse.Matisse
 import kotlinx.android.synthetic.main.fragment_mine.*
-import java.io.File
-import okhttp3.RequestBody
-import okhttp3.MultipartBody
 import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
 
 
 /**
@@ -135,14 +134,19 @@ class MineFragment : BaseInjectFragment<UploadFilePresenter>(), UploadFileContra
             rl_customer_service -> {
 //                val intent = Intent(activity, RegisterActivity::class.java)
 //                activity?.startActivity(intent)
-                ToastUtils.showToast("暂时没有客服哦")
-
+                // ToastUtils.showToast("暂时没有客服哦")
+                if (activity is MainActivity) {
+                    (activity as MainActivity).switchDrawer();
+                }
             }
 
             iv_avatar -> {
                 ImagePickHelper.with(this).pickMulPicture(1)
             }
-            rl_setting->{
+            rl_setting -> {
+                if (activity is MainActivity) {
+                    (activity as MainActivity).switchDrawer();
+                }
 
             }
         }

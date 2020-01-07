@@ -38,7 +38,7 @@ class MyVoucherFragment : BaseRefreshFragment<VoucherPresenter, VoucherEntity>()
 
     override fun initWidget() {
         type = arguments?.getString("type")
-        type?.let { mPresenter.getVoucher("0", "10", it) }
+        type?.let { mPresenter.getVoucher("0", "20", it) }
 
     }
 

@@ -17,6 +17,7 @@ import com.tunyin.*
 import com.tunyin.base.BaseInjectActivity
 import com.tunyin.constants.Constants
 import com.tunyin.mvp.contract.index.PlayerContract
+import com.tunyin.mvp.model.Event
 import com.tunyin.mvp.model.FlyoutTabEntity
 import com.tunyin.mvp.model.SelfBean
 import com.tunyin.mvp.model.index.CreateOrderEntity
@@ -29,6 +30,7 @@ import com.tunyin.ui.adapter.PagerAdapter
 import com.tunyin.ui.fragment.index.PlayerCommentFragment
 import com.tunyin.ui.fragment.index.PlayerDetailFragment
 import com.tunyin.ui.fragment.index.PlayerDirectoryFragment
+import com.tunyin.utils.EventBusUtil
 import com.tunyin.utils.ImageUtil
 import com.tunyin.utils.StatusBarUtil
 import com.tunyin.utils.SystemUtils
@@ -150,9 +152,13 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
                         DialogInterface.OnClickListener { dialogInterface, i ->
                         })
                 val dialog = builder.create()
-                dialog.show()
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(mContext!!.resources.getColor(R.color.black))
-                dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(mContext!!.resources.getColor(R.color.black))
+
+                try {
+                    dialog.show()
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(mContext!!.resources.getColor(R.color.black))
+                    dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(mContext!!.resources.getColor(R.color.black))
+                } catch (e: Exception) {
+                }
 //                }
 
                 tryEnd = true
@@ -338,6 +344,11 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
                 showLoading()
                 mPresenter.getMusic(id)
                 SelfBean.instance.musicHisId = id
+
+
+                // 更新详情页
+                var updateEvent: Event<String> = Event(101, id)
+                EventBusUtil.sendEvent(updateEvent)
             }
 
         })

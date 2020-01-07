@@ -44,9 +44,9 @@ class PlayerPresenter @Inject constructor(private val mRetrofitHelper: RetrofitH
     }
 
     override fun getMusic(songId: String) {
-
         val subscriber = mRetrofitHelper.getMusic(songId)
                 .compose(rxSchedulerHelper())
+                .retry(3)
                 .subscribeWith(object : BaseSubscriberPro<MusicEntity>(mView) {
                     override fun onSuccess(mData: MusicEntity) {
 //                        if (mData.code=="400"){
