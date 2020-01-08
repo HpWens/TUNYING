@@ -5,18 +5,14 @@ import android.content.Intent
 import android.os.IBinder
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import com.tunyin.LogUtils
 import com.tunyin.MainActivity
 import com.tunyin.R
 import com.tunyin.ToastUtils
 import com.tunyin.base.BaseInjectActivity
 import com.tunyin.mvp.contract.mine.LoginContract
-import com.tunyin.mvp.model.BaseEntity
 import com.tunyin.mvp.model.SelfBean
 import com.tunyin.mvp.model.mine.LoginEntity
 import com.tunyin.mvp.presenter.mine.LoginPresenter
-import com.tunyin.utils.AccountHelper
-import com.tunyin.utils.AppUtils
 import com.tunyin.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -135,6 +131,7 @@ class LoginActivity : BaseInjectActivity<LoginPresenter>(), View.OnClickListener
 
         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
 
+        finish()
     }
 
     companion object {

@@ -127,8 +127,9 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
 
                     }
                     R.id.nav_logout -> {
+                        SelfBean.instance.token = ""
                         startActivity(LoginActivity.newInstance(mContext))
-
+                        finish()
                     }
                 }
                 return true
