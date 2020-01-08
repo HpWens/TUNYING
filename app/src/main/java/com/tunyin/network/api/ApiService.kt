@@ -8,9 +8,7 @@ import com.tunyin.mvp.model.mine.*
 import com.weike.education.mvp.model.app.SelectionBean
 import io.reactivex.Flowable
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.http.*
-import java.io.File
 
 /**
  * @author: ym  作者 E-mail: 15622113269@163.com
@@ -138,8 +136,6 @@ interface ApiService {
                      @Field("type") type: String): Flowable<BaseEntity<String>>
 
 
-
-
     /**
      * 换一批
      */
@@ -245,6 +241,14 @@ interface ApiService {
     @POST("api/order/getList")
     fun getOrderList(@Field("offset") offset: String,
                      @Field("limit") limit: String): Flowable<BaseEntity<OrderEntity>>
+
+
+    /**
+     * 更新头像
+     */
+    @FormUrlEncoded
+    @POST("api/user/updateData")
+    fun postHeader(@Field("headUrl") header: String): Flowable<BaseEntity<String>>
 
 
     /**
@@ -361,7 +365,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST("api/order/createOrder")
     fun createOrder(@Field("songDetails") songDetails: String,
-                      @Field("couponId") couponId: String,
+                    @Field("couponId") couponId: String,
                     @Field("themeId") themeId: String): Flowable<BaseEntity<CreateOrderEntity>>
 
     /**

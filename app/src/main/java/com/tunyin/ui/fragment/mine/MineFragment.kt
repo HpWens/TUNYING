@@ -46,6 +46,7 @@ class MineFragment : BaseInjectFragment<UploadFilePresenter>(), UploadFileContra
         SelfBean.instance.headUrl = uploadFileEntity.url
         ImageUtil.load(uploadFileEntity.url).isCircle.on(iv_avatar)
 
+        mPresenter.updateHeader(uploadFileEntity.url)
     }
 
     override fun onResult(isSuccess: Boolean) {

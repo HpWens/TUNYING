@@ -8,8 +8,6 @@ import com.tunyin.mvp.model.mine.*
 import com.weike.education.mvp.model.app.SelectionBean
 import io.reactivex.Flowable
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import java.io.File
 
 /**
  * @author: ym  作者 E-mail: 15622113269@163.com
@@ -65,7 +63,7 @@ class RetrofitHelper(private val mApiService: ApiService) {
     fun tunyinVip(): Flowable<BaseEntity<TunyinVipEntity>> = mApiService.tunyinVip()
 
 
-    fun payTunyinVip(nobleEquityId: String,type: String): Flowable<BaseEntity<String>> = mApiService.payTunyinVip(nobleEquityId, type)
+    fun payTunyinVip(nobleEquityId: String, type: String): Flowable<BaseEntity<String>> = mApiService.payTunyinVip(nobleEquityId, type)
 
     //换一批
     fun refreshFree(noteClassId: String): Flowable<BaseEntity<DiscoveryEntity.BroadcastBean>> = mApiService.refreshFree(noteClassId)
@@ -76,6 +74,8 @@ class RetrofitHelper(private val mApiService: ApiService) {
     //换一批
     fun refreshDisThemeSleep(noteClassId: String): Flowable<BaseEntity<DiscoveryEntity.ThemeSleepBean>> = mApiService.refreshDisThemeSleep(noteClassId)
 
+    // 更新头像
+    fun refreshHeader(header: String): Flowable<BaseEntity<String>> = mApiService.postHeader(header)
 
     //文件上传
     fun fileUpload(part: MultipartBody.Part): Flowable<BaseEntity<UploadFileEntity>> = mApiService.fileUpload(part)
@@ -88,7 +88,7 @@ class RetrofitHelper(private val mApiService: ApiService) {
 
 
     //支付信息
-    fun getPayInfo( map: Map<String, String>): Flowable<BaseEntity<PayInfoEntity>> = mApiService.getPayInfo(map)
+    fun getPayInfo(map: Map<String, String>): Flowable<BaseEntity<PayInfoEntity>> = mApiService.getPayInfo(map)
 
 
     //播放页面歌曲目录
@@ -107,7 +107,7 @@ class RetrofitHelper(private val mApiService: ApiService) {
 
 
     //发表评论
-    fun addCommend(songId:String,content:String): Flowable<BaseEntity<AddCommendEntity>> = mApiService.addCommend(songId, content)
+    fun addCommend(songId: String, content: String): Flowable<BaseEntity<AddCommendEntity>> = mApiService.addCommend(songId, content)
 
     //搜索
     fun search(offset: String, limit: String, name: String, classifyId: String): Flowable<BaseEntity<SearchEntity>> = mApiService.search(offset, limit, name, classifyId)
@@ -156,7 +156,7 @@ class RetrofitHelper(private val mApiService: ApiService) {
     //排行榜
     fun rankList(offset: String, limit: String, type: String): Flowable<BaseEntity<RankListEntity>> = mApiService.rankList(offset, limit, type)
 
-    fun createOrder(songDetails: String, couponId: String, themeId:String): Flowable<BaseEntity<CreateOrderEntity>> = mApiService.createOrder(songDetails, couponId,themeId)
+    fun createOrder(songDetails: String, couponId: String, themeId: String): Flowable<BaseEntity<CreateOrderEntity>> = mApiService.createOrder(songDetails, couponId, themeId)
 
     fun payOrder(orderId: String): Flowable<BaseEntity<String>> = mApiService.payOrder(orderId)
 
