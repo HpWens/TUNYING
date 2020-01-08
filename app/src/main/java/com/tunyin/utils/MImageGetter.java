@@ -35,7 +35,13 @@ public class MImageGetter implements Html.ImageGetter {
                 if (resource != null) {
                     BitmapDrawable bitmapDrawable = new BitmapDrawable(resource);
                     drawable.addLevel(1, 1, bitmapDrawable);
-                    drawable.setBounds(0, 0, resource.getWidth(), resource.getHeight());
+                    int width = resource.getWidth();
+                    int height = resource.getHeight();
+                    if (resource.getWidth() > AppUtils.getScreenWidth()) {
+                        width = AppUtils.getScreenWidth();
+                        height = (int) ((float) AppUtils.getScreenWidth() / resource.getWidth() * resource.getHeight());
+                    }
+                    drawable.setBounds(0, 0, width, height);
                     drawable.setLevel(1);
                     container.invalidate();
                     container.setText(container.getText());
