@@ -5,6 +5,7 @@ import com.tunyin.mvp.model.UploadFileEntity
 import com.tunyin.mvp.model.discovery.DiscoveryEntity
 import com.tunyin.mvp.model.index.*
 import com.tunyin.mvp.model.mine.*
+import com.tunyin.ui.activity.index.PayStuffActivity
 import com.weike.education.mvp.model.app.SelectionBean
 import io.reactivex.Flowable
 import okhttp3.MultipartBody
@@ -115,6 +116,8 @@ class RetrofitHelper(private val mApiService: ApiService) {
     //收藏
     fun myCollect(offset: String, limit: String): Flowable<BaseEntity<CollectEntity>> = mApiService.myCollect(offset, limit)
 
+    // 取消收藏
+    fun cancelCollect(songId: String): Flowable<BaseEntity<String>> = mApiService.cancelCollect(songId)
 
     //优惠券
     fun myVoucher(offset: String, limit: String, type: String): Flowable<BaseEntity<VoucherEntity>> = mApiService.myVoucher(offset, limit, type)
@@ -144,7 +147,17 @@ class RetrofitHelper(private val mApiService: ApiService) {
     fun register(phone: String, password: String, nickName: String, code: String): Flowable<BaseEntity<RegisterEntity>> = mApiService.register(phone, password, nickName, code)
 
     //付费精选
-    fun paidSelection(offset: String, limit: String): Flowable<BaseEntity<PayStuffEntity>> = mApiService.paidSelection(offset, limit)
+    fun paidSelection(offset: String, limit: String, typeId: Int): Flowable<BaseEntity<PayStuffEntity>> {
+        when (typeId) {
+            PayStuffActivity.BROAD_CAST -> {
+                return mApiService.getHomeBroadcastAndStation("0", "200", "广播剧", typeId.toString())
+            }
+            PayStuffActivity.STATION -> {
+                return mApiService.getHomeBroadcastAndStation("0", "200", "电台", typeId.toString())
+            }
+        }
+        return mApiService.paidSelection(offset, limit)
+    }
 
     //付费精选banner
     fun paidSelectionBanner(): Flowable<BaseEntity<PayStaffBannerEntity>> = mApiService.paidSelectionBanner()

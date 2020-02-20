@@ -19,6 +19,7 @@ import org.greenrobot.eventbus.ThreadMode
 class PlayerDetailFragment : BaseRefreshFragment<PlayerDetailSinglePresenter, String>(), PlayDetailSingleContract.View {
 
 
+    private val testStr="<strong><font style=\"color: #008a00;\">\" + \"我是红色\" + \"</font></strong>"
     private var musicId: String? = null
     override fun initPresenter() = mPresenter.attachView(this)
 

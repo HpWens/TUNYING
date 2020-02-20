@@ -13,7 +13,10 @@ import kotlinx.android.synthetic.main.item_collect.view.*
  * on 2019/11/2
  *
  **/
-class CollectAdapter : BaseAdapter<CollectEntity.ListBean>() {
+class CollectAdapter constructor(listener: OnCollectLinstener) : BaseAdapter<CollectEntity.ListBean>() {
+
+    var mListener: OnCollectLinstener = listener
+
     override fun layoutId(): Int {
         return R.layout.item_collect
     }
@@ -30,6 +33,15 @@ class CollectAdapter : BaseAdapter<CollectEntity.ListBean>() {
             itemView.tv_price.text = itemBean.price
             ImageUtil.load(itemBean.image).on(itemView.image)
 
+            itemView.tv_cancel_collect.setOnClickListener {
+                mListener?.let {
+                    it.onCancelCollect(adapterPosition, itemBean.id)
+                }
+            }
         }
+    }
+
+    interface OnCollectLinstener {
+        fun onCancelCollect(pos: Int, songId: String)
     }
 }

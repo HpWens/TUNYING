@@ -36,7 +36,7 @@ class MyOrderActivity : BaseInjectActivity<OrderPresenter>(), OrderContract.View
         recycler?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
         recycler?.adapter = mAdapter
         mAdapter?.notifyDataSetChanged()
-        mAdapter?.setOnItemClickListener { v, position ->
+        mAdapter?.setOnItemClickListener { _, position ->
             startActivity(OrderDetailActivity.newInstance(mContext, mAdapter!!.dataList[position].id,
                     mAdapter!!.dataList[position].title,
                     mAdapter!!.dataList[position].image,

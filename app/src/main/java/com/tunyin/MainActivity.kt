@@ -5,6 +5,7 @@ import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
@@ -20,10 +21,7 @@ import com.tunyin.mvp.model.TabEntity
 import com.tunyin.mvp.presenter.app.MainPresenter
 import com.tunyin.myservice.Music
 import com.tunyin.myservice.OnPlayerEventListener
-import com.tunyin.ui.activity.mine.LoginActivity
-import com.tunyin.ui.activity.mine.MyCollectActivity
-import com.tunyin.ui.activity.mine.MyMsgActivity
-import com.tunyin.ui.activity.mine.MyOrderActivity
+import com.tunyin.ui.activity.mine.*
 import com.tunyin.ui.fragment.discovery.DiscoveryFragment
 import com.tunyin.ui.fragment.index.IndexFragment
 import com.tunyin.ui.fragment.mine.MineFragment
@@ -54,7 +52,6 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
     override fun onBufferingUpdate(percent: Int) {
     }
 
-
     private val CHOOSE_REQUEST_CODE = 1
     private var exitTime = 0L
     private var mCurrentPos = -1
@@ -71,7 +68,7 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
     internal lateinit var tvMsg: TextView
     internal lateinit var tvFrined: TextView
     internal lateinit var tvCollect: TextView
-
+    internal lateinit var vipLayout: LinearLayout
 
     // 未被选中的图标
     private val mIconUnSelectIds = intArrayOf(R.mipmap.tab_home_unselect, R.mipmap.tab_discovery_unselect, R.mipmap.tab_perchand_unselect, R.mipmap.tab_mine_ubselect)
@@ -134,7 +131,6 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
                 }
                 return true
             }
-
         })
 
 
@@ -143,6 +139,14 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
         tvMsg = nav_left.getHeaderView(0).findViewById(R.id.tv_msg)
         tvFrined = nav_left.getHeaderView(0).findViewById(R.id.tv_friend)
         tvCollect = nav_left.getHeaderView(0).findViewById(R.id.tv_collect)
+
+        vipLayout = nav_left.getHeaderView(0).findViewById(R.id.ly_vip)
+
+        vipLayout.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, TunYinVIPDepositActivity::class.java)
+            this.startActivity(intent)
+        }
 
         ivIvatar.setOnClickListener {
             ToastUtils.showToast("我是头像")
@@ -185,8 +189,6 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
     override fun onClick(p0: View?) {
         when (p0) {
             iv_avatar -> {
-
-
             }
         }
     }
@@ -202,7 +204,6 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
         numbers.add(1228)
         mPresenter.getRegionTagTypeBean(numbers) // 初始值默认为中学
     }
-
 
     override fun onTabSelect(position: Int) = switchFragmentIndex(position)
 
@@ -261,7 +262,5 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
             App.instance.exitApp()
         }
     }
-
-
 }
 

@@ -7,7 +7,6 @@ import android.widget.TextView;
 import com.tunyin.R;
 import com.tunyin.base.BaseAdapter;
 import com.tunyin.base.BaseViewHolder;
-import com.tunyin.mvp.model.discovery.DiscoveryEntity;
 import com.tunyin.mvp.model.index.IndexEntity;
 import com.tunyin.ui.activity.index.PayStuffActivity;
 import com.tunyin.ui.activity.index.RankingListActivity;
@@ -47,9 +46,9 @@ public class IndexClassifyItemAdapter extends BaseAdapter<IndexEntity.ClassifyLi
                     if ("1".equals(listBean.getType())) {
                         itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext()));
                     } else if ("2".equals(listBean.getType())) {
-
+                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), PayStuffActivity.BROAD_CAST));
                     } else if ("3".equals(listBean.getType())) {
-
+                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), PayStuffActivity.STATION));
                     } else if ("4".equals(listBean.getType())) {
                         itemView.getContext().startActivity(RankingListActivity.newInstance(itemView.getContext()));
                     }

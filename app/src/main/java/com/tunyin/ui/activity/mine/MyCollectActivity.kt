@@ -4,13 +4,11 @@ import android.content.Context
 import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tunyin.R
-import com.tunyin.base.BaseActivity
+import com.tunyin.ToastUtils
 import com.tunyin.base.BaseInjectActivity
 import com.tunyin.mvp.contract.mine.CollectContract
-import com.tunyin.mvp.model.index.SearchEntity
 import com.tunyin.mvp.model.mine.CollectEntity
 import com.tunyin.mvp.presenter.mine.CollectPresenter
-import com.tunyin.ui.adapter.index.SearchResultAdapter
 import com.tunyin.ui.adapter.mine.CollectAdapter
 import com.tunyin.utils.AppUtils
 import com.tunyin.utils.StatusBarUtil
@@ -21,7 +19,6 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
  * 我的收藏
  */
 class MyCollectActivity : BaseInjectActivity<CollectPresenter>(), CollectContract.View {
-
 
     private var mAdapter: CollectAdapter? = null
     private val collectList = ArrayList<CollectEntity.ListBean>()
@@ -42,7 +39,13 @@ class MyCollectActivity : BaseInjectActivity<CollectPresenter>(), CollectContrac
         hideLoading()
     }
 
-
+    override fun showCancelCollectSuccess(pos: Int) {
+        ToastUtils.showToast("取消收藏成功")
+        if (mAdapter != null && mAdapter!!.dataList.size > pos) {
+            mAdapter!!.notifyItemRemoved(pos)
+            mAdapter!!.dataList.removeAt(pos)
+        }
+    }
 
     override fun getLayoutId(): Int {
         return R.layout.activity_my_collect
@@ -52,8 +55,11 @@ class MyCollectActivity : BaseInjectActivity<CollectPresenter>(), CollectContrac
         StatusBarUtil.setColorNoTranslucent(this, AppUtils.getColor(R.color.white))
         tv_title.text = "我的收藏"
 
-
-        mAdapter = CollectAdapter()
+        mAdapter = CollectAdapter(object : CollectAdapter.OnCollectLinstener {
+            override fun onCancelCollect(pos: Int, songId: String) {
+                mPresenter.cancelCollect(pos, songId)
+            }
+        })
         recycler?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
         recycler?.adapter = mAdapter
 

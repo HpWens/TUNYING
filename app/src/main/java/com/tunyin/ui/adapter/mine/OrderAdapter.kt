@@ -2,6 +2,7 @@ package com.tunyin.ui.adapter.mine
 
 import android.view.View
 import com.tunyin.LogUtils
+import com.tunyin.MyAudioPlayer
 import com.tunyin.R
 import com.tunyin.base.BaseAdapter
 import com.tunyin.base.BaseViewHolder
@@ -33,13 +34,13 @@ class OrderAdapter : BaseAdapter<OrderEntity.ListBean>() {
 //            itemView.tv_progress.text = itemBean.content
             ImageUtil.load(itemBean.image).on(itemView.image)
             itemView.tv_date.text = itemBean.createDate
+            itemBean.isHelperStartEnable = MyAudioPlayer.get().isPlaying && MyAudioPlayer.get().songId.equals(itemBean.songId)
+            itemView.tv_progress.text = if (itemBean.isHelperStartEnable) "正在播放" else "未开始"
             itemView.tv_delete.setOnClickListener {
                 if (mDeleteClickListener != null) {
                     mDeleteClickListener!!.onDeleteClick(position)
                 }
-
             }
-
         }
     }
 

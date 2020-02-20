@@ -226,6 +226,13 @@ interface ApiService {
                   @Field("limit") limit: String): Flowable<BaseEntity<CollectEntity>>
 
     /**
+     * 取消收藏
+     */
+    @FormUrlEncoded
+    @POST("api/song/collectCancel")
+    fun cancelCollect(@Field("songId") songId: String): Flowable<BaseEntity<String>>
+
+    /**
      * 优惠券
      */
     @FormUrlEncoded
@@ -336,6 +343,16 @@ interface ApiService {
     @POST("api/home/paidSelection")
     fun paidSelection(@Field("offset") offset: String,
                       @Field("limit") limit: String): Flowable<BaseEntity<PayStuffEntity>>
+
+    /**
+     * 获取电台 广播剧
+     */
+    @FormUrlEncoded
+    @POST("api/song/search")
+    fun getHomeBroadcastAndStation(@Field("offset") offset: String,
+                                   @Field("limit") limit: String,
+                                   @Field("name") name: String,
+                                   @Field("classifyId") classifyId: String): Flowable<BaseEntity<PayStuffEntity>>
 
 
     /**

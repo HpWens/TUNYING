@@ -20,6 +20,18 @@ import javax.inject.Inject
 
 class CollectPresenter @Inject constructor(private val mRetrofitHelper: RetrofitHelper) :
         RxPresenter<CollectContract.View>(), CollectContract.Presenter<CollectContract.View> {
+
+    override fun cancelCollect(pos: Int, songId: String) {
+        val subscriber = mRetrofitHelper.cancelCollect(songId)
+                .compose(rxSchedulerHelper())
+                .subscribeWith(object : BaseSubscriber<BaseEntity<String>>(mView) {
+                    override fun onSuccess(mData: BaseEntity<String>) {
+                        mView?.showCancelCollectSuccess(pos)
+                    }
+                })
+        addSubscribe(subscriber)
+    }
+
     override fun getCollect(offset: String, limit: String) {
         val subscriber = mRetrofitHelper.myCollect(offset, limit)
                 .compose(rxSchedulerHelper())

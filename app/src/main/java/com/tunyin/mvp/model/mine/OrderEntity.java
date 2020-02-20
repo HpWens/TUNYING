@@ -56,6 +56,16 @@ public class OrderEntity {
         private String songId = "";
         private String createDate = "";
 
+        private boolean helperStartEnable = false;
+
+        public boolean isHelperStartEnable() {
+            return helperStartEnable;
+        }
+
+        public void setHelperStartEnable(boolean helperStartEnable) {
+            this.helperStartEnable = helperStartEnable;
+        }
+
         public String getImage() {
             return image;
         }

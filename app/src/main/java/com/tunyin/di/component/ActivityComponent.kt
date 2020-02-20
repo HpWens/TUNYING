@@ -37,5 +37,4 @@ interface ActivityComponent {
     fun inject(orderDetailActivity: OrderDetailActivity)
     fun inject(tunYinVIPDepositActivity: TunYinVIPDepositActivity)
 
-
 }

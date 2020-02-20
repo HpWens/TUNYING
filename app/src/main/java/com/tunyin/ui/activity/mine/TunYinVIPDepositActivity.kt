@@ -23,7 +23,6 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
  */
 class TunYinVIPDepositActivity : BaseInjectActivity<TunyinVipPresenter>(), View.OnClickListener, TunyinVipContract.View {
 
-
     private var nobleEquityId: String? = null
     private var type: String? = null
 

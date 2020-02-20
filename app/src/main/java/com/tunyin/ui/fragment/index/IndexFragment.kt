@@ -138,13 +138,11 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
                 isPlay = true
                 play.setBackgroundResource(R.mipmap.icon_pause)//
 
-
 //                play.setImageDrawable(mContext!!.resources.getDrawable(R.mipmap.icon_pause))
                 play.startRotate()
             } else {
                 isPlay = false
                 play.setBackgroundResource(R.mipmap.icon_stop)//
-
 
 //                play.setBackgroundResource(mContext!!.resources.getDrawable(R.mipmap.icon_stop))
                 play.stopRotate()

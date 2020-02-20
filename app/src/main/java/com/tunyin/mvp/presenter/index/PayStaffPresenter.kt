@@ -18,6 +18,7 @@ import javax.inject.Inject
 
 class PayStaffPresenter @Inject constructor(private val mRetrofitHelper: RetrofitHelper) :
         RxPresenter<PayStuffContract.View>(), PayStuffContract.Presenter<PayStuffContract.View> {
+
     override fun getBanner() {
         val subscriber = mRetrofitHelper.paidSelectionBanner()
                 .compose(rxSchedulerHelper())
@@ -29,8 +30,8 @@ class PayStaffPresenter @Inject constructor(private val mRetrofitHelper: Retrofi
         addSubscribe(subscriber)
     }
 
-    override fun getPayStaff(offset: String, limit: String) {
-        val subscriber = mRetrofitHelper.paidSelection(offset, limit)
+    override fun getPayStaff(offset: String, limit: String, typeId: Int) {
+        val subscriber = mRetrofitHelper.paidSelection(offset, limit, typeId)
                 .compose(rxSchedulerHelper())
                 .subscribeWith(object : BaseSubscriber<BaseEntity<PayStuffEntity>>(mView) {
                     override fun onSuccess(mData: BaseEntity<PayStuffEntity>) {

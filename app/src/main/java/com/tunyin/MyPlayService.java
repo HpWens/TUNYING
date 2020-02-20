@@ -17,8 +17,6 @@ import com.tunyin.myservice.AudioPlayer;
  **/
 public class MyPlayService extends Service {
 
-
-
     public class PlayBinder extends Binder {
         public MyPlayService getService() {
             return MyPlayService.this;

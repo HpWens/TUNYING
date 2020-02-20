@@ -212,10 +212,8 @@
                     <RelativeLayout
                         android:id="@+id/rl_listen_try"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="36dp"
                         android:background="#F7FAFA"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:visibility="gone"
                         tools:visibility="visible">
 
@@ -224,8 +222,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
+                            android:layout_centerVertical="true"
                             android:text="免费试听中，只需214钻石即可收听全剧"
                             android:textColor="@color/color_67D0F0"
                             android:textSize="12sp" />

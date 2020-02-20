@@ -39,6 +39,15 @@ public class MyAudioPlayer {
     private boolean mIsTry = false;
     private String mImgUrl = "";
     private String mListeningTime = "";
+    private String mSongId = "-100";
+
+    public String getSongId() {
+        return mSongId;
+    }
+
+    public void setSongId(String songId) {
+        this.mSongId = songId;
+    }
 
     private OnPlayerEventListener myListeners = null;
 
@@ -57,7 +66,6 @@ public class MyAudioPlayer {
     private MyAudioPlayer() {
     }
 
-
     public void init(Context context) {
         this.context = context.getApplicationContext();
         audioFocusManager = new AudioFocusManager(context);
@@ -70,9 +78,7 @@ public class MyAudioPlayer {
 //                startPlayer();
             }
         });
-        mediaPlayer.setOnBufferingUpdateListener((mp, percent) -> {
-            myListeners.onBufferingUpdate(percent);
-        });
+        mediaPlayer.setOnBufferingUpdateListener((mp, percent) -> myListeners.onBufferingUpdate(percent));
 
     }
 
@@ -123,8 +129,6 @@ public class MyAudioPlayer {
 //        setPlayPosition(position);
 //        Music music = getPlayMusic();
         if (!url.equals(tempUrl)) {
-
-
             try {
                 mediaPlayer.reset();
                 mediaPlayer.setDataSource(url);
@@ -154,7 +158,6 @@ public class MyAudioPlayer {
 
     public long getDuration() {
         if (mediaPlayer != null) {
-
             int it = mediaPlayer.getDuration();
 //            LogUtils.INSTANCE.d("----mediaPlayer------" + it);
             return mediaPlayer.getDuration();
@@ -181,13 +184,11 @@ public class MyAudioPlayer {
     private Runnable mPublishRunnable = new Runnable() {
         @Override
         public void run() {
-
             if (!TextUtils.isEmpty(mListeningTime)) {
                 if (mListeningTime.equals(EventBusUtil.INSTANCE.formatSecond((int) getAudioPosition()))) {
                     // pausePlayer();
                 }
             }
-
             if (isPlaying()) {
                 myListeners.onPublish(mediaPlayer.getCurrentPosition());
             }
@@ -243,7 +244,6 @@ public class MyAudioPlayer {
         if (isIdle()) {
             return;
         }
-
         pausePlayer();
         mediaPlayer.reset();
         state = STATE_IDLE;
@@ -257,7 +257,6 @@ public class MyAudioPlayer {
         if (!isPlaying()) {
             return;
         }
-
         mediaPlayer.pause();
         state = STATE_PAUSE;
         handler.removeCallbacks(mPublishRunnable);
@@ -270,7 +269,6 @@ public class MyAudioPlayer {
 //        if (abandonAudioFocus) {
 //            audioFocusManager.abandonAudioFocus();
 //        }
-
 //        for (OnPlayerEventListener listener : listeners) {
         myListeners.onPlayerPause();
 //        }

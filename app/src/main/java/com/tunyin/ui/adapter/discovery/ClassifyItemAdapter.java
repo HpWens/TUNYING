@@ -47,9 +47,9 @@ public class ClassifyItemAdapter extends BaseAdapter<DiscoveryEntity.ClassifyLis
                     if ("1".equals(listBean.getType())) {
                         itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext()));
                     } else if ("2".equals(listBean.getType())) {
-
+                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), PayStuffActivity.BROAD_CAST));
                     } else if ("3".equals(listBean.getType())) {
-
+                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), PayStuffActivity.STATION));
                     } else if ("4".equals(listBean.getType())) {
 //                        itemView.getContext().startActivity(RankingListActivity.newInstance(itemView.getContext()));
                     }
@@ -59,15 +59,15 @@ public class ClassifyItemAdapter extends BaseAdapter<DiscoveryEntity.ClassifyLis
         }
     }
 
-    public void setRefreshFreeListener(OnRefreshFreeListener listener){
-        this.refreshFreeListener=listener;
+    public void setRefreshFreeListener(OnRefreshFreeListener listener) {
+        this.refreshFreeListener = listener;
 
     }
 
     OnRefreshFreeListener refreshFreeListener;
 
 
-    interface OnRefreshFreeListener{
+    interface OnRefreshFreeListener {
         void refreshFreeData();
     }
 

@@ -6,6 +6,8 @@ import com.tunyin.BaseContract;
 import com.tunyin.NetworkUtils;
 import com.tunyin.ToastUtils;
 import com.tunyin.mvp.model.BaseEntity;
+import com.tunyin.mvp.model.SelfBean;
+import com.tunyin.ui.activity.mine.LoginActivity;
 import com.tunyin.utils.AppUtils;
 
 import io.reactivex.subscribers.ResourceSubscriber;
@@ -36,6 +38,9 @@ public abstract class BaseSubscriberPro<M> extends ResourceSubscriber<BaseEntity
         if (mView != null) {
             if (TextUtils.equals("400", mBaseEntity.code)) {
                 ToastUtils.INSTANCE.showToast(mBaseEntity.desc);
+            } else if (TextUtils.equals("401", mBaseEntity.code)) {
+                SelfBean.getInstance().setToken("");
+                AppUtils.getAppContext().startActivity(LoginActivity.newInstance(AppUtils.getAppContext()));
             } else {
                 onSuccess(mBaseEntity.content);
             }
@@ -78,7 +83,7 @@ public abstract class BaseSubscriberPro<M> extends ResourceSubscriber<BaseEntity
 
     @Override
     public void onComplete() {
-        int i=0;
+        int i = 0;
 
     }
 }

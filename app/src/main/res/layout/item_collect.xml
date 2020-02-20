@@ -64,6 +64,7 @@
                 android:textSize="35sp" />
 
             <TextView
+                android:id="@+id/tv_cancel_collect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -73,10 +74,9 @@
                 android:paddingTop="2dp"
                 android:paddingEnd="15dp"
                 android:paddingBottom="2dp"
-                android:text="已收藏"
+                android:text="取消收藏"
                 android:textColor="@color/font_gray"
-                android:textSize="14sp"
-                />
+                android:textSize="14sp" />
 
         </RelativeLayout>
 

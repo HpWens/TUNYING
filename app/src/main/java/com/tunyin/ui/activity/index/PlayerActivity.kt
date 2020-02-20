@@ -41,7 +41,6 @@ import java.util.*
 
 class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.View, View.OnClickListener, OnTabSelectListener, ViewPager.OnPageChangeListener, SeekBar.OnSeekBarChangeListener, OnPlayerEventListener {
 
-
     private val UPDATE_PROGRESS = 0
 
     private var mMusicId: String? = null
@@ -67,7 +66,6 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
             progressTv.text = formatTime(progress.toLong())
 //            LogUtils.d("----progressTvprogressTv-2---" + (MyAudioPlayer.get().audioPosition.toInt()))
             mLastProgress = progress
-
         }
     }
 
@@ -75,7 +73,6 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         if (p0 == progressSb) {
             isDraggingProgress = true
         }
-
     }
 
     override fun onStopTrackingTouch(seekBar: SeekBar?) {
@@ -86,12 +83,10 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
                 if (MyAudioPlayer.get().isPlaying || MyAudioPlayer.get().isPausing) run {
                     val progress = seekBar?.getProgress()
                     MyAudioPlayer.get().seekTo(progress!!)
-
                 }
             } else {
                 ToastUtils.showToast("当前为试听，请先购买")
             }
-
         }
     }
 
@@ -111,7 +106,7 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         if (mediaDuration.length > 7) {
             MyAudioPlayer.get().pausePlayer()
             getMusic()
-            return;
+            return
         }
 
         durationTv.text = formatTime(MyAudioPlayer.get().duration)
@@ -137,7 +132,6 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
 //                if (musicControl!!.isPlaying) {
                 play.setImageDrawable(mContext!!.resources.getDrawable(R.mipmap.icon_stop))
 //                    musicControl?.play()
-
 
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("提示")
@@ -169,11 +163,9 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
                     progressTv.text = formattime((MyAudioPlayer.get().audioPosition.toInt()))
                 }
             }
-
         } else {
             progressTv.text = formattime((MyAudioPlayer.get().audioPosition.toInt()))
         }
-
     }
 
     override fun onBufferingUpdate(percent: Int) {
@@ -231,7 +223,6 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
             }
         }
 
-
         MyAudioPlayer.get().play(musicEntity.url, isTry, musicEntity.image)
         SelfBean.instance.musicUrl = musicEntity.url
         onChangeImpl()
@@ -277,8 +268,6 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
 //        durationTv.text = str
         //没办法的骚操作
 //        getMusic()
-
-
     }
 
 
@@ -302,9 +291,7 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
             } else {
                 mPresenter.getMusic(it)
             }
-
             SelfBean.instance.musicHisId = it
-
         }
     }
 
@@ -313,10 +300,10 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
 //        StatusBarUtil.setTranslucentForImageView(this, 0, null)
 //        StatusBarUtil.setLightMode(this)
         mMusicId = intent.getStringExtra("musicId")
+        MyAudioPlayer.get().songId = mMusicId
         MyAudioPlayer.get().addOnPlayEventListener(this)
         progressSb.setOnSeekBarChangeListener(this)
         getMusic()
-
 
         play.setOnClickListener(this)
         tv_right_title.setOnClickListener(this)
@@ -330,11 +317,11 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         mTabEntities.add(FlyoutTabEntity("目录"))
         mTabEntities.add(FlyoutTabEntity("评论"))
 
-
         var playerDirectoryFragment = PlayerDirectoryFragment.newInstance(mMusicId.toString())
         playerDirectoryFragment.setChangeMusicListener(object : PlayerDirectoryFragment.OnChangeMusicListener {
             override fun changeMusic(id: String) {
                 mMusicId = id
+                MyAudioPlayer.get().songId = mMusicId
                 mListeningTime = Constants.TRY_LISTEN.toString()
                 tryEnd = false
                 play.setImageDrawable(mContext!!.resources.getDrawable(R.mipmap.icon_pause))
@@ -345,12 +332,10 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
                 mPresenter.getMusic(id)
                 SelfBean.instance.musicHisId = id
 
-
                 // 更新详情页
                 var updateEvent: Event<String> = Event(101, id)
                 EventBusUtil.sendEvent(updateEvent)
             }
-
         })
         fragments.add(PlayerDetailFragment.newInstance(mMusicId.toString()))
         fragments.add(playerDirectoryFragment)
@@ -370,7 +355,6 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
                 autoPlayHandler.removeMessages(1)
                 if (!tryEnd!!) {
                     play()
-
                 } else {
                     ToastUtils.showToast("试听结束,请购买")
 //                    pay()
@@ -387,8 +371,6 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
             }
             tv_to_pay_try -> {//全集
                 pay("1")
-
-
             }
         }
     }
@@ -403,7 +385,6 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
                 play.setImageDrawable(mContext!!.resources.getDrawable(R.mipmap.icon_pause))
             }
         }
-
     }
 
     private fun ivIsPlayingTwo() {
@@ -411,7 +392,6 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
             play.setImageDrawable(mContext!!.resources.getDrawable(R.mipmap.icon_stop))
             durationTv.text = formatTime(MyAudioPlayer.get().duration)
         }
-
     }
 
     private fun play() {
@@ -539,11 +519,10 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         return SystemUtils.formatTime("mm:ss", time)
     }
 
-
     override fun cerateOrderCallBack(createOrderEntity: CreateOrderEntity) {
         PaySucDialog.getInstance().show(fragmentManager, "1")
         hideLoading()
-        tryEnd=false
+        tryEnd = false
         mPresenter.getMusic(mMusicId!!)
     }
 
@@ -585,6 +564,5 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
 //        }, false)
 
     }
-
 
 }

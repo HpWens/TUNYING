@@ -24,6 +24,8 @@ import kotlinx.android.synthetic.main.layout_toolbar.tv_title
  **/
 class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContract.View {
 
+    // 2 广播剧 4 电台
+    private var typeId = -1
 
     private val mBannerList = ArrayList<PayStaffBannerEntity.ListBean>() // 顶部
     private val mPayStuffList = ArrayList<PayStuffEntity>() //
@@ -37,7 +39,7 @@ class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContra
 
     override fun showBannerData(payStaffBannerEntity: PayStaffBannerEntity) {
         mBannerList.addAll(payStaffBannerEntity.list)
-        mPresenter.getPayStaff("0", "200")
+        mPresenter.getPayStaff("0", "200", typeId)
 
     }
 
@@ -60,8 +62,17 @@ class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContra
 
     override fun initWidget() {
 //        StatusBarUtil.setColorNoTranslucent(this, AppUtils.getColor(R.color.transparent))
+        intent?.let {
+            typeId = intent.getIntExtra(TYPE_ID, -1)
+        }
+
         StatusBarUtil.setTranslucentForImageView(this, 0, null)
-        tv_title.text = "付费精选"
+
+        when (typeId) {
+            BROAD_CAST -> tv_title.text = "广播剧"
+            STATION -> tv_title.text = "电台"
+            else -> tv_title.text = "付费精选"
+        }
 
         toolbar.setBackgroundResource(R.color.transpaent_bg)
 
@@ -80,5 +91,21 @@ class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContra
             val intent = Intent(context, PayStuffActivity::class.java)
             return intent
         }
+
+        val TYPE_ID = "type_id"
+
+        @kotlin.jvm.JvmField
+        val BROAD_CAST = 2
+
+        @kotlin.jvm.JvmField
+        val STATION = 4
+
+        @JvmStatic
+        fun newInstance(context: Context?, typeId: Int = -1): Intent {
+            val intent = Intent(context, PayStuffActivity::class.java)
+            intent.putExtra(TYPE_ID, typeId)
+            return intent
+        }
+
     }
 }
