@@ -8,12 +8,15 @@ class CollectContract {
         fun showCollectData(collectEntity: CollectEntity)
         override fun showError(msg: String)
         fun showCancelCollectSuccess(pos: Int)
+        fun showAddCollectSuccess(pos: Int)
     }
 
     interface Presenter<in T> : BaseContract.BasePresenter<T> {
         fun getCollect(offset: String, limit: String)
 
         fun cancelCollect(pos: Int, songId: String)
+
+        fun addCollect(pos: Int, songId: String)
     }
 
 }

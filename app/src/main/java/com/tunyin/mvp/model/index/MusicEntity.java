@@ -45,7 +45,15 @@ public class MusicEntity {
     private boolean isBuyCatlog;//是否购买目录
     private String themeId;
     private String catalogPrice;
+    private String isCollect;
 
+    public String getIsCollect() {
+        return isCollect;
+    }
+
+    public void setIsCollect(String isCollect) {
+        this.isCollect = isCollect;
+    }
 
     public String getCatalogPrice() {
         return catalogPrice;

@@ -1,6 +1,7 @@
 package com.tunyin
 
 import com.tunyin.mvp.model.BaseEntity
+import com.tunyin.mvp.model.CancelCollectEntity
 import com.tunyin.mvp.model.UploadFileEntity
 import com.tunyin.mvp.model.discovery.DiscoveryEntity
 import com.tunyin.mvp.model.index.*
@@ -117,7 +118,10 @@ class RetrofitHelper(private val mApiService: ApiService) {
     fun myCollect(offset: String, limit: String): Flowable<BaseEntity<CollectEntity>> = mApiService.myCollect(offset, limit)
 
     // 取消收藏
-    fun cancelCollect(songId: String): Flowable<BaseEntity<String>> = mApiService.cancelCollect(songId)
+    fun cancelCollect(songId: String): Flowable<BaseEntity<CancelCollectEntity>> = mApiService.cancelCollect(songId)
+
+    // 添加收藏
+    fun addCollect(songId: String): Flowable<BaseEntity<String>> = mApiService.addCollect(songId)
 
     //优惠券
     fun myVoucher(offset: String, limit: String, type: String): Flowable<BaseEntity<VoucherEntity>> = mApiService.myVoucher(offset, limit, type)

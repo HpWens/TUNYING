@@ -1,6 +1,7 @@
 package com.tunyin
 
 import com.tunyin.mvp.model.BaseEntity
+import com.tunyin.mvp.model.CancelCollectEntity
 import com.tunyin.mvp.model.UploadFileEntity
 import com.tunyin.mvp.model.discovery.DiscoveryEntity
 import com.tunyin.mvp.model.index.*
@@ -230,7 +231,15 @@ interface ApiService {
      */
     @FormUrlEncoded
     @POST("api/song/collectCancel")
-    fun cancelCollect(@Field("songId") songId: String): Flowable<BaseEntity<String>>
+    fun cancelCollect(@Field("songId") songId: String): Flowable<BaseEntity<CancelCollectEntity>>
+
+
+    /**
+     * 添加收藏
+     */
+    @FormUrlEncoded
+    @POST("/api/song/collectAdd")
+    fun addCollect(@Field("songId") songId: String): Flowable<BaseEntity<String>>
 
     /**
      * 优惠券

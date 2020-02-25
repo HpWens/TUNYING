@@ -1,9 +1,12 @@
 package com.tunyin.mvp.presenter.index
 
 import com.tunyin.RetrofitHelper
+import com.tunyin.base.BaseSubscriber
 import com.tunyin.base.BaseSubscriberPro
 import com.tunyin.base.RxPresenter
 import com.tunyin.mvp.contract.index.PlayerContract
+import com.tunyin.mvp.model.BaseEntity
+import com.tunyin.mvp.model.CancelCollectEntity
 import com.tunyin.mvp.model.index.CreateOrderEntity
 import com.tunyin.mvp.model.index.MusicEntity
 import com.tunyin.utils.rxSchedulerHelper
@@ -24,10 +27,8 @@ class PlayerPresenter @Inject constructor(private val mRetrofitHelper: RetrofitH
         addSubscribe(subscriber)
     }
 
-
-
-    override fun createOrder(songDetails: String, couponId: String,themeId:String) {
-        val subscriber = mRetrofitHelper.createOrder(songDetails, couponId,themeId)
+    override fun createOrder(songDetails: String, couponId: String, themeId: String) {
+        val subscriber = mRetrofitHelper.createOrder(songDetails, couponId, themeId)
                 .compose(rxSchedulerHelper())
                 .subscribeWith(object : BaseSubscriberPro<CreateOrderEntity>(mView) {
                     override fun onSuccess(mData: CreateOrderEntity) {
@@ -57,6 +58,28 @@ class PlayerPresenter @Inject constructor(private val mRetrofitHelper: RetrofitH
 
                     }
 
+                })
+        addSubscribe(subscriber)
+    }
+
+    override fun cancelCollect(songId: String) {
+        val subscriber = mRetrofitHelper.cancelCollect(songId)
+                .compose(rxSchedulerHelper())
+                .subscribeWith(object : BaseSubscriber<BaseEntity<CancelCollectEntity>>(mView) {
+                    override fun onSuccess(mData: BaseEntity<CancelCollectEntity>) {
+                        mView?.showCancelCollectSuccess()
+                    }
+                })
+        addSubscribe(subscriber)
+    }
+
+    override fun addCollect(songId: String) {
+        val subscriber = mRetrofitHelper.addCollect(songId)
+                .compose(rxSchedulerHelper())
+                .subscribeWith(object : BaseSubscriber<BaseEntity<String>>(mView) {
+                    override fun onSuccess(mData: BaseEntity<String>) {
+                        mView?.showAddCollectSuccess()
+                    }
                 })
         addSubscribe(subscriber)
     }

@@ -42,8 +42,18 @@ class MyCollectActivity : BaseInjectActivity<CollectPresenter>(), CollectContrac
     override fun showCancelCollectSuccess(pos: Int) {
         ToastUtils.showToast("取消收藏成功")
         if (mAdapter != null && mAdapter!!.dataList.size > pos) {
-            mAdapter!!.notifyItemRemoved(pos)
-            mAdapter!!.dataList.removeAt(pos)
+            mAdapter!!.dataList[pos].isHelperCollect = false
+            mAdapter!!.notifyItemChanged(pos)
+//            mAdapter!!.notifyItemRemoved(pos)
+//            mAdapter!!.dataList.removeAt(pos)
+        }
+    }
+
+    override fun showAddCollectSuccess(pos: Int) {
+        ToastUtils.showToast("收藏成功")
+        if (mAdapter != null && mAdapter!!.dataList.size > pos) {
+            mAdapter!!.dataList[pos].isHelperCollect = true
+            mAdapter!!.notifyItemChanged(pos)
         }
     }
 
@@ -55,7 +65,11 @@ class MyCollectActivity : BaseInjectActivity<CollectPresenter>(), CollectContrac
         StatusBarUtil.setColorNoTranslucent(this, AppUtils.getColor(R.color.white))
         tv_title.text = "我的收藏"
 
-        mAdapter = CollectAdapter(object : CollectAdapter.OnCollectLinstener {
+        mAdapter = CollectAdapter(object : CollectAdapter.OnCollectListener {
+            override fun onAddCollect(pos: Int, songId: String) {
+                mPresenter.addCollect(pos, songId)
+            }
+
             override fun onCancelCollect(pos: Int, songId: String) {
                 mPresenter.cancelCollect(pos, songId)
             }

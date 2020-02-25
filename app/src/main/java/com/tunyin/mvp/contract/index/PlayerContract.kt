@@ -10,15 +10,19 @@ class PlayerContract {
         fun showMusicData(musicEntity: MusicEntity)
         fun cerateOrderCallBack(createOrderEntity: CreateOrderEntity)
         fun payOrderCallBack(string: String)
-        override fun showError(msg: String){
+        fun showCancelCollectSuccess()
+        fun showAddCollectSuccess()
+        override fun showError(msg: String) {
             ToastUtils.showToast(msg)
         }
     }
 
     interface Presenter<in T> : BaseContract.BasePresenter<T> {
-        fun getMusic(songId:String)
-        fun createOrder(songDetails:String,couponId:String,themeId:String)
+        fun getMusic(songId: String)
+        fun createOrder(songDetails: String, couponId: String, themeId: String)
         fun payOrder(orderId: String)
+        fun cancelCollect(songId: String)
+        fun addCollect(songId: String)
     }
 
 

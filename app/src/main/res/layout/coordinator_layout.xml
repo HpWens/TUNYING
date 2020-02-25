@@ -259,18 +259,32 @@
                     app:title=" "
                     app:titleMarginTop="15dp">
 
-                    <TextView
-                        android:id="@+id/tv_right_title"
-                        android:layout_width="30dp"
-                        android:layout_height="match_parent"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
                         android:layout_gravity="right"
-                        android:layout_marginRight="16dp"
-                        android:drawableLeft="@mipmap/icon_share_gray"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:visibility="visible"
-                        tools:text=""
-                        tools:visibility="visible" />
+                        android:gravity="center_vertical"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/iv_collect"
+                            android:layout_width="wrap_content"
+                            android:src="@mipmap/collect_white"
+                            android:scaleType="centerInside"
+                            android:paddingRight="16dp"
+                            android:paddingLeft="8dp"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:id="@+id/tv_right_title"
+                            android:layout_width="wrap_content"
+                            android:src="@mipmap/icon_share"
+                            android:scaleType="centerInside"
+                            android:paddingRight="16dp"
+                            android:paddingLeft="8dp"
+                            android:layout_height="match_parent" />
+
+                    </LinearLayout>
 
                 </androidx.appcompat.widget.Toolbar>
 

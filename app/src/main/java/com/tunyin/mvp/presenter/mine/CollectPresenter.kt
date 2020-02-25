@@ -9,6 +9,7 @@ import com.tunyin.mvp.contract.index.SearchContract
 import com.tunyin.mvp.contract.index.SearchResultContract
 import com.tunyin.mvp.contract.mine.CollectContract
 import com.tunyin.mvp.model.BaseEntity
+import com.tunyin.mvp.model.CancelCollectEntity
 import com.tunyin.mvp.model.discovery.DiscoveryEntity
 import com.tunyin.mvp.model.index.IndexEntity
 import com.tunyin.mvp.model.index.SearchEntity
@@ -21,11 +22,23 @@ import javax.inject.Inject
 class CollectPresenter @Inject constructor(private val mRetrofitHelper: RetrofitHelper) :
         RxPresenter<CollectContract.View>(), CollectContract.Presenter<CollectContract.View> {
 
-    override fun cancelCollect(pos: Int, songId: String) {
-        val subscriber = mRetrofitHelper.cancelCollect(songId)
+
+    override fun addCollect(pos: Int, songId: String) {
+        val subscriber = mRetrofitHelper.addCollect(songId)
                 .compose(rxSchedulerHelper())
                 .subscribeWith(object : BaseSubscriber<BaseEntity<String>>(mView) {
                     override fun onSuccess(mData: BaseEntity<String>) {
+                        mView?.showAddCollectSuccess(pos)
+                    }
+                })
+        addSubscribe(subscriber)
+    }
+
+    override fun cancelCollect(pos: Int, songId: String) {
+        val subscriber = mRetrofitHelper.cancelCollect(songId)
+                .compose(rxSchedulerHelper())
+                .subscribeWith(object : BaseSubscriber<BaseEntity<CancelCollectEntity>>(mView) {
+                    override fun onSuccess(mData: BaseEntity<CancelCollectEntity>) {
                         mView?.showCancelCollectSuccess(pos)
                     }
                 })

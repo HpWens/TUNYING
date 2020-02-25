@@ -93,6 +93,17 @@ public class CollectEntity {
         private String listeningTime;
         private String detail;
 
+        // 辅助收藏字段
+        private boolean isHelperCollect = true;
+
+        public boolean isHelperCollect() {
+            return isHelperCollect;
+        }
+
+        public void setHelperCollect(boolean helperCollect) {
+            isHelperCollect = helperCollect;
+        }
+
         public String getIsLike() {
             return isLike;
         }

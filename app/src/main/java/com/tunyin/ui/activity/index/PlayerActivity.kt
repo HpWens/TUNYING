@@ -40,7 +40,6 @@ import java.util.*
 
 
 class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.View, View.OnClickListener, OnTabSelectListener, ViewPager.OnPageChangeListener, SeekBar.OnSeekBarChangeListener, OnPlayerEventListener {
-
     private val UPDATE_PROGRESS = 0
 
     private var mMusicId: String? = null
@@ -59,6 +58,8 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
     private var payAllThemeId: String? = ""
     private var mMusicEntity: MusicEntity? = null
     private var mAutoPlay: Boolean = true
+    // 是否收藏
+    private var isCollected: Boolean = false
 
     override fun onProgressChanged(p0: SeekBar?, progress: Int, p2: Boolean) {
 //        LogUtils.d("--------progress----" + "hello")
@@ -100,8 +101,19 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
 
     }
 
-    override fun onPublish(progress: Int) {
+    override fun showCancelCollectSuccess() {
+        ToastUtils.showToast("取消收藏成功")
+        isCollected = false
+        iv_collect.setImageResource(R.mipmap.collect_white)
+    }
 
+    override fun showAddCollectSuccess() {
+        ToastUtils.showToast("收藏成功")
+        isCollected = true
+        iv_collect.setImageResource(R.mipmap.collect_red)
+    }
+
+    override fun onPublish(progress: Int) {
         var mediaDuration = formatTime(MyAudioPlayer.get().duration);
         if (mediaDuration.length > 7) {
             MyAudioPlayer.get().pausePlayer()
@@ -201,6 +213,8 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         money = musicEntity.price
         priceSingle = musicEntity.price
         priceAll = musicEntity.price
+
+        iv_collect.setImageResource(if (isCollected != musicEntity.isCollect.equals("0")) R.mipmap.collect_white else R.mipmap.collect_red)
 
         if (isBuyCatlog!!) {//购买了全集
             rl_listen_try.visibility = View.GONE
@@ -307,6 +321,7 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
 
         play.setOnClickListener(this)
         tv_right_title.setOnClickListener(this)
+        iv_collect.setOnClickListener(this)
         tv_to_pay.setOnClickListener(this)
         tv_to_pay_try.setOnClickListener(this)
 
@@ -371,6 +386,15 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
             }
             tv_to_pay_try -> {//全集
                 pay("1")
+            }
+
+            iv_collect -> {
+                if (isCollected) {
+                    // 取消收藏
+                    mMusicId?.let { mPresenter.cancelCollect(it) }
+                } else {
+                    mMusicId?.let { mPresenter.addCollect(it) }
+                }
             }
         }
     }
