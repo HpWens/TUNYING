@@ -159,6 +159,15 @@ class RetrofitHelper(private val mApiService: ApiService) {
             PayStuffActivity.STATION -> {
                 return mApiService.getHomeBroadcastAndStation("0", "200", "电台", typeId.toString())
             }
+            5 -> {
+                return mApiService.getHomeBroadcastAndStation("0", "200", "主播哄睡", typeId.toString())
+            }
+            6 -> {
+                return mApiService.getHomeBroadcastAndStation("0", "200", "自然声", typeId.toString())
+            }
+            6 -> {
+                return mApiService.getHomeBroadcastAndStation("0", "200", "无人声", typeId.toString())
+            }
         }
         return mApiService.paidSelection(offset, limit)
     }

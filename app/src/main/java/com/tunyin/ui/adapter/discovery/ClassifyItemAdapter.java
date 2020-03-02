@@ -4,13 +4,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.tunyin.R;
 import com.tunyin.base.BaseAdapter;
 import com.tunyin.base.BaseViewHolder;
 import com.tunyin.mvp.model.discovery.DiscoveryEntity;
 import com.tunyin.ui.activity.index.PayStuffActivity;
-import com.tunyin.ui.activity.index.RankingListActivity;
 import com.tunyin.utils.ImageUtil;
 
 public class ClassifyItemAdapter extends BaseAdapter<DiscoveryEntity.ClassifyListBean> {
@@ -52,6 +50,12 @@ public class ClassifyItemAdapter extends BaseAdapter<DiscoveryEntity.ClassifyLis
                         itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), PayStuffActivity.STATION));
                     } else if ("4".equals(listBean.getType())) {
 //                        itemView.getContext().startActivity(RankingListActivity.newInstance(itemView.getContext()));
+                    } else if ("5".equals(listBean.getType())) {
+                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), 5));
+                    } else if ("6".equals(listBean.getType())) {
+                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), 6));
+                    } else if ("7".equals(listBean.getType())) {
+                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), 7));
                     }
                 }
             });

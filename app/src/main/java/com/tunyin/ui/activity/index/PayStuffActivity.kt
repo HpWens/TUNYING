@@ -71,6 +71,9 @@ class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContra
         when (typeId) {
             BROAD_CAST -> tv_title.text = "广播剧"
             STATION -> tv_title.text = "电台"
+            5 -> tv_title.text = "主播哄睡"
+            6 -> tv_title.text = "自然声"
+            7 -> tv_title.text = "无人声"
             else -> tv_title.text = "付费精选"
         }
 
