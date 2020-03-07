@@ -67,6 +67,9 @@ class RetrofitHelper(private val mApiService: ApiService) {
 
     fun payTunyinVip(nobleEquityId: String, type: String): Flowable<BaseEntity<String>> = mApiService.payTunyinVip(nobleEquityId, type)
 
+
+    fun getMyGrade(): Flowable<BaseEntity<MyGradeEntity>> = mApiService.getMyGrade()
+
     //换一批
     fun refreshFree(noteClassId: String): Flowable<BaseEntity<DiscoveryEntity.BroadcastBean>> = mApiService.refreshFree(noteClassId)
 
