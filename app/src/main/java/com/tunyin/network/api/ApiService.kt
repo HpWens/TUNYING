@@ -360,7 +360,6 @@ interface ApiService {
     @POST("api/song/search")
     fun getHomeBroadcastAndStation(@Field("offset") offset: String,
                                    @Field("limit") limit: String,
-                                   @Field("name") name: String,
                                    @Field("classifyId") classifyId: String): Flowable<BaseEntity<PayStuffEntity>>
 
 

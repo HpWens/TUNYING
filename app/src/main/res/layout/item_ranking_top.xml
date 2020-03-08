@@ -6,7 +6,6 @@
     android:background="@drawable/shape_gradient_blue"
     android:orientation="vertical">
 
-
     <www.linwg.org.lib.LCardView
         android:id="@+id/rl_profile"
         android:layout_width="200dp"

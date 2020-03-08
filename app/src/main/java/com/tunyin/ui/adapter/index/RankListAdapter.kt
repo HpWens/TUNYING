@@ -42,7 +42,9 @@ class RankListAdapter : BaseMutableAdapter<RankListEntity.ListBean>() {
                 itemView.tv_title_top.text = itemBean.title
                 itemView.tv_sub_title_top.text = itemBean.content
                 itemView.tv_price_top.text = itemBean.price
-
+                var isFree = itemBean.is_free != null && itemBean.is_free.equals("1")
+                itemView.tv_price_tip_top.visibility = if (isFree) View.GONE else View.VISIBLE
+                itemView.tv_price_top.visibility = if (isFree) View.GONE else View.VISIBLE
             } else {
                 ImageUtil.load(itemBean.image).on(itemView.image)
                 itemView.tv_title.text = itemBean.title
@@ -50,14 +52,16 @@ class RankListAdapter : BaseMutableAdapter<RankListEntity.ListBean>() {
                 itemView.tv_price.text = itemBean.price
                 if (position == 1) {
                     itemView.iv_rank_grade.setImageDrawable(itemView.context.resources.getDrawable(R.mipmap.icon_rank_sliver))
-
                 } else if (position == 2) {
                     itemView.iv_rank_grade.setImageDrawable(itemView.context.resources.getDrawable(R.mipmap.icon_rank_broze))
                 } else {
                     itemView.iv_rank_grade.setImageDrawable(itemView.context.resources.getDrawable(R.mipmap.icon_rank_normal))
                 }
-            }
 
+                var isFree = itemBean.is_free != null && itemBean.is_free.equals("1")
+                itemView.tv_price_tip.visibility = if (isFree) View.GONE else View.VISIBLE
+                itemView.tv_price.visibility = if (isFree) View.GONE else View.VISIBLE
+            }
 
         }
     }

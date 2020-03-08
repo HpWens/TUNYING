@@ -154,19 +154,19 @@ class RetrofitHelper(private val mApiService: ApiService) {
     fun paidSelection(offset: String, limit: String, typeId: Int): Flowable<BaseEntity<PayStuffEntity>> {
         when (typeId) {
             PayStuffActivity.BROAD_CAST -> {
-                return mApiService.getHomeBroadcastAndStation("0", "200", "广播剧", typeId.toString())
+                return mApiService.getHomeBroadcastAndStation("0", "200", typeId.toString())
             }
             PayStuffActivity.STATION -> {
-                return mApiService.getHomeBroadcastAndStation("0", "200", "电台", typeId.toString())
+                return mApiService.getHomeBroadcastAndStation("0", "200", typeId.toString())
             }
             5 -> {
-                return mApiService.getHomeBroadcastAndStation("0", "200", "主播哄睡", typeId.toString())
+                return mApiService.getHomeBroadcastAndStation("0", "200", typeId.toString())
             }
             6 -> {
-                return mApiService.getHomeBroadcastAndStation("0", "200", "自然声", typeId.toString())
+                return mApiService.getHomeBroadcastAndStation("0", "200", typeId.toString())
             }
             6 -> {
-                return mApiService.getHomeBroadcastAndStation("0", "200", "无人声", typeId.toString())
+                return mApiService.getHomeBroadcastAndStation("0", "200", typeId.toString())
             }
         }
         return mApiService.paidSelection(offset, limit)
