@@ -164,10 +164,10 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             app:cardUseCompatPadding="true"
-            app:rightTopCornerRadius="2dp"
-            app:leftTopCornerRadius="2dp"
             app:leftBottomCornerRadius="7dp"
+            app:leftTopCornerRadius="2dp"
             app:rightBottomCornerRadius="7dp"
+            app:rightTopCornerRadius="2dp"
             app:shadowSize="8dp"
             app:shadowStartAlpha="30">
 
@@ -183,7 +183,8 @@
                     android:layout_height="60dp"
                     android:background="@mipmap/icon_bg_goto_vip"
                     android:paddingStart="20dp"
-                    android:paddingTop="12dp">
+                    android:paddingTop="12dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/tv_01"
@@ -230,7 +231,7 @@
                         android:layout_height="wrap_content"
                         android:drawableLeft="@mipmap/icon_my_vip_grade"
                         android:drawablePadding="20dp"
-                        android:text="会员等级"
+                        android:text="财富等级"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -239,7 +240,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="15dp"
                         android:layout_toLeftOf="@+id/tv_next"
-                        android:background="@mipmap/icon_grade_tip">
+                        android:background="@mipmap/icon_grade_tip"
+                        android:visibility="gone">
 
                         <TextView
                             android:id="@+id/tv_vip_grade"
@@ -364,6 +366,7 @@
                         android:layout_alignParentRight="true"
                         android:drawableRight="@mipmap/module_common_right_arrow" />
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/rl_setting"
                     android:layout_width="match_parent"

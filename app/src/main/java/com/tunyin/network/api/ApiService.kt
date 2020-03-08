@@ -49,6 +49,10 @@ interface ApiService {
     @POST("api/home/getFind")
     fun getDiscoveryData(): Flowable<BaseEntity<DiscoveryEntity>>
 
+
+    @POST("api/home/getMyGrade")
+    fun getMyGrade(): Flowable<BaseEntity<MyGradeEntity>>
+
     /**
      * 获取首页
      */

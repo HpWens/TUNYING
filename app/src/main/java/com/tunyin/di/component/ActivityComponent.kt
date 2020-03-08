@@ -2,6 +2,7 @@ package com.tunyin
 
 
 import android.app.Activity
+import com.tunyin.ui.activity.MyRankActivity
 import com.tunyin.ui.activity.index.PayStuffActivity
 import com.tunyin.ui.activity.index.PlayerActivity
 import com.tunyin.ui.activity.index.SearchActivity
@@ -36,5 +37,6 @@ interface ActivityComponent {
     fun inject(myOrderActivity: MyOrderActivity)
     fun inject(orderDetailActivity: OrderDetailActivity)
     fun inject(tunYinVIPDepositActivity: TunYinVIPDepositActivity)
+    fun inject(myRankActivity: MyRankActivity)
 
 }

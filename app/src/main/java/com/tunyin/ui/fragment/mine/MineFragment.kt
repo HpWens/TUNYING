@@ -11,6 +11,7 @@ import com.tunyin.mvp.contract.UploadFileContract
 import com.tunyin.mvp.model.SelfBean
 import com.tunyin.mvp.model.UploadFileEntity
 import com.tunyin.mvp.presenter.UploadFilePresenter
+import com.tunyin.ui.activity.MyRankActivity
 import com.tunyin.ui.activity.mine.*
 import com.tunyin.utils.ImagePickHelper
 import com.tunyin.utils.ImageUtil
@@ -113,7 +114,10 @@ class MineFragment : BaseInjectFragment<UploadFilePresenter>(), UploadFileContra
 
             }
             rl_vip_grade -> {
-                val intent = Intent(activity, TunYinVIPDepositActivity::class.java)
+//                val intent = Intent(activity, TunYinVIPDepositActivity::class.java)
+//                activity?.startActivity(intent)
+
+                val intent = Intent(activity, MyRankActivity::class.java)
                 activity?.startActivity(intent)
 
             }
