@@ -32,7 +32,7 @@ class OrderForActivityAdapter : BaseAdapter<OrderEntity.ListBean>() {
         override fun bindData(itemBean: OrderEntity.ListBean) {
             itemView.tv_title.text = itemBean.title
             itemView.tv_order_no.text = String.format("订单编号%s", itemBean.orderNo)
-            itemView.tv_price.text = String.format("%s音符", itemBean.totalPrice)
+            itemView.tv_price.text = String.format("%s钻石", itemBean.totalPrice)
             ImageUtil.load(itemBean.image).on(itemView.image)
             itemView.tv_date.text = itemBean.createDate
             itemView.tv_delete.setOnClickListener {

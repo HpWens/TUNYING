@@ -52,6 +52,9 @@ public class SlideRecyclerView extends RecyclerView {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent e) {
+        if (getLayoutManager() == null) {
+            return super.onInterceptTouchEvent(e);
+        }
         int x = (int) e.getX();
         int y = (int) e.getY();
         obtainVelocity(e);
@@ -175,6 +178,9 @@ public class SlideRecyclerView extends RecyclerView {
     }
 
     public int pointToPosition(int x, int y) {
+        if (getLayoutManager() == null) {
+            return 0;
+        }
         int firstPosition = ((LinearLayoutManager) getLayoutManager()).findFirstVisibleItemPosition();
         Rect frame = mTouchFrame;
         if (frame == null) {

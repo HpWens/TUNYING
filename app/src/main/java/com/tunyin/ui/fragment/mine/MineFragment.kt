@@ -12,6 +12,7 @@ import com.tunyin.mvp.model.SelfBean
 import com.tunyin.mvp.model.UploadFileEntity
 import com.tunyin.mvp.presenter.UploadFilePresenter
 import com.tunyin.ui.activity.MyRankActivity
+import com.tunyin.ui.activity.ServiceActivity
 import com.tunyin.ui.activity.mine.*
 import com.tunyin.utils.ImagePickHelper
 import com.tunyin.utils.ImageUtil
@@ -137,12 +138,9 @@ class MineFragment : BaseInjectFragment<UploadFilePresenter>(), UploadFileContra
 
             }
             rl_customer_service -> {
-//                val intent = Intent(activity, RegisterActivity::class.java)
-//                activity?.startActivity(intent)
+                val intent = Intent(activity, ServiceActivity::class.java)
+                activity?.startActivity(intent)
                 // ToastUtils.showToast("暂时没有客服哦")
-                if (activity is MainActivity) {
-                    (activity as MainActivity).switchDrawer();
-                }
             }
 
             iv_avatar -> {

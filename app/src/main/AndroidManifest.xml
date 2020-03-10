@@ -27,7 +27,6 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
 
-
         <activity
             android:name=".ui.SplashActivity"
             android:screenOrientation="portrait"
@@ -44,6 +43,10 @@
 
         <activity
             android:name=".ui.activity.MyRankActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".ui.activity.ServiceActivity"
             android:screenOrientation="portrait"></activity>
 
         <activity
