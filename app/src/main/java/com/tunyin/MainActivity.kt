@@ -21,6 +21,7 @@ import com.tunyin.mvp.model.TabEntity
 import com.tunyin.mvp.presenter.app.MainPresenter
 import com.tunyin.myservice.Music
 import com.tunyin.myservice.OnPlayerEventListener
+import com.tunyin.ui.activity.MyRankActivity
 import com.tunyin.ui.activity.mine.*
 import com.tunyin.ui.fragment.discovery.DiscoveryFragment
 import com.tunyin.ui.fragment.index.IndexFragment
@@ -114,11 +115,12 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
 
                     }
                     R.id.nav_timer -> {
-
-
+                        drawer_layout.closeDrawer(GravityCompat.START)
+                        startActivity(MyMsgActivity.newInstance(mContext))
                     }
                     R.id.nav_history -> {
-
+                        startActivity(MyCollectActivity.newInstance(mContext))
+                        drawer_layout.closeDrawer(GravityCompat.START)
                     }
                     R.id.nav_setting -> {
 
@@ -157,15 +159,21 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
         }
         tvMsg.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
-            startActivity(MyMsgActivity.newInstance(mContext))
+            // startActivity(MyMsgActivity.newInstance(mContext))
+            val intent = Intent(this@MainActivity, TunYinVIPDepositActivity::class.java)
+            startActivity(intent)
         }
 
         tvFrined.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this@MainActivity, MyRankActivity::class.java)
+            startActivity(intent)
         }
         tvCollect.setOnClickListener {
-            startActivity(MyCollectActivity.newInstance(mContext))
+            // startActivity(MyCollectActivity.newInstance(mContext))
             drawer_layout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this@MainActivity, MyVoucherActivity::class.java)
+            startActivity(intent)
         }
         tvNickName.text = SelfBean.instance.nickName
 //        ImageUtil.load("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573299081266&di=3539ee4863f614576acd82dec4b0bcb7&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201605%2F09%2F20160509144239_xSTPX.thumb.700_0.jpeg").isCircle.on(ivIvatar)

@@ -2,13 +2,14 @@ package com.tunyin.ui.fragment.index
 
 import android.os.Bundle
 import android.text.Html
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import com.tunyin.R
 import com.tunyin.base.BaseRefreshFragment
 import com.tunyin.mvp.contract.index.PlayDetailSingleContract
 import com.tunyin.mvp.model.Event
 import com.tunyin.mvp.model.index.PalyDetailSingleEntity
 import com.tunyin.mvp.presenter.index.PlayerDetailSinglePresenter
-import com.tunyin.utils.MImageGetter
 import kotlinx.android.synthetic.main.fragment_player_detail.*
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -19,7 +20,7 @@ import org.greenrobot.eventbus.ThreadMode
 class PlayerDetailFragment : BaseRefreshFragment<PlayerDetailSinglePresenter, String>(), PlayDetailSingleContract.View {
 
 
-    private val testStr="<strong><font style=\"color: #008a00;\">\" + \"我是红色\" + \"</font></strong>"
+    private val testStr = "<strong><font style=\"color: #008a00;\">\" + \"我是红色\" + \"</font></strong>"
     private var musicId: String? = null
     override fun initPresenter() = mPresenter.attachView(this)
 
@@ -27,7 +28,18 @@ class PlayerDetailFragment : BaseRefreshFragment<PlayerDetailSinglePresenter, St
 
     override fun getMusicDetialSingleData(palyDetailSingleEntity: PalyDetailSingleEntity) {
 
-        tv_detail.text = Html.fromHtml(palyDetailSingleEntity.detail, MImageGetter(tv_detail, mContext), null)
+        // tv_detail.text = Html.fromHtml(palyDetailSingleEntity.detail, MImageGetter(tv_detail, mContext), null)
+
+        web_view.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                view?.loadUrl(url)
+                return true
+            }
+        }
+
+        if (palyDetailSingleEntity.detail.startsWith("http")) {
+            web_view.loadUrl(palyDetailSingleEntity.detail);
+        }
 
         // showDetailContent(palyDetailSingleEntity.detail)
 

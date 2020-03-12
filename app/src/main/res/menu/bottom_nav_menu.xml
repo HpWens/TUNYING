@@ -9,12 +9,12 @@
     <item
         android:id="@+id/nav_timer"
         android:icon="@mipmap/icon_nav_timer"
-        android:title="定时停止播放" />
+        android:title="我的消息" />
 
     <item
         android:id="@+id/nav_history"
         android:icon="@mipmap/icon_nav_history"
-        android:title="收听历史" />
+        android:title="我的收藏" />
     <item
         android:id="@+id/nav_setting"
         android:icon="@mipmap/icon_nav_setting"

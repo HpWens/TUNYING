@@ -1,6 +1,8 @@
 package com.tunyin.base
 
 import com.tunyin.*
+import com.tunyin.mvp.model.SelfBean.Companion.instance
+import com.tunyin.ui.activity.mine.LoginActivity.Companion.newInstance
 import com.tunyin.utils.AnimationUtils.animateView
 import kotlinx.android.synthetic.main.item_loading.*
 import javax.inject.Inject
@@ -33,6 +35,10 @@ abstract class BaseInjectActivity<T : BaseContract.BasePresenter<*>> : BaseActiv
     override fun showError(msg: String) {
 //        if (loading_progress_bar != null) animateView(loading_progress_bar, false, 0)
 
+        if (msg != null && (msg.contains("token") || msg.contains("Token"))) {
+            instance.token = ""
+            startActivity(newInstance(this))
+        }
     }
 
     override fun complete() {

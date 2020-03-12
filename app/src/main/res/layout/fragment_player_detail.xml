@@ -22,8 +22,13 @@
                 android:id="@+id/tv_detail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="visible"
+                android:visibility="gone"
                 tools:text="周杰伦的专辑" />
+
+            <WebView
+                android:id="@+id/web_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></WebView>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
