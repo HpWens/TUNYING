@@ -3,8 +3,9 @@ package net.arvin.socialhelper;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import net.arvin.socialhelper.callback.SocialLoginCallback;
 import net.arvin.socialhelper.callback.SocialShareCallback;

@@ -78,6 +78,14 @@
         <activity android:name=".ui.activity.mine.OrderDetailActivity" />
         <activity android:name=".base.WebActivity" />
 
+        <!--微信配置开始-->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            />
+        <!--微信配置结束-->
+
         <service android:name=".myservice.PlayService" />
         <service android:name=".MyPlayService" />
 
