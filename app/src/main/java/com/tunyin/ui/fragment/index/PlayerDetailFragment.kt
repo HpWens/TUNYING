@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.text.Html
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.tunyin.R
 import com.tunyin.base.BaseRefreshFragment
 import com.tunyin.mvp.contract.index.PlayDetailSingleContract
 import com.tunyin.mvp.model.Event
@@ -13,6 +12,7 @@ import com.tunyin.mvp.presenter.index.PlayerDetailSinglePresenter
 import kotlinx.android.synthetic.main.fragment_player_detail.*
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+
 
 /**
  * 播放——详情
@@ -37,9 +37,7 @@ class PlayerDetailFragment : BaseRefreshFragment<PlayerDetailSinglePresenter, St
             }
         }
 
-        if (palyDetailSingleEntity.detail.startsWith("http")) {
-            web_view.loadUrl(palyDetailSingleEntity.detail);
-        }
+        web_view.loadUrl("http://api.itunyin.com/api/html/noteDetail?id=${musicId}")
 
         // showDetailContent(palyDetailSingleEntity.detail)
 
@@ -80,7 +78,7 @@ class PlayerDetailFragment : BaseRefreshFragment<PlayerDetailSinglePresenter, St
         musicId?.let { mPresenter.getMusicDetialSingle(it) }
     }
 
-    override fun getLayoutId(): Int = R.layout.fragment_player_detail
+    override fun getLayoutId(): Int = com.tunyin.R.layout.fragment_player_detail
 
     companion object {
 

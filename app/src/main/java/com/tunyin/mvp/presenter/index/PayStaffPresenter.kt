@@ -30,7 +30,7 @@ class PayStaffPresenter @Inject constructor(private val mRetrofitHelper: Retrofi
         addSubscribe(subscriber)
     }
 
-    override fun getPayStaff(offset: String, limit: String, typeId: Int) {
+    override fun getPayStaff(offset: String, limit: String, typeId: String) {
         val subscriber = mRetrofitHelper.paidSelection(offset, limit, typeId)
                 .compose(rxSchedulerHelper())
                 .subscribeWith(object : BaseSubscriber<BaseEntity<PayStuffEntity>>(mView) {

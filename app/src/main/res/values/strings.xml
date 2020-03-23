@@ -1,4 +1,5 @@
 <resources>
+    <string name="pay_result_tip">这个界面用于显示第三方app通过微信支付的结果</string>
     <string name="app_name">豚音</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

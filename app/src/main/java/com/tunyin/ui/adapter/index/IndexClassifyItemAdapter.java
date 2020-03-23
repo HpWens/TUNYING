@@ -40,19 +40,21 @@ public class IndexClassifyItemAdapter extends BaseAdapter<IndexEntity.ClassifyLi
             textView.setText(listBean.getName());
             ImageUtil.load(listBean.getIcon()).on(ivType);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if ("1".equals(listBean.getType())) {
-                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext()));
-                    } else if ("2".equals(listBean.getType())) {
-                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), PayStuffActivity.BROAD_CAST));
-                    } else if ("3".equals(listBean.getType())) {
-                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), PayStuffActivity.STATION));
-                    } else if ("4".equals(listBean.getType())) {
-                        itemView.getContext().startActivity(RankingListActivity.newInstance(itemView.getContext()));
-                    }
+            itemView.setOnClickListener(view -> {
+                if (listBean.getName().contains("排行")) {
+                    itemView.getContext().startActivity(RankingListActivity.newInstance(itemView.getContext()));
+                    return;
                 }
+                itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), listBean.getId(), listBean.getName()));
+//                    if ("1".equals(listBean.getType())) {
+//                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext()));
+//                    } else if ("2".equals(listBean.getType())) {
+//                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), PayStuffActivity.BROAD_CAST));
+//                    } else if ("3".equals(listBean.getType())) {
+//                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), PayStuffActivity.STATION));
+//                    } else if ("4".equals(listBean.getType())) {
+//                        itemView.getContext().startActivity(RankingListActivity.newInstance(itemView.getContext()));
+//                    }
             });
 
         }

@@ -6,7 +6,6 @@ import com.tunyin.mvp.model.UploadFileEntity
 import com.tunyin.mvp.model.discovery.DiscoveryEntity
 import com.tunyin.mvp.model.index.*
 import com.tunyin.mvp.model.mine.*
-import com.tunyin.ui.activity.index.PayStuffActivity
 import com.weike.education.mvp.model.app.SelectionBean
 import io.reactivex.Flowable
 import okhttp3.MultipartBody
@@ -154,25 +153,30 @@ class RetrofitHelper(private val mApiService: ApiService) {
     fun register(phone: String, password: String, nickName: String, code: String): Flowable<BaseEntity<RegisterEntity>> = mApiService.register(phone, password, nickName, code)
 
     //付费精选
-    fun paidSelection(offset: String, limit: String, typeId: Int): Flowable<BaseEntity<PayStuffEntity>> {
-        when (typeId) {
-            PayStuffActivity.BROAD_CAST -> {
-                return mApiService.getHomeBroadcastAndStation("0", "200", typeId.toString())
-            }
-            PayStuffActivity.STATION -> {
-                return mApiService.getHomeBroadcastAndStation("0", "200", typeId.toString())
-            }
-            5 -> {
-                return mApiService.getHomeBroadcastAndStation("0", "200", typeId.toString())
-            }
-            6 -> {
-                return mApiService.getHomeBroadcastAndStation("0", "200", typeId.toString())
-            }
-            6 -> {
-                return mApiService.getHomeBroadcastAndStation("0", "200", typeId.toString())
-            }
+    fun paidSelection(offset: String, limit: String, typeId: String): Flowable<BaseEntity<PayStuffEntity>> {
+
+        if (typeId.equals("0")) {
+            return mApiService.paidSelection(offset, limit)
+        } else {
+            return mApiService.getHomeBroadcastAndStation("0", "200", typeId)
         }
-        return mApiService.paidSelection(offset, limit)
+//        when (typeId) {
+//            PayStuffActivity.BROAD_CAST -> {
+//                return mApiService.getHomeBroadcastAndStation("0", "200", typeId)
+//            }
+//            PayStuffActivity.STATION -> {
+//                return mApiService.getHomeBroadcastAndStation("0", "200", typeId)
+//            }
+//            "5" -> {
+//                return mApiService.getHomeBroadcastAndStation("0", "200", typeId)
+//            }
+//            "6" -> {
+//                return mApiService.getHomeBroadcastAndStation("0", "200", typeId.toString())
+//            }
+//            "7" -> {
+//                return mApiService.getHomeBroadcastAndStation("0", "200", typeId.toString())
+//            }
+//        }
     }
 
     //付费精选banner

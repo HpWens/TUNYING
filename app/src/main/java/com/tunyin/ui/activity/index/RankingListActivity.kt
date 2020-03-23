@@ -30,7 +30,6 @@ class RankingListActivity : BaseActivity(), OnTabSelectListener, ViewPager.OnPag
         }
     }
 
-
     private var adapter: PagerAdapter? = null
 
     override fun getLayoutId(): Int {

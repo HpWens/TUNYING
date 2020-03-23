@@ -17,6 +17,7 @@ import com.tunyin.mvp.model.index.IndexEntity
 import com.tunyin.mvp.presenter.index.IndexPresenter
 import com.tunyin.ui.activity.index.PlayerActivity
 import com.tunyin.ui.activity.index.SearchActivity
+import com.tunyin.ui.activity.mine.LoginActivity
 import com.tunyin.ui.adapter.discovery.DiscoveryRVAdapter
 import com.tunyin.ui.adapter.index.*
 import com.tunyin.utils.EventBusUtil
@@ -87,9 +88,9 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
                 startActivity(PlayerActivity.newInstance(context!!, SelfBean.instance.musicHisId))
             }
             play -> {
-                if (!isTry){
+                if (!isTry) {
                     MyAudioPlayer.get().playPause()
-                }else{
+                } else {
                     ToastUtils.showToast("你未购买当前歌曲，请前往购买")
                     startActivity(PlayerActivity.newInstance(context!!, SelfBean.instance.musicHisId))
                 }
@@ -128,7 +129,7 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
 
     var temp: Int = -1
     var isPlay: Boolean = false
-    var isShowImg:Boolean=true
+    var isShowImg: Boolean = true
 
     override fun receiveEvent(event: Event<*>) {
         if (event.code == 1) {
@@ -238,6 +239,13 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
 
     override fun showError(msg: String) {
         super<IndexContract.View>.showError(msg)
+
+        if (msg != null && (msg.contains("token") || msg.contains("Token"))) {
+            SelfBean.instance.token = ""
+            startActivity(LoginActivity.newInstance(activity))
+            return
+        }
+
         hideLoading()
     }
 

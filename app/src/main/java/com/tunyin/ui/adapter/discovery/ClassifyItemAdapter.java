@@ -42,21 +42,22 @@ public class ClassifyItemAdapter extends BaseAdapter<DiscoveryEntity.ClassifyLis
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if ("1".equals(listBean.getType())) {
-                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext()));
-                    } else if ("2".equals(listBean.getType())) {
-                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), PayStuffActivity.BROAD_CAST));
-                    } else if ("3".equals(listBean.getType())) {
-                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), PayStuffActivity.STATION));
-                    } else if ("4".equals(listBean.getType())) {
-//                        itemView.getContext().startActivity(RankingListActivity.newInstance(itemView.getContext()));
-                    } else if ("5".equals(listBean.getType())) {
-                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), 5));
-                    } else if ("6".equals(listBean.getType())) {
-                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), 6));
-                    } else if ("7".equals(listBean.getType())) {
-                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), 7));
-                    }
+                    itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), listBean.getId(), listBean.getName()));
+//                    if ("1".equals(listBean.getType())) {
+//                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext()));
+//                    } else if ("2".equals(listBean.getType())) {
+//                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), PayStuffActivity.BROAD_CAST));
+//                    } else if ("3".equals(listBean.getType())) {
+//                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), PayStuffActivity.STATION));
+//                    } else if ("4".equals(listBean.getType())) {
+////                        itemView.getContext().startActivity(RankingListActivity.newInstance(itemView.getContext()));
+//                    } else if ("5".equals(listBean.getType())) {
+//                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), 5));
+//                    } else if ("6".equals(listBean.getType())) {
+//                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), 6));
+//                    } else if ("7".equals(listBean.getType())) {
+//                        itemView.getContext().startActivity(PayStuffActivity.newInstance(itemView.getContext(), 7));
+//                    }
                 }
             });
 

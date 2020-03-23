@@ -24,9 +24,7 @@ class LoginPresenter @Inject constructor(private val mRetrofitHelper: RetrofitHe
 //                        }else{
                         mView?.showLoginData(mData)
 //                        }
-
                     }
-
 
 //
 //                    override fun onError(t: Throwable?) {

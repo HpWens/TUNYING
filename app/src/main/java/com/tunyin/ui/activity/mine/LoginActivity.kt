@@ -80,7 +80,7 @@ class LoginActivity : BaseInjectActivity<LoginPresenter>(), View.OnClickListener
             }
 
             iv_wechat -> {
-                ToastUtils.showToast("还没开放")
+                // ToastUtils.showToast("还没开放")
 
             }
 

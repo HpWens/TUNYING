@@ -25,7 +25,8 @@ import kotlinx.android.synthetic.main.layout_toolbar.tv_title
 class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContract.View {
 
     // 2 广播剧 4 电台
-    private var typeId = -1
+    private var typeId = "0"
+    private var name = ""
 
     private val mBannerList = ArrayList<PayStaffBannerEntity.ListBean>() // 顶部
     private val mPayStuffList = ArrayList<PayStuffEntity>() //
@@ -40,7 +41,6 @@ class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContra
     override fun showBannerData(payStaffBannerEntity: PayStaffBannerEntity) {
         mBannerList.addAll(payStaffBannerEntity.list)
         mPresenter.getPayStaff("0", "200", typeId)
-
     }
 
     override fun showPayStaff(payStuffEntity: PayStuffEntity) {
@@ -63,19 +63,22 @@ class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContra
     override fun initWidget() {
 //        StatusBarUtil.setColorNoTranslucent(this, AppUtils.getColor(R.color.transparent))
         intent?.let {
-            typeId = intent.getIntExtra(TYPE_ID, -1)
+            typeId = intent.getStringExtra(TYPE_ID)
+            name = intent.getStringExtra(NAME);
         }
 
         StatusBarUtil.setTranslucentForImageView(this, 0, null)
 
-        when (typeId) {
-            BROAD_CAST -> tv_title.text = "广播剧"
-            STATION -> tv_title.text = "电台"
-            5 -> tv_title.text = "主播哄睡"
-            6 -> tv_title.text = "自然声"
-            7 -> tv_title.text = "无人声"
-            else -> tv_title.text = "付费精选"
-        }
+        tv_title.text = name
+
+//        when (typeId) {
+//            BROAD_CAST -> tv_title.text = "广播剧"
+//            STATION -> tv_title.text = "电台"
+//            "5" -> tv_title.text = "主播哄睡"
+//            "6" -> tv_title.text = "自然声"
+//            "7" -> tv_title.text = "无人声"
+//            else -> tv_title.text = "付费精选"
+//        }
 
         toolbar.setBackgroundResource(R.color.transpaent_bg)
 
@@ -97,16 +100,19 @@ class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContra
 
         val TYPE_ID = "type_id"
 
-        @kotlin.jvm.JvmField
-        val BROAD_CAST = 2
+        val NAME = "name"
 
         @kotlin.jvm.JvmField
-        val STATION = 4
+        val BROAD_CAST = "2"
+
+        @kotlin.jvm.JvmField
+        val STATION = "4"
 
         @JvmStatic
-        fun newInstance(context: Context?, typeId: Int = -1): Intent {
+        fun newInstance(context: Context?, typeId: String = "0", name: String): Intent {
             val intent = Intent(context, PayStuffActivity::class.java)
             intent.putExtra(TYPE_ID, typeId)
+            intent.putExtra(NAME, name)
             return intent
         }
 

@@ -13,7 +13,7 @@ class PayStuffContract {
 
     interface Presenter<in T> : BaseContract.BasePresenter<T> {
         fun getBanner()
-        fun getPayStaff(offset: String, limit: String, typeId: Int)
+        fun getPayStaff(offset: String, limit: String, typeId: String)
     }
 
 }
