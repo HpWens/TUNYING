@@ -7,6 +7,7 @@ import android.view.View
 import com.tunyin.BaseInjectFragment
 import com.tunyin.MainActivity
 import com.tunyin.R
+import com.tunyin.SettingActivity
 import com.tunyin.mvp.contract.UploadFileContract
 import com.tunyin.mvp.model.SelfBean
 import com.tunyin.mvp.model.UploadFileEntity
@@ -147,9 +148,11 @@ class MineFragment : BaseInjectFragment<UploadFilePresenter>(), UploadFileContra
                 ImagePickHelper.with(this).pickMulPicture(1)
             }
             rl_setting -> {
-                if (activity is MainActivity) {
-                    (activity as MainActivity).switchDrawer();
-                }
+//                if (activity is MainActivity) {
+////                    (activity as MainActivity).switchDrawer();
+////                }
+
+                startActivity(Intent(activity, SettingActivity::class.java))
 
             }
         }

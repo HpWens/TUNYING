@@ -123,7 +123,8 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
                         drawer_layout.closeDrawer(GravityCompat.START)
                     }
                     R.id.nav_setting -> {
-
+                        startActivity(Intent(this@MainActivity, SettingActivity::class.java))
+                        drawer_layout.closeDrawer(GravityCompat.START)
                     }
                     R.id.nav_logout -> {
                         SelfBean.instance.token = ""

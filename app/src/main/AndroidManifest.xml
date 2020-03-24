@@ -37,6 +37,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".SettingActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".ui.activity.index.GuideActivity"
             android:screenOrientation="portrait" />
@@ -82,8 +87,7 @@
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            />
+            android:label="@string/app_name" />
         <!--微信配置结束-->
 
         <service android:name=".myservice.PlayService" />
