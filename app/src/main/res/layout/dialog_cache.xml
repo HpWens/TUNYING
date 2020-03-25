@@ -25,13 +25,13 @@
 
         <TextView
             android:id="@+id/tv_content"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="15dp"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:text="是否确认清理图片音频缓存数据"
             android:textColor="#202123"
             android:textSize="14sp" />

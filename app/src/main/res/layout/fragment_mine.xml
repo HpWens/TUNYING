@@ -382,7 +382,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@mipmap/icon_nav_setting"
+                        android:drawableLeft="@mipmap/icon_nav_setting2"
                         android:drawablePadding="20dp"
                         android:text="系统设置"
                         android:textColor="@color/black"
