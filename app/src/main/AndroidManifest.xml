@@ -39,6 +39,14 @@
         </activity>
 
         <activity
+            android:name=".ui.activity.mine.ResetPasswordActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".NicknameActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".FeedbackActivity"
             android:screenOrientation="portrait" />
 

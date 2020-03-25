@@ -89,7 +89,7 @@ public class SettingActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.fl_feed).setOnClickListener(v -> {
-
+            startActivity(new Intent(this, FeedbackActivity.class));
         });
 
         findViewById(R.id.tv_exit).setOnClickListener(v -> {

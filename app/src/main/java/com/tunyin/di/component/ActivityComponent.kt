@@ -38,5 +38,7 @@ interface ActivityComponent {
     fun inject(orderDetailActivity: OrderDetailActivity)
     fun inject(tunYinVIPDepositActivity: TunYinVIPDepositActivity)
     fun inject(myRankActivity: MyRankActivity)
+    fun inject(personalActivity: PersonalActivity)
+    fun inject(resetPasswordActivity: ResetPasswordActivity)
 
 }
