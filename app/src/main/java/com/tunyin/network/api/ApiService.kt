@@ -3,6 +3,7 @@ package com.tunyin
 import com.tunyin.mvp.model.BaseEntity
 import com.tunyin.mvp.model.CancelCollectEntity
 import com.tunyin.mvp.model.UploadFileEntity
+import com.tunyin.mvp.model.UserBean
 import com.tunyin.mvp.model.discovery.DiscoveryEntity
 import com.tunyin.mvp.model.index.*
 import com.tunyin.mvp.model.mine.*
@@ -278,6 +279,19 @@ interface ApiService {
     @POST("api/file/fileUpload")
     fun fileUpload(@Part part: MultipartBody.Part): Flowable<BaseEntity<UploadFileEntity>>
 
+
+    /**
+     * 文件上传
+     */
+    @POST("api/home/getMyInfo")
+    fun getUserInfo(): Flowable<BaseEntity<UserBean>>
+
+
+    /**
+     * 获取版本
+     */
+    @POST("api/sys/getVersion")
+    fun getVersion(): Flowable<BaseEntity<VersionEntity>>
 
     /**
      * 删除订单

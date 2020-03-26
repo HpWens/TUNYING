@@ -40,5 +40,7 @@ interface ActivityComponent {
     fun inject(myRankActivity: MyRankActivity)
     fun inject(personalActivity: PersonalActivity)
     fun inject(resetPasswordActivity: ResetPasswordActivity)
+    fun inject(settingActivity: SettingActivity)
+    fun inject(feedbackActivity: FeedbackActivity)
 
 }

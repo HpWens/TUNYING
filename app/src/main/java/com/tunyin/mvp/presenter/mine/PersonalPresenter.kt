@@ -10,7 +10,7 @@ import com.tunyin.utils.rxSchedulerHelper
 import okhttp3.MultipartBody
 import javax.inject.Inject
 
-class PersonalPersenter @Inject constructor(private val mRetrofitHelper: RetrofitHelper) : RxPresenter<PersonContract.View>(), PersonContract.Presenter<PersonContract.View> {
+class PersonalPresenter @Inject constructor(private val mRetrofitHelper: RetrofitHelper) : RxPresenter<PersonContract.View>(), PersonContract.Presenter<PersonContract.View> {
     override fun uploadFile(part: MultipartBody.Part) {
         val subscriber = mRetrofitHelper.fileUpload(part)
                 .compose(rxSchedulerHelper())

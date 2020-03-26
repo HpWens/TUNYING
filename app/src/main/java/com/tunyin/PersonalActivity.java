@@ -11,10 +11,12 @@ import androidx.annotation.Nullable;
 
 import com.bigkoo.pickerview.builder.TimePickerBuilder;
 import com.bigkoo.pickerview.view.TimePickerView;
+import com.bumptech.glide.Glide;
 import com.tunyin.base.BaseInjectActivity;
 import com.tunyin.mvp.contract.mine.PersonContract;
+import com.tunyin.mvp.model.SelfBean;
 import com.tunyin.mvp.model.UploadFileEntity;
-import com.tunyin.mvp.presenter.mine.PersonalPersenter;
+import com.tunyin.mvp.presenter.mine.PersonalPresenter;
 import com.tunyin.ui.activity.mine.ResetPasswordActivity;
 import com.tunyin.ui.dialog.SexDialog;
 import com.tunyin.utils.ImagePickHelper;
@@ -35,7 +37,7 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-public class PersonalActivity extends BaseInjectActivity<PersonalPersenter> implements PersonContract.View {
+public class PersonalActivity extends BaseInjectActivity<PersonalPresenter> implements PersonContract.View {
 
     TextView tvDay;
     TextView tvSex;
@@ -50,6 +52,11 @@ public class PersonalActivity extends BaseInjectActivity<PersonalPersenter> impl
         tvSex = findViewById(R.id.tv_sex);
         tvNick = findViewById(R.id.tv_nick);
         ivHeader = findViewById(R.id.iv_header);
+
+        tvDay.setText(SelfBean.getInstance().getBirthday());
+        ImageUtil.load(SelfBean.getInstance().getHeadUrl()).isCircle().on(ivHeader);
+        tvNick.setText(SelfBean.getInstance().getNickName());
+        tvSex.setText(SelfBean.getInstance().getSex());
 
         findViewById(R.id.iv_back).setOnClickListener(v -> {
             finish();
@@ -73,6 +80,7 @@ public class PersonalActivity extends BaseInjectActivity<PersonalPersenter> impl
             String data_format = "yyyy-MM";
             SimpleDateFormat default_sdf = new SimpleDateFormat(data_format, Locale.getDefault());
             tvDay.setText(default_sdf.format(date));
+            SelfBean.getInstance().setBirthday(tvDay.getText().toString());
         }).setType(new boolean[]{true, true, false, false, false, false})
                 .setCancelText("取消")//取消按钮文字
                 .setSubmitText("确定")//确认按钮文字
@@ -103,6 +111,7 @@ public class PersonalActivity extends BaseInjectActivity<PersonalPersenter> impl
     public void onSex(View view) {
         SexDialog sexDialog = new SexDialog(view.getContext(), (view1, sex, dialog) -> {
             tvSex.setText(sex);
+            SelfBean.getInstance().setSex(sex);
             dialog.dismiss();
         });
         sexDialog.show();
@@ -128,6 +137,7 @@ public class PersonalActivity extends BaseInjectActivity<PersonalPersenter> impl
         if (data == null) return;
         if (resultCode == 1) {
             tvNick.setText(data.getStringExtra(NicknameActivity.NICK));
+            SelfBean.getInstance().setNickName(tvNick.getText().toString());
         } else {
             List<Uri> pickPhotoList = Matisse.obtainResult(data);
             if (pickPhotoList == null || pickPhotoList.size() == 0) return;
@@ -161,5 +171,6 @@ public class PersonalActivity extends BaseInjectActivity<PersonalPersenter> impl
     @Override
     public void uploadFileSuc(@NotNull UploadFileEntity uploadFileEntity) {
         String headerUrl = uploadFileEntity.getUrl();
+        SelfBean.getInstance().setHeadUrl(headerUrl);
     }
 }

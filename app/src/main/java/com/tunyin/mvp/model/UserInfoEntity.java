@@ -197,6 +197,9 @@ public class UserInfoEntity {
 
     private int cardStatus;
 
+
+
+
     public int getCardStatus() {
         return cardStatus;
     }

@@ -3,6 +3,7 @@ package com.tunyin
 import com.tunyin.mvp.model.BaseEntity
 import com.tunyin.mvp.model.CancelCollectEntity
 import com.tunyin.mvp.model.UploadFileEntity
+import com.tunyin.mvp.model.UserBean
 import com.tunyin.mvp.model.discovery.DiscoveryEntity
 import com.tunyin.mvp.model.index.*
 import com.tunyin.mvp.model.mine.*
@@ -83,6 +84,12 @@ class RetrofitHelper(private val mApiService: ApiService) {
 
     //文件上传
     fun fileUpload(part: MultipartBody.Part): Flowable<BaseEntity<UploadFileEntity>> = mApiService.fileUpload(part)
+
+    // 获取用户信息
+    fun getUserInfo(): Flowable<BaseEntity<UserBean>> = mApiService.getUserInfo()
+
+    // 获取版本
+    fun getVersion(): Flowable<BaseEntity<VersionEntity>> = mApiService.getVersion()
 
     //换一批
     fun refreshDisRadio(noteClassId: String): Flowable<BaseEntity<DiscoveryEntity.RadioBean>> = mApiService.refreshDisRadio(noteClassId)

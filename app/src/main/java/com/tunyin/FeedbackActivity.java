@@ -15,6 +15,19 @@ import org.jetbrains.annotations.NotNull;
 public class FeedbackActivity extends BaseInjectActivity<FeedbackPresenter> implements FeedbackContract.View {
 
     @Override
+    public void initInject() {
+        super.initInject();
+        getActivityComponent().inject(this);
+    }
+
+    @Override
+    public void initPresenter() {
+        super.initPresenter();
+        mPresenter.attachView(this);
+    }
+
+
+    @Override
     public int getLayoutId() {
         return R.layout.activity_feed_back;
     }

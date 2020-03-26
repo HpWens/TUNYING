@@ -73,4 +73,9 @@ public class VersionDialog extends AlertDialog {
         }
         return fileUri;
     }
+
+    @Override
+    public void onBackPressed() {
+        // super.onBackPressed();
+    }
 }

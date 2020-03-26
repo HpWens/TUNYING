@@ -1,6 +1,7 @@
 package com.tunyin
 
-import android.os.Looper
+import android.content.Context
+import android.content.pm.PackageManager.NameNotFoundException
 import android.text.TextUtils
 import com.parkingwang.okhttp3.LogInterceptor.LogInterceptor
 import com.tunyin.constants.RequestConstants
@@ -107,6 +108,7 @@ object OkHttpHelper {
                             .header(RequestConstants.VERSION_CODE, BuildConfig.VERSION_NAME)
                             .header(RequestConstants.PLATFORM, PLATFORM_TUNYIN)
                             .header("Content-Type", "application/json")
+
                             .header("token", SelfBean.instance.token)
                     val request = requestBuilder.build()
                     chain.proceed(request)
@@ -121,7 +123,6 @@ object OkHttpHelper {
         }
 
     }
-
 
     private fun getInterceptor(): Interceptor {
 

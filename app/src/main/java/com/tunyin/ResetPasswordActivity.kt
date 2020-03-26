@@ -43,6 +43,7 @@ class ResetPasswordActivity : BaseInjectActivity<ResetPasswordPresenter>(), Rese
         finish()
     }
 
+
     override fun showError(msg: String) {
         hideLoading()
     }
@@ -68,10 +69,10 @@ class ResetPasswordActivity : BaseInjectActivity<ResetPasswordPresenter>(), Rese
                     return
                 }
 
-                if (et_phone.length() != 11) {
-                    ToastUtils.showToast("情输入11位手机号")
-                    return
-                }
+//                if (et_phone.length() != 11) {
+//                    ToastUtils.showToast("情输入11位手机号")
+//                    return
+//                }
 
                 showLoading()
                 mPresenter.sendMsm(et_phone.text.toString(), "2")

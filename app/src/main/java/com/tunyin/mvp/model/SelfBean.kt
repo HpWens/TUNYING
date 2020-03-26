@@ -41,6 +41,10 @@ class SelfBean {
     var musicHisId by AutoPreference("musicHisId", "1")
     var musicUrl by AutoPreference("musicUrl", "")
 
+    var messageNotice by AutoPreference("messageNotice", "1")
+    var sex by AutoPreference("sex", "未填写")
+    var birthday by AutoPreference("birthday", "未填写")
+
 
     // 普通的
     var something: Boolean = true
