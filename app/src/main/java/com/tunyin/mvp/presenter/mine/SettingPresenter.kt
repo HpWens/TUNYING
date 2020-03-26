@@ -12,6 +12,22 @@ import javax.inject.Inject
 
 class SettingPresenter @Inject constructor(private val mRetrofitHelper: RetrofitHelper) : RxPresenter<SettingContract.View>(), SettingContract.Presenter<SettingContract.View> {
 
+    override fun updateUserInfo(headUrl: String, nick: String, sex: String, bir: String, messageNotice: String) {
+        val subscriber = mRetrofitHelper.updateUserInfo(headUrl, nick, sex, bir, messageNotice)
+                .compose(rxSchedulerHelper())
+                .subscribeWith(object : BaseSubscriber<BaseEntity<String>>(mView) {
+                    override fun onSuccess(mData: BaseEntity<String>) {
+                        mView?.updateUserInfoSuc(mData.content)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        super.onError(e)
+                        mView?.updateUserInfoSuc("")
+                    }
+                })
+        addSubscribe(subscriber)
+    }
+
     override fun getUserInfo() {
         val subscriber = mRetrofitHelper.getUserInfo()
                 .compose(rxSchedulerHelper())

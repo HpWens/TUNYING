@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.tencent.open.utils.HttpUtils;
 import com.tunyin.base.BaseInjectActivity;
 import com.tunyin.mvp.contract.mine.SettingContract;
 import com.tunyin.mvp.model.SelfBean;
@@ -201,12 +200,10 @@ public class SettingActivity extends BaseInjectActivity<SettingPresenter> implem
                         .execute(new DownloadProgressCallBack<String>() {
                             @Override
                             public void onStart() {
-
                             }
 
                             @Override
                             public void onError(ApiException e) {
-
                             }
 
                             @Override
@@ -224,5 +221,40 @@ public class SettingActivity extends BaseInjectActivity<SettingPresenter> implem
         } else {
             ToastUtils.INSTANCE.showToast("已是最新版本");
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        String nick = SelfBean.getInstance().getNickName();
+        if (nick.equals("未填写")) {
+            nick = "";
+        }
+
+        String sex = SelfBean.getInstance().getSex();
+        if (sex.equals("未填写")) {
+            sex = "";
+        } else {
+            sex = sex.equals("男") ? "1" : "2";
+        }
+
+        String birthday = SelfBean.getInstance().getBirthday();
+        if (birthday.equals("未填写")) {
+            birthday = "";
+        }
+
+        mPresenter.updateUserInfo(SelfBean.getInstance().getHeadUrl(),
+                nick,
+                sex,
+                birthday,
+                SelfBean.getInstance().getMessageNotice());
+    }
+
+    @Override
+    public void updateUserInfoSuc(@NotNull String response) {
+        if (!TextUtils.isEmpty(response)) {
+            // ToastUtils.INSTANCE.showToast("已更新用户数据");
+        }
+        finish();
     }
 }

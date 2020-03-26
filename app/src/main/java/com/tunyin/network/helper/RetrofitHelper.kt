@@ -79,17 +79,24 @@ class RetrofitHelper(private val mApiService: ApiService) {
     //换一批
     fun refreshDisThemeSleep(noteClassId: String): Flowable<BaseEntity<DiscoveryEntity.ThemeSleepBean>> = mApiService.refreshDisThemeSleep(noteClassId)
 
-    // 更新头像
-    fun refreshHeader(header: String): Flowable<BaseEntity<String>> = mApiService.postHeader(header)
+    // 更新用户信息
+    fun updateUserInfo(headUrl: String, nick: String, sex: String, bir: String, messageNotice: String):
+            Flowable<BaseEntity<String>> = mApiService.updateUserInfo(headUrl, nick, sex, bir, messageNotice)
 
     //文件上传
     fun fileUpload(part: MultipartBody.Part): Flowable<BaseEntity<UploadFileEntity>> = mApiService.fileUpload(part)
+
+    // 意见反馈
+    fun postFeedback(content: String, imgs: String): Flowable<BaseEntity<String>> = mApiService.postFeedback(content, imgs)
 
     // 获取用户信息
     fun getUserInfo(): Flowable<BaseEntity<UserBean>> = mApiService.getUserInfo()
 
     // 获取版本
     fun getVersion(): Flowable<BaseEntity<VersionEntity>> = mApiService.getVersion()
+
+    // 更新yongh
+    fun refreshHeader(header: String): Flowable<BaseEntity<String>> = mApiService.postHeader(header)
 
     //换一批
     fun refreshDisRadio(noteClassId: String): Flowable<BaseEntity<DiscoveryEntity.RadioBean>> = mApiService.refreshDisRadio(noteClassId)
@@ -192,6 +199,9 @@ class RetrofitHelper(private val mApiService: ApiService) {
 
     //忘记密码
     fun forgetPwd(phone: String, password: String, code: String): Flowable<BaseEntity<String>> = mApiService.forgetPwd(phone, password, code)
+
+    // 修改密码
+    fun changePassword(password: String, code: String): Flowable<BaseEntity<String>> = mApiService.changePassword(password, code)
 
     //排行榜
     fun rankList(offset: String, limit: String, type: String): Flowable<BaseEntity<RankListEntity>> = mApiService.rankList(offset, limit, type)

@@ -9,13 +9,16 @@ class SettingContract {
     interface View : BaseContract.BaseView {
         override fun showError(msg: String)
         fun fillingUserInfo(user: UserBean)
-        fun checkUpdate(version: VersionEntity);
+        fun checkUpdate(version: VersionEntity)
+        fun updateUserInfoSuc(response: String)
     }
 
     interface Presenter<in T> : BaseContract.BasePresenter<T> {
         fun getUserInfo()
 
-        fun getVersionInfo();
+        fun getVersionInfo()
+
+        fun updateUserInfo(headUrl: String, nick: String, sex: String, bir: String, messageNotice: String)
     }
 
 }

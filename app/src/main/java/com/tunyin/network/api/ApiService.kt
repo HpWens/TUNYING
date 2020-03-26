@@ -273,12 +273,30 @@ interface ApiService {
 
 
     /**
+     * 更新用户信息
+     */
+    @FormUrlEncoded
+    @POST("api/user/updateData")
+    fun updateUserInfo(@Field("headUrl") headUrl: String,
+                       @Field("nickName") nickName: String,
+                       @Field("sex") sex: String,
+                       @Field("birthday") birthday: String,
+                       @Field("messageNotice") messageNotice: String): Flowable<BaseEntity<String>>
+
+    /**
      * 文件上传
      */
     @Multipart
     @POST("api/file/fileUpload")
     fun fileUpload(@Part part: MultipartBody.Part): Flowable<BaseEntity<UploadFileEntity>>
 
+
+    /**
+     * 意见反馈
+     */
+    @FormUrlEncoded
+    @POST("api/user/opinion")
+    fun postFeedback(@Field("content") content: String, @Field("images") imgs: String): Flowable<BaseEntity<String>>
 
     /**
      * 文件上传
@@ -362,6 +380,14 @@ interface ApiService {
                   @Field("password") password: String,
                   @Field("code") code: String): Flowable<BaseEntity<String>>
 
+
+    /**
+     * 修改密码
+     */
+    @FormUrlEncoded
+    @POST("api/user/changePassword")
+    fun changePassword(@Field("password") password: String,
+                       @Field("code") code: String): Flowable<BaseEntity<String>>
 
     /**
      * 付费精选

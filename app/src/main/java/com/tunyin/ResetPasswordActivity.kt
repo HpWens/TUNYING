@@ -9,10 +9,11 @@ import com.tunyin.R
 import com.tunyin.ToastUtils
 import com.tunyin.base.BaseInjectActivity
 import com.tunyin.mvp.contract.mine.ResetPasswordContract
+import com.tunyin.mvp.model.SelfBean
 import com.tunyin.mvp.presenter.mine.ResetPasswordPresenter
 import com.tunyin.utils.AppUtils
 import com.tunyin.utils.StatusBarUtil
-import kotlinx.android.synthetic.main.activity_forget_pwd.*
+import kotlinx.android.synthetic.main.activity_reset_password.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 /**
@@ -22,25 +23,22 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
  **/
 class ResetPasswordActivity : BaseInjectActivity<ResetPasswordPresenter>(), ResetPasswordContract.View, View.OnClickListener {
 
+    override fun changePasswordSus(string: String) {
+        hideLoading()
+        ToastUtils.showToast("修改密码成功")
+        finish()
+    }
+
     private var countDownTimer: CountDownTimer? = null
 
     override fun initInject() = activityComponent.inject(this)
 
     override fun initPresenter() = mPresenter.attachView(this)
 
-
     override fun sendMsmSuc(string: String) {
         hideLoading()
         countDownTimer!!.start()
         ToastUtils.showToast(string)
-    }
-
-    override fun resetPassword(string: String) {
-        hideLoading()
-        ToastUtils.showToast(string)
-//        val intent = Intent(mContext, LoginActivity::class.java)
-//        mContext?.startActivity(intent)
-        finish()
     }
 
 
@@ -58,26 +56,20 @@ class ResetPasswordActivity : BaseInjectActivity<ResetPasswordPresenter>(), Rese
         rl_send_cde.setOnClickListener(this)
         ly_confirm.setOnClickListener(this)
 
+        et_phone.setText("+86 ${SelfBean.instance.phone}")
+
         initCountDownTimer()
     }
 
     override fun onClick(p0: View?) {
         when (p0) {
             rl_send_cde -> {
-                if (TextUtils.isEmpty(et_phone.text)) {
-                    ToastUtils.showToast("请输入手机号")
+                if (TextUtils.isEmpty(SelfBean.instance.phone)) {
+                    ToastUtils.showToast("未设置手机号码")
                     return
                 }
-
-//                if (et_phone.length() != 11) {
-//                    ToastUtils.showToast("情输入11位手机号")
-//                    return
-//                }
-
                 showLoading()
-                mPresenter.sendMsm(et_phone.text.toString(), "2")
-
-
+                mPresenter.sendMsm(SelfBean.instance.phone, "3")
             }
 
             ly_confirm -> {
@@ -90,8 +82,7 @@ class ResetPasswordActivity : BaseInjectActivity<ResetPasswordPresenter>(), Rese
                     return
                 }
                 showLoading()
-                mPresenter.resetPsd(et_phone.text.trim().toString(),
-                        et_pwd.text.trim().toString(),
+                mPresenter.changePassword(et_pwd.text.trim().toString(),
                         et_code.text.trim().toString())
 
             }

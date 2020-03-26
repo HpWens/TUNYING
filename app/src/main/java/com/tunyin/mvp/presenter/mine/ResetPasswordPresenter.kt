@@ -10,12 +10,13 @@ import javax.inject.Inject
 
 class ResetPasswordPresenter @Inject constructor(private val mRetrofitHelper: RetrofitHelper) :
         RxPresenter<ResetPasswordContract.View>(), ResetPasswordContract.Presenter<ResetPasswordContract.View> {
-    override fun resetPsd(phone: String, password: String, code: String) {
-        val subscriber = mRetrofitHelper.forgetPwd(phone, password, code)
+
+    override fun changePassword(password: String, code: String) {
+        val subscriber = mRetrofitHelper.changePassword(password, code)
                 .compose(rxSchedulerHelper())
                 .subscribeWith(object : BaseSubscriber<BaseEntity<String>>(mView) {
                     override fun onSuccess(mData: BaseEntity<String>) {
-                        mView?.resetPassword(mData.content)
+                        mView?.changePasswordSus(mData.content)
                     }
                 })
         addSubscribe(subscriber)
