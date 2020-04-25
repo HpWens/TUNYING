@@ -84,7 +84,6 @@ class ResetPasswordActivity : BaseInjectActivity<ResetPasswordPresenter>(), Rese
                 showLoading()
                 mPresenter.changePassword(et_pwd.text.trim().toString(),
                         et_code.text.trim().toString())
-
             }
         }
     }

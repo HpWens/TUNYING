@@ -165,13 +165,15 @@
             android:layout_marginTop="40dp"
             android:text="第三方登录"
             android:textColor="@color/white_30"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="20dp">
+            android:paddingTop="20dp"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/iv_qq"
