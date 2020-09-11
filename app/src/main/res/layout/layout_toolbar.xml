@@ -18,7 +18,7 @@
             android:layout_gravity="center"
             tools:text="标题"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_right_title"

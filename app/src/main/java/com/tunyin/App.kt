@@ -99,6 +99,8 @@ class App : Application() {
                 .addConverterFactory(GsonConverterFactory.create(Gson()))
                 .addCommonHeaders(headers) // 设置全局公共头
                 .addCommonParams(params) // 设置全局公共参数
+
+        addEasyTokenHeader()
     }
 
     fun addEasyTokenHeader() {

@@ -13,11 +13,6 @@ import com.tunyin.mvp.presenter.mine.ForgetPwdPresenter
 import com.tunyin.utils.AppUtils
 import com.tunyin.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_forget_pwd.*
-import kotlinx.android.synthetic.main.activity_forget_pwd.et_code
-import kotlinx.android.synthetic.main.activity_forget_pwd.et_pwd
-import kotlinx.android.synthetic.main.activity_forget_pwd.ly_confirm
-import kotlinx.android.synthetic.main.activity_forget_pwd.rl_send_cde
-import kotlinx.android.synthetic.main.activity_forget_pwd.tv_send_code
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 /**
@@ -94,6 +89,17 @@ class ForgetPwdActivity : BaseInjectActivity<ForgetPwdPresenter>(), ForgetPwdCon
                     ToastUtils.showToast("请输入密码")
                     return
                 }
+
+                if (TextUtils.isEmpty(et_pwd2.text)) {
+                    ToastUtils.showToast("请再次输入新密码")
+                    return
+                }
+
+                if (et_pwd2.text != et_pwd.text) {
+                    ToastUtils.showToast("两次输入的密码不一致，请重新输入")
+                    return
+                }
+
                 showLoading()
                 mPresenter.forgetPwd(et_phone.text.trim().toString(),
                         et_pwd.text.trim().toString(),

@@ -68,11 +68,41 @@ public class ParseJsonUtils {
         }
         try {
             JSONObject jsonObject = new JSONObject(json);
-            if (jsonObject.has(field)) {
-                return parseListData(jsonObject.optString(field), clazz);
+            if (jsonObject.has("code")) {
+                String code = jsonObject.optString("code");
+                if (!TextUtils.isEmpty(code) && code.equals("200")) {
+                    if (jsonObject.has(field)) {
+                        return parseListData(jsonObject.optString(field), clazz);
+                    }
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+        return new ArrayList<T>();
+    }
+
+
+    public static <T> List<T> parseListData(String json, final String field, final String nextField, Class<T> clazz) {
+        if (TextUtils.isEmpty(json)) {
+            return new ArrayList<T>();
+        }
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            if (jsonObject.has("code")) {
+                String code = jsonObject.optString("code");
+                if (!TextUtils.isEmpty(code) && code.equals("200")) {
+                    if (jsonObject.has(field)) {
+                        JSONObject dataObj = new JSONObject(jsonObject.optString(field));
+                        if (dataObj.has(nextField)) {
+                            return parseListData(dataObj.optString(nextField), clazz);
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
         }
         return new ArrayList<T>();
     }

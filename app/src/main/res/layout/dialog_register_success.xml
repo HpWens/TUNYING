@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/view_bg"
+        android:layout_width="260dp"
+        android:layout_height="188dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/shape_white_16dp">
+
+    </View>
+
+    <ImageView
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerInside"
+        android:src="@mipmap/enrol_tags_success"></ImageView>
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignTop="@+id/view_bg"
+        android:layout_alignRight="@+id/view_bg"
+        android:scaleType="centerInside"
+        android:src="@mipmap/enrol_icon_esc"></ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/view_bg"
+        android:layout_alignTop="@+id/view_bg"
+        android:layout_alignRight="@+id/view_bg"
+        android:layout_alignBottom="@+id/view_bg"
+        android:gravity="center"
+        android:text="注册成功"
+        android:textColor="#ff000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/view_bg"
+        android:layout_alignRight="@+id/view_bg"
+        android:layout_alignBottom="@+id/view_bg"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:text="恭喜您注册成功，马上开启美妙的\n
+豚音之旅吧！"
+        android:textColor="#ff999999"
+        android:textSize="13sp" />
+
+</RelativeLayout>

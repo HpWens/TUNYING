@@ -12,7 +12,7 @@ import com.tunyin.mvp.model.mine.RegisterEntity
  **/
 class RegisterContract {
     interface View : BaseContract.BaseView {
-        fun registerData(registerEntity: RegisterEntity)
+        fun registerData(registerSuccess: Boolean, registerEntity: RegisterEntity)
         fun sendMsmSuc(string: String)
         override fun showError(msg: String)
     }

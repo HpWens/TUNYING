@@ -1,26 +1,23 @@
 package com.tunyin.ui.activity.index
 
+import android.graphics.Rect
 import android.util.TypedValue
-import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.library.flowlayout.FlowLayoutManager
-import com.library.flowlayout.SpaceItemDecoration
 import com.tunyin.ToastUtils
 import com.tunyin.base.BaseInjectActivity
-import com.tunyin.mvp.contract.app.MainContract
 import com.tunyin.mvp.contract.index.SearchContract
 import com.tunyin.mvp.model.index.SearchHistoryEntity
 import com.tunyin.mvp.model.index.SearchHotEntity
-import com.tunyin.mvp.presenter.app.MainPresenter
 import com.tunyin.mvp.presenter.index.SearchHotPresenter
-import com.tunyin.ui.adapter.index.PlayerDirectoryAdapter
 import com.tunyin.ui.adapter.index.SearchHistoryAdapter
 import com.tunyin.ui.adapter.index.SearchHotAdapter
 import com.tunyin.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_search.*
-import android.view.inputmethod.EditorInfo
-import android.widget.TextView
 
 
 /**
@@ -106,10 +103,17 @@ class SearchActivity : BaseInjectActivity<SearchHotPresenter>(), SearchContract.
 
 
         val flowLayoutManager = FlowLayoutManager()
-        recycler.addItemDecoration(SpaceItemDecoration(dp2px(4f)))
+        recycler.addItemDecoration(object : ItemDecoration() {
+            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+                super.getItemOffsets(outRect, view, parent, state)
+                outRect.top = dp2px(16f)
+                outRect.right = dp2px(8f)
+            }
+        })
         recycler.layoutManager = flowLayoutManager
         mAdapter = SearchHotAdapter()
         recycler.adapter = mAdapter
+
 
         mAdapterHistory = SearchHistoryAdapter()
         recycler_history?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)

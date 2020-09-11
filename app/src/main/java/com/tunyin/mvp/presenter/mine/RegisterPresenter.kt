@@ -34,7 +34,7 @@ class RegisterPresenter @Inject constructor(private val mRetrofitHelper: Retrofi
                 .compose(rxSchedulerHelper())
                 .subscribeWith(object : BaseSubscriber<BaseEntity<RegisterEntity>>(mView) {
                     override fun onSuccess(mData: BaseEntity<RegisterEntity>) {
-                        mView?.registerData(mData.content)
+                        mView?.registerData(mData.code == "200", mData.content)
                     }
                 })
         addSubscribe(subscriber)

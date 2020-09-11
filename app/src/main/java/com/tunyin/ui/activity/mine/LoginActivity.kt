@@ -2,6 +2,9 @@ package com.tunyin.ui.activity.mine
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.os.IBinder
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -44,6 +47,11 @@ class LoginActivity : BaseInjectActivity<LoginPresenter>(), View.OnClickListener
         iv_weibo.setOnClickListener(this)
         iv_wechat.setOnClickListener(this)
 
+        tv_login.post {
+            var gradient = LinearGradient(0F, 0F, tv_login.width.toFloat(), tv_login.height.toFloat(), Color.parseColor("#5DE0F1"), Color.parseColor("#908AEE"), Shader.TileMode.CLAMP)
+            tv_login.paint.shader = gradient
+            tv_login.invalidate()
+        }
     }
 
 

@@ -2,6 +2,7 @@ package com.tunyin.ui.activity.mine
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Paint
 import android.os.CountDownTimer
 import android.os.IBinder
 import android.text.TextUtils
@@ -10,12 +11,12 @@ import android.view.inputmethod.InputMethodManager
 import com.tunyin.MainActivity
 import com.tunyin.R
 import com.tunyin.ToastUtils
-import com.tunyin.base.BaseActivity
 import com.tunyin.base.BaseInjectActivity
 import com.tunyin.base.WebActivity
 import com.tunyin.mvp.contract.mine.RegisterContract
 import com.tunyin.mvp.model.mine.RegisterEntity
 import com.tunyin.mvp.presenter.mine.RegisterPresenter
+import com.tunyin.ui.dialog.RegisterSuccessDialog
 import com.tunyin.utils.AppUtils
 import com.tunyin.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_register.*
@@ -44,10 +45,13 @@ class RegisterActivity : BaseInjectActivity<RegisterPresenter>(), View.OnClickLi
         hideLoading()
     }
 
-    override fun registerData(registerEntity: RegisterEntity) {
+    override fun registerData(registerSuccess: Boolean, registerEntity: RegisterEntity) {
         hideLoading()
-        startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
 
+        RegisterSuccessDialog(mContext, RegisterSuccessDialog.OnClickListener {
+            it.dismiss()
+            startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
+        }).show()
     }
 
 
@@ -62,11 +66,11 @@ class RegisterActivity : BaseInjectActivity<RegisterPresenter>(), View.OnClickLi
         tv_to_login.setOnClickListener(this)
         rl_send_cde.setOnClickListener(this)
         ly_confirm.setOnClickListener(this)
-        tv_agreement.setOnClickListener(this)
+        ll_agreement.setOnClickListener(this)
 
+        tv_protocol.paint.flags = Paint.UNDERLINE_TEXT_FLAG
 
         initCountDownTimer()
-
     }
 
     private fun initCountDownTimer() {
@@ -110,8 +114,6 @@ class RegisterActivity : BaseInjectActivity<RegisterPresenter>(), View.OnClickLi
                         et_pwd.text.trim().toString(),
                         et_nickname.text.trim().toString(),
                         et_code.text.trim().toString())
-
-
             }
 
             rl_send_cde -> {
@@ -131,7 +133,7 @@ class RegisterActivity : BaseInjectActivity<RegisterPresenter>(), View.OnClickLi
 
             }
 
-            tv_agreement -> {
+            ll_agreement -> {
                 startActivity(mContext?.let { WebActivity.newIntent(it, "协议", "www.baidu.com") })
 
             }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:orientation="vertical">
 
@@ -18,39 +18,37 @@
         <EditText
             android:id="@+id/et_phone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="40dp"
             android:background="@drawable/bg_blue_soft_corners"
             android:hint="请输入您的手机号码"
             android:inputType="number"
             android:maxEms="11"
-            android:paddingStart="14dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:singleLine="true" />
+            android:paddingStart="20dp"
+            android:singleLine="true"
+            android:textSize="15sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="40dp"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/et_code"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="6"
                 android:background="@drawable/bg_blue_soft_corners"
                 android:hint="请输入验证码"
                 android:inputType="number"
-                android:paddingStart="14dp"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp"
-                android:singleLine="true" />
+                android:paddingStart="20dp"
+                android:singleLine="true"
+                android:textSize="15sp" />
 
             <LinearLayout
                 android:id="@+id/rl_send_cde"
@@ -67,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:text="获取验证码"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
 
             </LinearLayout>
 
@@ -77,25 +75,36 @@
         <EditText
             android:id="@+id/et_pwd"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="40dp"
             android:background="@drawable/bg_blue_soft_corners"
-            android:hint="请输入密码"
+            android:hint="请输入新密码"
             android:inputType="textPassword"
-            android:paddingStart="14dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp" />
+            android:paddingStart="20dp"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/et_pwd2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/bg_blue_soft_corners"
+            android:hint="请再次输入新密码"
+            android:inputType="textPassword"
+            android:paddingStart="20dp"
+            android:textSize="15sp" />
 
         <LinearLayout
             android:id="@+id/ly_confirm"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="20dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="40dp"
             android:background="@drawable/bg_red_corners"
             android:gravity="center"
             android:orientation="horizontal">
@@ -104,11 +113,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
                 android:text="确认"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
 

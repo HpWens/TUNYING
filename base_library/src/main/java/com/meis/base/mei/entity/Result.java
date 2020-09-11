@@ -1,5 +1,7 @@
 package com.meis.base.mei.entity;
 
+import android.text.TextUtils;
+
 import java.io.Serializable;
 
 /**
@@ -9,8 +11,9 @@ import java.io.Serializable;
  */
 public class Result<T> implements Serializable {
 
-    public int code;
+    public String code;
     public String msg = "";
+    public String desc;
     public T data;
 
     public boolean success;
@@ -28,11 +31,11 @@ public class Result<T> implements Serializable {
                 '}';
     }
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -53,6 +56,6 @@ public class Result<T> implements Serializable {
     }
 
     public boolean isOk() {
-        return status == 0 && success;
+        return !TextUtils.isEmpty(code) && code.equals("200");
     }
 }

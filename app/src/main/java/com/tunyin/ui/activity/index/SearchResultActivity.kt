@@ -9,13 +9,19 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
+import com.meis.base.mei.utils.ParseJsonUtils
 import com.tunyin.R
 import com.tunyin.base.BaseInjectActivity
+import com.tunyin.entity.SearchTypeEntity
 import com.tunyin.mvp.contract.index.SearchResultContract
 import com.tunyin.mvp.model.index.SearchEntity
 import com.tunyin.mvp.presenter.index.SearchResultPresenter
 import com.tunyin.ui.adapter.index.SearchResultAdapter
 import com.tunyin.utils.StatusBarUtil
+import com.vondear.rxtool.RxKeyboardTool
+import com.zhouyou.http.EasyHttp
+import com.zhouyou.http.callback.SimpleCallBack
+import com.zhouyou.http.exception.ApiException
 import kotlinx.android.synthetic.main.activity_search_result.*
 
 
@@ -34,6 +40,10 @@ class SearchResultActivity : BaseInjectActivity<SearchResultPresenter>(), TabLay
     private var mAdapter: SearchResultAdapter? = null
     private val searchList = ArrayList<SearchEntity.ListBean>()
 
+    private lateinit var mTabList: List<SearchTypeEntity>
+
+    private var mSelectedPosition = 0
+
     override fun initInject() = activityComponent.inject(this)
 
     override fun initPresenter() = mPresenter.attachView(this)
@@ -46,8 +56,23 @@ class SearchResultActivity : BaseInjectActivity<SearchResultPresenter>(), TabLay
         }
 
         showLoading()
-        mPresenter.search("0", "20", mSearchContent, "")
 
+        // 获取搜索分类
+        EasyHttp.post("api/song/searchClass")
+                .execute(object : SimpleCallBack<String?>() {
+                    override fun onError(e: ApiException) {}
+                    override fun onSuccess(t: String?) {
+                        mTabList = ParseJsonUtils.parseListData(t, "content", "list", SearchTypeEntity::class.java)
+                        if (mTabList.isNotEmpty()) {
+                            for (element in mTabList) {
+                                tablayout.addTab(tablayout.newTab().setText(element.name))
+                            }
+
+                            mSelectedPosition = 0
+                            mPresenter.search("0", "20", mSearchContent, mTabList[0].id.toString())
+                        }
+                    }
+                })
     }
 
     override fun showError(msg: String) {
@@ -60,15 +85,21 @@ class SearchResultActivity : BaseInjectActivity<SearchResultPresenter>(), TabLay
         searchList.addAll(searchEntity.list)
         mAdapter?.dataList = searchList
         mAdapter?.notifyDataSetChanged()
+
+        layout_empty.visibility = if (searchEntity.list.isEmpty()) View.VISIBLE else View.GONE
     }
 
 
     override fun initWidget() {
         StatusBarUtil.setTranslucentForImageView(this, 0, null)
-        for (i in 0 until mTitles.size) {
-            tablayout.addTab(tablayout.newTab().setText(mTitles[i]))
-//            tablayout.addTab(tablayout.newTab().setTag(i))
-        }
+
+//        for (i in 0 until mTitles.size) {
+//            tablayout.addTab(tablayout.newTab().setText(mTitles[i]))
+////            tablayout.addTab(tablayout.newTab().setTag(i))
+//        }
+
+        tablayout.addOnTabSelectedListener(this)
+
         mAdapter = SearchResultAdapter()
         recycler?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
         recycler?.adapter = mAdapter
@@ -84,9 +115,10 @@ class SearchResultActivity : BaseInjectActivity<SearchResultPresenter>(), TabLay
                     if (!TextUtils.isEmpty(keyword)) {
                         showLoading()
                         mSearchContent = keyword
-                        mPresenter.search("0", "20", mSearchContent, "")
+                        mPresenter.search("0", "20", mSearchContent, mTabList[mSelectedPosition].id.toString())
                     }
-                    return true;
+                    RxKeyboardTool.hideSoftInput(mContext, et_search_content)
+                    return true
                 }
                 return false
             }
@@ -95,16 +127,17 @@ class SearchResultActivity : BaseInjectActivity<SearchResultPresenter>(), TabLay
     }
 
     override fun onTabReselected(p0: TabLayout.Tab?) {
-        showLoading()
-        mPresenter.search("0", "20", et_search_content.text.trim().toString(), "1")
     }
 
     override fun onTabUnselected(p0: TabLayout.Tab?) {
     }
 
     override fun onTabSelected(p0: TabLayout.Tab?) {
-
-
+        showLoading()
+        if (p0 != null) {
+            mSelectedPosition = p0.position
+        }
+        mPresenter.search("0", "20", et_search_content.text.trim().toString(), mTabList[mSelectedPosition].id.toString())
     }
 
 
