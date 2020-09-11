@@ -54,7 +54,7 @@ public class BaseApplication extends Application {
 
         initEasyHttp();
 
-        initTTAdSdk();
+        // initTTAdSdk();
     }
 
     // 初始化广告穿山甲

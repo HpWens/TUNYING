@@ -3,7 +3,6 @@ package com.tunyin
 import android.app.Activity
 import android.app.Application
 import android.content.Intent
-import android.text.TextUtils
 import com.google.gson.Gson
 import com.tunyin.constants.RequestConstants
 import com.tunyin.mvp.model.SelfBean
@@ -11,6 +10,7 @@ import com.tunyin.myservice.PlayService
 import com.tunyin.myservice.db.DBManager
 import com.tunyin.utils.AppContext
 import com.tunyin.utils.AppUtils
+import com.vondear.rxtool.RxTool
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.cache.converter.SerializableDiskConverter
 import com.zhouyou.http.model.HttpHeaders
@@ -67,6 +67,7 @@ class App : Application() {
         val intent = Intent(this, PlayService::class.java)
         startService(intent)
 
+        RxTool.init(this)
         // 初始化
         initEasyHttp()
     }
