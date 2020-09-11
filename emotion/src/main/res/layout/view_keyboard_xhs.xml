@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <!--    <include layout="@layout/ic_spitview_horizontal" /> -->
+
+    <LinearLayout
+        android:id="@+id/input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- 语音/文字切换-->
+        <ImageView
+            android:id="@+id/btn_voice_or_text"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="11dp"
+            android:src="@drawable/btn_voice_or_text"
+            android:visibility="gone" />
+
+        <!--语音输入-->
+        <Button
+            android:id="@+id/btn_voice"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/btn_voice"
+            android:text="@string/btn_text_speak"
+            android:textColor="#727272"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/rl_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/mei_shape_reply_edit"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <sj.keyboard.widget.EmoticonsEditText
+                    android:id="@+id/et_chat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="喜欢就评论告诉TA"
+                    android:lineSpacingExtra="4dp"
+                    android:maxLines="4"
+                    android:minHeight="36dp"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#999999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/aboveText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/btn_face"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:clickable="true"
+                android:scaleType="centerInside"
+                android:src="@mipmap/mei_input_emoji" />
+
+        </LinearLayout>
+
+        <!--apps 功能-->
+        <ImageView
+            android:id="@+id/btn_multimedia"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="11dp"
+            android:src="@drawable/btn_multi_bg"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/btn_send"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:paddingLeft="10dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="14dp"
+            android:text="发送"
+            android:textColor="#6F000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <sj.keyboard.widget.FuncLayout
+        android:id="@+id/ly_kvml"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:visibility="gone" />
+</LinearLayout>

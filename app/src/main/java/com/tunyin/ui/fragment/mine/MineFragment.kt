@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.text.TextUtils
 import android.view.View
+import androidx.fragment.app.FragmentActivity
 import com.tunyin.BaseInjectFragment
 import com.tunyin.MainActivity
 import com.tunyin.R
@@ -78,7 +79,7 @@ class MineFragment : BaseInjectFragment<UploadFilePresenter>(), UploadFileContra
 
     private fun requestPermission() {
         val helper = PermissionHelper()
-        helper.requestSDAndCameraPermissions(mContext as Activity?, this)
+        helper.requestSDAndCameraPermissions(mContext as FragmentActivity?, this)
 
     }
 

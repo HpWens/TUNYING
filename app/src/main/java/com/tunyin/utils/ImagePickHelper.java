@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
@@ -19,14 +20,14 @@ public class ImagePickHelper {
     public static final int REQUEST_PICK_IMAGE = 0x0001;
     public final String FILEPROVIDER = "com.tunyin.fileprovider";
 
-    private Activity context;
+    private FragmentActivity context;
     private Fragment fragment;
     private PermissionHelper permissionHelper;
 
     private MediaStoreCompat mMediaStoreCompat;
     private static final int REQUEST_CODE_CAPTURE = 24;
 
-    private ImagePickHelper(Activity activity) {
+    private ImagePickHelper(FragmentActivity activity) {
         context = activity;
         permissionHelper = new PermissionHelper();
     }
@@ -37,7 +38,7 @@ public class ImagePickHelper {
         permissionHelper = new PermissionHelper();
     }
 
-    public static ImagePickHelper with(Activity activity) {
+    public static ImagePickHelper with(FragmentActivity activity) {
         return new ImagePickHelper(activity);
     }
 

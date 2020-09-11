@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.view.View;
 
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.tunyin.widget.AskDialog;
@@ -24,7 +25,7 @@ public class PermissionHelper {
      * @param onRequestPermissionResult
      */
     @SuppressLint("CheckResult")
-    public void requestSDAndCameraPermissions(final Activity context, final OnRequestPermissionResult onRequestPermissionResult) {
+    public void requestSDAndCameraPermissions(final FragmentActivity context, final OnRequestPermissionResult onRequestPermissionResult) {
         RxPermissions rxPermissions = new RxPermissions(context);
         rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA).subscribe(new Consumer<Boolean>() {
             @Override
@@ -49,7 +50,7 @@ public class PermissionHelper {
      * @param context
      * @param onRequestPermissionResult
      */
-    public void requestLocation(final Activity context, final OnRequestPermissionResult onRequestPermissionResult) {
+    public void requestLocation(final FragmentActivity context, final OnRequestPermissionResult onRequestPermissionResult) {
         RxPermissions rp = new RxPermissions(context);
         rp.request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
                 .subscribe(new Consumer<Boolean>() {

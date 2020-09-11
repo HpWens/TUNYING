@@ -33,7 +33,7 @@ abstract class BaseFragment : RxFragment() {
     // 标志Fragment是否可见
     protected var mIsVisible: Boolean = true
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         mActivity = context as? Activity
         mContext = context
         super.onAttach(context)

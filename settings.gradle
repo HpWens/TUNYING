@@ -1,1 +1,7 @@
+include ':picture_library'
+include ':emotion'
+include ':FlycoTabLayout_Lib'
+include ':base_library'
+include ':ucrop'
+include ':base_library'
 include ':app', ':socialhelper'
