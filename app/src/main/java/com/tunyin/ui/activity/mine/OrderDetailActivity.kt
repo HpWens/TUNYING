@@ -3,6 +3,7 @@ package com.tunyin.ui.activity.mine
 import android.content.Context
 import android.content.Intent
 import android.view.View
+import com.tunyin.MyAudioPlayer
 import com.tunyin.R
 import com.tunyin.ToastUtils
 import com.tunyin.base.BaseInjectActivity
@@ -34,7 +35,6 @@ class OrderDetailActivity : BaseInjectActivity<OrderPresenter>(), OrderContract.
         return R.layout.activity_order_detail
     }
 
-
     override fun initInject() = activityComponent.inject(this)
 
     override fun initPresenter() = mPresenter.attachView(this)
@@ -61,7 +61,7 @@ class OrderDetailActivity : BaseInjectActivity<OrderPresenter>(), OrderContract.
         orderNo = intent.getStringExtra("orderNo")
         orderDate = intent.getStringExtra("orderDate")
         price = intent.getStringExtra("price")
-        songId=intent.getStringExtra("songId")
+        songId = intent.getStringExtra("songId")
         tv_delete.setOnClickListener(this)
         image.setOnClickListener(this)
         ImageUtil.load(imageUrl).on(image)
@@ -82,7 +82,7 @@ class OrderDetailActivity : BaseInjectActivity<OrderPresenter>(), OrderContract.
 
             image -> {
 
-                startActivity(PlayerActivity.newInstance(mContext!!,songId!!))
+                startActivity(PlayerActivity.newInstance(mContext!!, songId!!))
 
 //                val intent = mContext?.let { id?.let { it1 -> PlayerActivity.newInstance(it, it1) } }
 //                startActivity(intent)
@@ -116,5 +116,10 @@ class OrderDetailActivity : BaseInjectActivity<OrderPresenter>(), OrderContract.
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        var isPlaying = MyAudioPlayer.get().isPlaying && MyAudioPlayer.get().songId == songId
+        tv_play_status.text = if (isPlaying) "正在播放" else "未开始"
+    }
 
 }

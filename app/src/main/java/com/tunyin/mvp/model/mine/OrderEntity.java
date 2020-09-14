@@ -1,5 +1,6 @@
 package com.tunyin.mvp.model.mine;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public class OrderEntity {
      */
 
     private String total;
-    private List<ListBean> list;
+    private List<ListBean> list = new ArrayList<>();
 
     public String getTotal() {
         return total;

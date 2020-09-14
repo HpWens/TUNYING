@@ -113,7 +113,9 @@ public class SettingActivity extends BaseInjectActivity<SettingPresenter> implem
 
         findViewById(R.id.tv_exit).setOnClickListener(v -> {
             SelfBean.getInstance().setToken("");
-            startActivity(LoginActivity.newInstance(this));
+            Intent intent = LoginActivity.newInstance(this);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
             finish();
         });
 

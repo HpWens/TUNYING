@@ -1,5 +1,6 @@
 package com.tunyin.ui.fragment.purchased
 
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tunyin.MyAudioPlayer
 import com.tunyin.R
@@ -10,6 +11,7 @@ import com.tunyin.mvp.model.mine.OrderEntity
 import com.tunyin.mvp.presenter.mine.OrderPresenter
 import com.tunyin.ui.activity.mine.OrderDetailActivity
 import com.tunyin.ui.adapter.mine.OrderAdapter
+import com.vondear.rxtool.RxNetTool
 import kotlinx.android.synthetic.main.fragment_pruchased.*
 
 /**
@@ -58,6 +60,13 @@ class PurchasedFragment : BaseRefreshFragment<OrderPresenter, OrderEntity>(), Or
 
             }
         })
+
+        empty_layout.visibility = if (orderEntity.list == null || orderEntity.list.isEmpty()) View.VISIBLE else View.GONE
+        if (orderEntity.list == null || orderEntity.list.isEmpty()) {
+            iv_empty.setImageResource(R.mipmap.order_empty_icon)
+            tv_empty.text = "暂无已购的订单"
+            tv_refresh.visibility = View.GONE
+        }
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
@@ -88,11 +97,29 @@ class PurchasedFragment : BaseRefreshFragment<OrderPresenter, OrderEntity>(), Or
     override fun getLayoutId(): Int = R.layout.fragment_pruchased
 
     override fun initWidget() {
+        tv_refresh.setOnClickListener {
+            mPresenter.getOrderList("0", "200")
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        mPresenter.getOrderList("0", "200")
+
+        var isAvailable = RxNetTool.isAvailable(activity)
+        if (isAvailable) {
+            iv_empty.setImageResource(R.mipmap.order_empty_icon)
+            tv_empty.text = "暂无已购的订单"
+
+            empty_layout.visibility = View.GONE
+            tv_refresh.visibility = View.GONE
+            mPresenter.getOrderList("0", "200")
+        } else {
+            empty_layout.visibility = View.VISIBLE
+            iv_empty.setImageResource(R.mipmap.no_netword_icon)
+            tv_empty.text = "网络出错啦"
+            tv_refresh.visibility = View.VISIBLE
+        }
+
     }
 
     companion object {

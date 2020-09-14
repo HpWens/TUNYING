@@ -1,5 +1,6 @@
 package com.tunyin.ui.adapter.mine
 
+import android.graphics.Color
 import android.view.View
 import com.tunyin.LogUtils
 import com.tunyin.MyAudioPlayer
@@ -36,6 +37,7 @@ class OrderAdapter : BaseAdapter<OrderEntity.ListBean>() {
             itemView.tv_date.text = itemBean.createDate
             itemBean.isHelperStartEnable = MyAudioPlayer.get().isPlaying && MyAudioPlayer.get().songId.equals(itemBean.songId)
             itemView.tv_progress.text = if (itemBean.isHelperStartEnable) "正在播放" else "未开始"
+            itemView.tv_progress.setTextColor(if (itemBean.isHelperStartEnable) Color.parseColor("#908AEE") else Color.parseColor("#999999"))
             itemView.tv_delete.setOnClickListener {
                 if (mDeleteClickListener != null) {
                     mDeleteClickListener!!.onDeleteClick(position)
