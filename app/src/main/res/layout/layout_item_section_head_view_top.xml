@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content">
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:layout_marginTop="20dp"
-        android:background="#E2E2E2" />
+        android:background="#E2E2E2"
+        android:visibility="gone" />
 
 
     <TextView
@@ -17,13 +17,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/view"
-        android:paddingStart="@dimen/dp15"
-        android:paddingEnd="@dimen/dp15"
         android:layout_centerVertical="true"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/text_size_18"
-        android:textStyle="bold" />
+        android:layout_marginTop="26dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="@dimen/dp15"
+        android:text="电台"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_18" />
 
     <TextView
         android:id="@+id/headMore"
@@ -31,17 +31,19 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/view"
         android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="20dp"
-
         android:background="@drawable/shape_bg_frame_gray_oval_30dp"
         android:drawableEnd="@mipmap/icon_repeat"
+        android:drawablePadding="4dp"
+        android:drawableTint="#999"
         android:gravity="center_vertical"
         android:paddingStart="23dp"
         android:paddingTop="2dp"
         android:paddingEnd="23dp"
         android:paddingBottom="2dp"
         android:text="换一批"
-        android:textColor="@color/text_color"
+        android:textColor="#999"
         android:textSize="12sp" />
 
 </RelativeLayout>

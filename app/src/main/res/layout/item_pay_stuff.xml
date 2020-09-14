@@ -5,70 +5,84 @@
     android:id="@+id/rl_profile"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
     android:orientation="horizontal"
     app:cardUseCompatPadding="true"
     app:cornerRadius="5dp"
     app:shadowSize="8dp"
-    android:layout_marginStart="12dp"
-    android:layout_marginEnd="12dp"
     app:shadowStartAlpha="30">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#F5F5F5"
         android:orientation="horizontal">
 
-        <com.tunyin.widget.CustomRoundAngleImageView
-            android:id="@+id/iv_bg"
+        <FrameLayout
             android:layout_width="0dp"
             android:layout_height="110dp"
-            android:layout_weight="1"
-            android:src="@color/colorAccent"
-            roundiv:left_bottom_radius="5dp"
-            roundiv:left_top_radius="5dp"
-            android:scaleType="centerCrop"/>
+            android:layout_weight="1">
+
+            <com.tunyin.widget.CustomRoundAngleImageView
+                android:id="@+id/iv_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@color/colorAccent"
+                roundiv:left_bottom_radius="10dp"
+                roundiv:left_top_radius="10dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/icon_play_discovery"></ImageView>
+
+        </FrameLayout>
+
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:orientation="vertical"
             android:paddingStart="8dp"
-            android:paddingTop="10dp"
+            android:paddingTop="24dp"
             android:paddingBottom="10dp">
 
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
                 android:text="舒缓、眠轻音乐~~~"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:singleLine="true"/>
+                android:textColor="#222"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/tv_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
                 android:text="简单而平淡的生活"
-                android:textSize="12sp"
-                android:singleLine="true"/>
+                android:textColor="#555555"
+                android:textSize="10sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="12dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_diamond"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
                     android:text="钻石"
-                    android:textColor="#67D0F0"
-                    android:textSize="12sp" />
+                    android:textColor="#908AEE"
+                    android:textSize="10sp" />
 
                 <TextView
                     android:id="@+id/tv_diamond_num"
@@ -77,15 +91,16 @@
                     android:layout_marginStart="10dp"
                     android:layout_toRightOf="@+id/tv_diamond"
                     android:text="45"
-                    android:textColor="#67D0F0"
-                    android:textSize="16sp" />
+                    android:textColor="#908AEE"
+                    android:textSize="10sp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginEnd="14dp"
-                    android:src="@mipmap/icon_stop" />
+                    android:src="@mipmap/icon_stop"
+                    android:visibility="gone" />
 
             </RelativeLayout>
         </LinearLayout>

@@ -11,10 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="240dp">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/home_header_bg"></ImageView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@drawable/shape_gradient_blue"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.Toolbar
@@ -55,12 +60,13 @@
                     <LinearLayout
                         android:id="@+id/search_layout"
                         android:layout_width="0dp"
-                        android:layout_height="38dp"
+                        android:layout_height="34dp"
                         android:layout_gravity="center"
                         android:layout_marginStart="-20dp"
                         android:layout_marginEnd="10dp"
                         android:layout_weight="8"
                         android:background="@drawable/main_search_background"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <TextView
@@ -70,11 +76,11 @@
                             android:layout_gravity="center_vertical"
                             android:background="@null"
                             android:drawableStart="@drawable/search_icon"
-                            android:drawablePadding="10dp"
+                            android:drawablePadding="5dp"
                             android:singleLine="true"
                             android:textColor="@color/black"
-                            android:textColorHint="@color/font_gray"
-                            android:textSize="14sp"
+                            android:textColorHint="#999999"
+                            android:textSize="15sp"
                             tools:hint="倾耳倾听" />
 
 
@@ -101,7 +107,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:background="@color/white" />
+                android:background="@color/white"
+                android:visibility="gone" />
         </LinearLayout>
 
         <!--                <com.zhouwei.mzbanner.MZBannerView-->
@@ -125,7 +132,8 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler"
@@ -133,6 +141,7 @@
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
                 android:overScrollMode="never"
+                android:paddingBottom="15dp"
                 android:scrollbars="none" />
         </androidx.core.widget.NestedScrollView>
 
@@ -158,8 +167,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="20dp"
-        android:src="@mipmap/icon_pause"
-        />
+        android:src="@mipmap/icon_pause" />
 
 </RelativeLayout>
 

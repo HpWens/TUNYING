@@ -3,68 +3,69 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:roundiv="http://schemas.android.com/tools"
     android:id="@+id/rl_profile"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     app:cardUseCompatPadding="true"
-    app:cornerRadius="5dp"
-    app:shadowSize="8dp"
-    xmlns:tools="http://schemas.android.com/tools"
+    app:cornerRadius="15dp"
+    app:shadowSize="5dp"
     app:shadowStartAlpha="15">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="100dp">
-        <com.tunyin.widget.CustomRoundAngleImageView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:src="#fed256"
-            roundiv:radius="5dp"
-            android:scaleType="centerCrop"
-            android:id="@+id/image"/>
-        <TextView
-            android:id="@+id/tv_num"
+
+        <com.tunyin.widget.SquareRelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="576"
-            android:layout_alignParentBottom="true"
-            android:paddingStart="8dp"
-            android:paddingBottom="8dp"
-            android:textSize="10sp"
-            android:textColor="@color/white"
-            android:drawablePadding="5dp"
-            android:drawableLeft="@mipmap/icon_radio_tip"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/icon_stop_trangel"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
-    </RelativeLayout>
+            android:layout_height="wrap_content">
+
+            <com.tunyin.widget.CustomRoundAngleImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="#fed256"
+                roundiv:radius="5dp" />
+
+            <TextView
+                android:id="@+id/tv_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:drawableLeft="@mipmap/icon_radio_tip"
+                android:drawablePadding="5dp"
+                android:paddingStart="8dp"
+                android:paddingBottom="8dp"
+                android:text="576"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/icon_stop_trangel"
+                android:visibility="gone" />
+        </com.tunyin.widget.SquareRelativeLayout>
 
         <TextView
             android:id="@+id/tv_title_guess_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:paddingTop="6dp"
-            android:paddingStart="4dp"
-            android:paddingBottom="8dp"
-            android:paddingEnd="4dp"
-            android:textColor="@color/black"
-            android:layout_marginTop="5dp"
-            android:maxLines="2"
             android:ellipsize="end"
-            android:text="轻音乐睡眠【精选每一首音乐】"/>
+            android:maxLines="2"
+            android:paddingStart="14dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="10dp"
+            android:text="轻音乐睡眠【精选每一首音乐】"
+            android:textColor="#555555"
+            android:textSize="12sp" />
 
 
     </LinearLayout>
-
-
-
 
 
 </www.linwg.org.lib.LCardView>

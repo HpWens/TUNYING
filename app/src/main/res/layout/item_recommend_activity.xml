@@ -3,41 +3,46 @@
     xmlns:roundiv="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:layout_marginStart="10dp">
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginBottom="16dp">
 
 
     <com.tunyin.widget.CustomRoundAngleImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="centerCrop"
         android:src="#fed256"
-        roundiv:radius="5dp"
-        android:scaleType="centerCrop"/>
+        roundiv:radius="15dp" />
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:text="一个人的旧时光"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        android:singleLine="true"
-        android:ellipsize="end"
-        android:textStyle="bold"
-        android:padding="10dp"/>
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/tv_sub_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_title"
-        android:layout_centerHorizontal="true"
-        android:text="enjoy everyday"
+        android:layout_alignLeft="@+id/tv_title"
+        android:layout_alignRight="@+id/tv_title"
+        android:layout_marginTop="2dp"
         android:singleLine="true"
+        android:text="enjoy everyday"
         android:textColor="@color/white"
-        android:textSize="13sp" />
+        android:textSize="10sp" />
 
 
 </RelativeLayout>

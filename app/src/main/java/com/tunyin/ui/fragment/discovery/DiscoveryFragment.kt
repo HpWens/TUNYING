@@ -3,7 +3,6 @@ package com.tunyin.ui.fragment.discovery
 import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.tunyin.LogUtils
 import com.tunyin.R
 import com.tunyin.base.BaseRefreshFragment
 import com.tunyin.mvp.contract.discovery.DiscoveryContract
@@ -71,12 +70,10 @@ class DiscoveryFragment : BaseRefreshFragment<DiscoveryPresenter, DiscoveryEntit
         mUnmannedSoundList.clear()
         mDiscoveryRVAdapter?.removeAllSections()
 
-
     }
 
     override fun onClick(p0: View?) {
         when (p0) {
-
             toolbar,
             main_toolbar_item,
             et_search_content,
@@ -88,7 +85,6 @@ class DiscoveryFragment : BaseRefreshFragment<DiscoveryPresenter, DiscoveryEntit
     }
 
     override fun showDiscovery(discoveryEntity: DiscoveryEntity) {
-        LogUtils.d("hellll", "-----122---")
         et_search_content.hint = discoveryEntity.hotSearch
         mPaidSelectionList.addAll(discoveryEntity.paidSelection.list)
 //        mBroadcastList.addAll(discoveryEntity.broadcast)

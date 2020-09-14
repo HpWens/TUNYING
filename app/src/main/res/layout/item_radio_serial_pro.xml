@@ -3,20 +3,20 @@
     xmlns:roundiv="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginEnd="6dp">
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="100dp">
+        android:layout_height="100dp"
+        android:layout_marginRight="20dp">
 
         <com.tunyin.widget.CustomRoundAngleImageView
             android:id="@+id/iv_bg"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:scaleType="centerCrop"
             android:src="#fed256"
-            roundiv:radius="5dp"
-            android:scaleType="centerCrop"/>
+            roundiv:radius="6dp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -24,7 +24,8 @@
             android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
             android:layout_toRightOf="@+id/iv_bg"
-            android:src="@mipmap/icon_my_wallet" />
+            android:src="@mipmap/icon_my_wallet"
+            android:visibility="gone" />
 
 
         <TextView
@@ -51,11 +52,11 @@
         android:id="@+id/tv_title"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:ellipsize="end"
         android:maxLines="2"
         android:text="轻音乐睡眠【精选每一首音乐】"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textColor="#555555"
+        android:textSize="13sp" />
 
 </LinearLayout>

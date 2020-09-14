@@ -17,10 +17,12 @@ class FeaturedRecommendSelection(list: List<IndexEntity.FeaturedRecommendBean.Li
                 ImageUtil.load(it.image).on(getView(R.id.image))
 
                 setText(R.id.tv_title, it.title)
-                var id=it.id
+                setText(R.id.tv_like_num, it.collectNum)
+                setText(R.id.tv_commend_num, it.commentNum)
+                var id = it.id
 
                 itemView.setOnClickListener {
-                    itemView.context.startActivity(PlayerActivity.newInstance(itemView.context,id))
+                    itemView.context.startActivity(PlayerActivity.newInstance(itemView.context, id))
                     //                    mContext.startActivity(Intent(mContext, WebViewActivity::class.java))
                 }
 
@@ -34,7 +36,7 @@ class FeaturedRecommendSelection(list: List<IndexEntity.FeaturedRecommendBean.Li
     override fun onBindHeaderViewHolder(holder: ViewHolder?) {
         holder?.setText(R.id.headTitle, "精选推荐")?.setVisible(R.id.headMore, true)
         holder?.getView<TextView>(R.id.headMore)?.setOnClickListener {
-            if (refreshReaturedREcommendListener!=null){
+            if (refreshReaturedREcommendListener != null) {
                 refreshReaturedREcommendListener.refreshReaturedREcommendData()
             }
 //            ToastUtils.showToast("我是换一批")

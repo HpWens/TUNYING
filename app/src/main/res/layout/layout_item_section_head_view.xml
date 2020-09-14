@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="40dp"
+    android:layout_marginTop="10dp"
     android:paddingStart="@dimen/dp15"
-    android:paddingEnd="@dimen/dp15"
-    android:layout_marginTop="20dp">
+    android:paddingEnd="@dimen/dp15">
 
 
     <TextView
@@ -13,24 +12,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/text_size_18"
-        android:textStyle="bold"/>
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_18" />
 
     <TextView
         android:id="@+id/headMore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:drawableEnd="@mipmap/icon_repeat"
-        android:gravity="center_vertical"
-        android:text="换一批"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
-        android:textSize="12sp"
+        android:layout_centerVertical="true"
         android:background="@drawable/shape_bg_frame_gray_oval_30dp"
-        android:textColor="@color/text_color"/>
+        android:drawableEnd="@mipmap/icon_repeat"
+        android:drawablePadding="4dp"
+        android:drawableTint="#999"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="2dp"
+        android:text="换一批"
+        android:textColor="#999"
+        android:textSize="12sp" />
 
 </RelativeLayout>

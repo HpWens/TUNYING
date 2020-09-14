@@ -1,49 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:roundiv="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="100dp"
     android:layout_height="wrap_content"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="100dp">
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp">
+
         <com.tunyin.widget.CustomRoundAngleImageView
+            android:id="@+id/image"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="#fed256"
-            roundiv:radius="5dp"
             android:scaleType="centerCrop"
-            android:id="@+id/image"/>
+            android:src="#fed256"
+            roundiv:radius="5dp" />
+
         <TextView
             android:id="@+id/tv_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="576"
             android:layout_alignParentBottom="true"
+            android:drawableLeft="@mipmap/icon_radio_tip"
+            android:drawablePadding="5dp"
             android:paddingStart="8dp"
             android:paddingBottom="8dp"
-            android:textSize="10sp"
+            android:text="576"
             android:textColor="@color/white"
-            android:drawablePadding="5dp"
-            android:drawableLeft="@mipmap/icon_radio_tip"/>
+            android:textSize="10sp" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_stop_trangel"
+            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
+            android:src="@mipmap/icon_stop_trangel" />
     </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="@color/black"
-        android:layout_marginTop="5dp"
-        android:maxLines="2"
+        android:layout_marginTop="8dp"
         android:ellipsize="end"
-        android:text="轻音乐睡眠【精选每一首音乐】"/>
+        android:maxLines="2"
+        android:text="轻音乐睡眠【精选每一首音乐】"
+        android:textColor="#555"
+        android:textSize="13sp" />
 
 </LinearLayout>

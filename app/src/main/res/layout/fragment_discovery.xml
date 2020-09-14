@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:orientation="vertical">
 
@@ -11,10 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="240dp">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/home_header_bg"></ImageView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@drawable/shape_gradient_blue"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.Toolbar
@@ -52,25 +57,24 @@
                     <LinearLayout
                         android:id="@+id/search_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="38dp"
+                        android:layout_height="34dp"
                         android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/dp12"
                         android:layout_marginEnd="30dp"
                         android:background="@drawable/main_search_background"
                         android:gravity="center">
 
                         <TextView
                             android:id="@+id/et_search_content"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:drawableStart="@drawable/search_icon"
-                            android:drawablePadding="10dp"
-                            tools:hint="倾耳倾听"
+                            android:drawablePadding="5dp"
                             android:singleLine="true"
                             android:textColor="@color/black"
-                            android:textColorHint="@color/font_gray"
-                            android:textSize="14sp" />
+                            android:textColorHint="#999999"
+                            android:textSize="15sp"
+                            tools:hint="倾耳倾听" />
 
 
                     </LinearLayout>
@@ -84,6 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
+                android:visibility="gone"
                 android:background="@color/white" />
         </LinearLayout>
 
@@ -117,12 +122,12 @@
         android:id="@+id/loading_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_gravity="center"
         android:indeterminate="true"
         android:visibility="gone"
-        tools:visibility="visible"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        tools:visibility="visible" />
 
 
 </RelativeLayout>

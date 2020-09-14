@@ -32,7 +32,6 @@ public class IndexClassifyItemAdapter extends BaseAdapter<IndexEntity.ClassifyLi
             super(itemView);
             textView = bindView(R.id.tv_head_type);
             ivType = bindView(R.id.iv_type);
-
         }
 
         @Override

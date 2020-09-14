@@ -3,7 +3,7 @@
 
     <corners android:radius="10dp" />
     <padding
-        android:left="@dimen/dp20"
+        android:left="@dimen/dp16"
         android:right="@dimen/dp20" />
     <solid android:color="@color/search_background" />
 </shape>

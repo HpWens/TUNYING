@@ -3,13 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:roundiv="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/shape_gradient_blue" />
+    android:layout_height="wrap_content">
 
 
     <www.linwg.org.lib.LCardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -18,13 +12,13 @@
         android:id="@+id/rl_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
         android:orientation="horizontal"
-        android:paddingTop="10dp"
         android:paddingBottom="10dp"
         app:cardUseCompatPadding="true"
-        app:cornerRadius="10dp"
+        app:cornerRadius="15dp"
         app:shadowSize="8dp"
-        android:layout_margin="12dp"
         app:shadowStartAlpha="30">
 
         <androidx.recyclerview.widget.RecyclerView

@@ -22,17 +22,19 @@ public class FreeItemAdapter extends BaseAdapter<IndexEntity.FreeListBean.ListBe
     protected BaseViewHolder getViewHolder(View view) {
         return new BroadcastItemViewHolder(view);
     }
-    class BroadcastItemViewHolder extends BaseViewHolder<IndexEntity.FreeListBean.ListBeanX>{
 
-        TextView tvTitle,tvSubTitle;
+    class BroadcastItemViewHolder extends BaseViewHolder<IndexEntity.FreeListBean.ListBeanX> {
+
+        TextView tvTitle, tvSubTitle;
         TextView tvNum;
         CustomRoundAngleImageView imageView;
+
         public BroadcastItemViewHolder(View itemView) {
             super(itemView);
-            tvTitle=bindView(R.id.tv_title);
-            tvNum=bindView(R.id.tv_num);
-            tvSubTitle=bindView(R.id.tv_sub_title);
-            imageView=bindView(R.id.image);
+            tvTitle = bindView(R.id.tv_title);
+            tvNum = bindView(R.id.tv_num);
+            tvSubTitle = bindView(R.id.tv_sub_title);
+            imageView = bindView(R.id.image);
         }
 
         @Override
@@ -41,6 +43,7 @@ public class FreeItemAdapter extends BaseAdapter<IndexEntity.FreeListBean.ListBe
 //            tvNum.setText(listBean.getC);//todo
             tvTitle.setText(listBean.getTitle());
             tvSubTitle.setText(listBean.getContent());
+            tvNum.setText(listBean.getNum().equals("-1") ? "0" : listBean.getNum());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

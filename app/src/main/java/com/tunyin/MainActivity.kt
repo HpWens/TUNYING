@@ -112,7 +112,6 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
                 when (id) {
                     R.id.nav_order -> {
                         startActivity(MyOrderActivity.newInstance(mContext))
-
                     }
                     R.id.nav_timer -> {
                         drawer_layout.closeDrawer(GravityCompat.START)

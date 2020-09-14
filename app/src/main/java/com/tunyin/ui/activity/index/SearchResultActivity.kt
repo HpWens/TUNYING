@@ -95,7 +95,7 @@ class SearchResultActivity : BaseInjectActivity<SearchResultPresenter>(), TabLay
 
 //        for (i in 0 until mTitles.size) {
 //            tablayout.addTab(tablayout.newTab().setText(mTitles[i]))
-////            tablayout.addTab(tablayout.newTab().setTag(i))
+//            tablayout.addTab(tablayout.newTab().setTag(i))
 //        }
 
         tablayout.addOnTabSelectedListener(this)
