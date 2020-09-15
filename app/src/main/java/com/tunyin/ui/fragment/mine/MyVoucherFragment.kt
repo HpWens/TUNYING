@@ -1,6 +1,7 @@
 package com.tunyin.ui.fragment.mine
 
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tunyin.R
 import com.tunyin.base.BaseRefreshFragment
@@ -8,7 +9,8 @@ import com.tunyin.mvp.contract.mine.VoucherContract
 import com.tunyin.mvp.model.mine.VoucherEntity
 import com.tunyin.mvp.presenter.mine.VoucherPresenter
 import com.tunyin.ui.adapter.mine.VoucherAdapter
-import kotlinx.android.synthetic.main.activity_search_result.*
+import kotlinx.android.synthetic.main.activity_search_result.recycler
+import kotlinx.android.synthetic.main.fragment_voucher.*
 
 /**
  * create by wangrongchao
@@ -34,12 +36,13 @@ class MyVoucherFragment : BaseRefreshFragment<VoucherPresenter, VoucherEntity>()
         mAdapter?.dataList = voucherEntity.list
         recycler?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
         recycler?.adapter = mAdapter
+
+        empty_layout.visibility = if (voucherEntity.list == null || voucherEntity.list.isEmpty()) View.VISIBLE else View.GONE
     }
 
     override fun initWidget() {
         type = arguments?.getString("type")
         type?.let { mPresenter.getVoucher("0", "20", it) }
-
     }
 
     companion object {

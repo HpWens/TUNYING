@@ -1,5 +1,6 @@
 package com.tunyin.ui.adapter.mine
 
+import android.graphics.Color
 import android.view.View
 import com.tunyin.R
 import com.tunyin.base.BaseAdapter
@@ -30,15 +31,15 @@ class DepositAdapter : BaseAdapter<MyWalletEntity.RechargeListBean>() {
 
         override fun bindData(bean: MyWalletEntity.RechargeListBean) {
             itemView.tv_price.text = String.format("¥%s", bean.money)
-            itemView.tv_diamond.text = String.format("%s钻石", bean.note)
+            itemView.tv_diamond.text = String.format("%s 钻石", bean.note)
             if (defItem == position) {
                 itemView.tv_price.setTextColor(AppUtils.getColor(R.color.white))
                 itemView.tv_diamond.setTextColor(AppUtils.getColor(R.color.white))
                 itemView.ly_contain.setBackgroundResource(R.drawable.shape_gradient_blue_corners)
 
             } else {
-                itemView.tv_price.setTextColor(AppUtils.getColor(R.color.black))
-                itemView.tv_diamond.setTextColor(AppUtils.getColor(R.color.color_67D0F0))
+                itemView.tv_price.setTextColor(Color.parseColor("#7A7A7A"))
+                itemView.tv_diamond.setTextColor(AppUtils.getColor(R.color.black))
                 itemView.ly_contain.setBackgroundResource(R.drawable.shape_bg_frame_gray_oval_3dp)
             }
 

@@ -48,5 +48,9 @@
     <color name="transpaent_bg">#00000000</color>
     <color name="translucent">#00FFFFFF</color>
     <color name="translucent_white">#80FFFFFF</color>
+    <color name="color_ffffff">#ffffff</color>
+    <color name="color_000000">#000000</color>
+    <color name="color_e5e5e5">#e5e5e5</color>
+    <color name="color_f5f5f5">#f5f5f5</color>
 
 </resources>

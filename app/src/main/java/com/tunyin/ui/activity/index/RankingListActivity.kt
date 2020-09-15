@@ -14,7 +14,7 @@ import com.tunyin.ui.adapter.PagerAdapter
 import com.tunyin.ui.fragment.index.RankingListFragment
 import com.tunyin.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_ranking_list.*
-import java.util.ArrayList
+import java.util.*
 
 /**
  * create by wangrongchao

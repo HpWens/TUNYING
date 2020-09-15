@@ -26,7 +26,7 @@
             android:layout_centerInParent="true"
             android:text="个人设置"
             android:textColor="@color/black"
-            android:textSize="16sp"></TextView>
+            android:textSize="18sp"></TextView>
 
     </RelativeLayout>
 
@@ -38,7 +38,7 @@
     <RelativeLayout
         android:id="@+id/rl_header"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="50dp"
         android:background="@color/white"
         android:onClick="onHeader">
 
@@ -48,8 +48,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
             android:text="头像"
-            android:textColor="@color/black"
-            android:textSize="16sp"></TextView>
+            android:textColor="#565656"
+            android:textSize="15sp"></TextView>
 
         <ImageView
             android:id="@+id/iv_header"
@@ -79,10 +79,10 @@
 
     <RelativeLayout
         android:id="@+id/rl_nick"
-        android:onClick="onNick"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:background="@color/white">
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:onClick="onNick">
 
         <TextView
             android:layout_width="wrap_content"
@@ -90,8 +90,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
             android:text="昵称"
-            android:textColor="@color/black"
-            android:textSize="16sp"></TextView>
+            android:textColor="#565656"
+            android:textSize="15sp"></TextView>
 
         <TextView
             android:id="@+id/tv_nick"
@@ -115,7 +115,7 @@
     <RelativeLayout
         android:id="@+id/fl_password"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="50dp"
         android:background="@color/white"
         android:onClick="onPassword">
 
@@ -125,8 +125,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
             android:text="修改密码"
-            android:textColor="@color/black"
-            android:textSize="16sp"></TextView>
+            android:textColor="#565656"
+            android:textSize="15sp"></TextView>
 
         <TextView
             android:id="@+id/tv_password"
@@ -150,7 +150,7 @@
     <RelativeLayout
         android:id="@+id/rl_sex"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="50dp"
         android:background="@color/white"
         android:onClick="onSex">
 
@@ -160,8 +160,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
             android:text="性别"
-            android:textColor="@color/black"
-            android:textSize="16sp"></TextView>
+            android:textColor="#565656"
+            android:textSize="15sp"></TextView>
 
         <TextView
             android:id="@+id/tv_sex"
@@ -185,7 +185,7 @@
     <RelativeLayout
         android:id="@+id/fl_day"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="50dp"
         android:background="@color/white"
         android:onClick="onDay">
 
@@ -195,8 +195,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
             android:text="出生年月"
-            android:textColor="@color/black"
-            android:textSize="16sp"></TextView>
+            android:textColor="#565656"
+            android:textSize="15sp"></TextView>
 
         <TextView
             android:id="@+id/tv_day"

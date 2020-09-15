@@ -23,6 +23,7 @@ import com.tunyin.ui.dialog.CacheDialog;
 import com.tunyin.ui.dialog.VersionDialog;
 import com.tunyin.utils.DataCleanManager;
 import com.tunyin.utils.eye.Eyes;
+import com.tunyin.widget.dialog.ExitDialog;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.callback.DownloadProgressCallBack;
 import com.zhouyou.http.exception.ApiException;
@@ -111,13 +112,15 @@ public class SettingActivity extends BaseInjectActivity<SettingPresenter> implem
             startActivity(new Intent(this, FeedbackActivity.class));
         });
 
-        findViewById(R.id.tv_exit).setOnClickListener(v -> {
-            SelfBean.getInstance().setToken("");
-            Intent intent = LoginActivity.newInstance(this);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
-        });
+        findViewById(R.id.tv_exit).setOnClickListener(v -> new ExitDialog(this, isExit -> {
+            if (isExit) {
+                SelfBean.getInstance().setToken("");
+                Intent intent = LoginActivity.newInstance(SettingActivity.this);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        }).show());
 
         mPresenter.getUserInfo();
     }

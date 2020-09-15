@@ -4,8 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shape_gradient_blue"
     android:orientation="vertical">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/home_header_bg"></ImageView>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -14,7 +20,7 @@
         android:layout_marginTop="25dp"
         android:background="@color/transparent"
         app:contentInsetStart="0dp"
-        app:navigationIcon="@mipmap/left_arrow"
+        app:navigationIcon="@mipmap/ic_white_back"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:title=" ">
@@ -26,7 +32,7 @@
             android:layout_gravity="center"
             android:text="付费精选"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="18sp"
             tools:text="登录" />
 
         <TextView
@@ -35,8 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginRight="16dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:visibility="gone"
             tools:text="右标题"
             tools:visibility="gone" />
@@ -47,7 +53,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="92dp"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:visibility="gone">
 
     </LinearLayout>
 
@@ -55,20 +62,19 @@
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="10dp" />
+        android:layout_below="@+id/toolbar" />
 
 
     <ProgressBar
         android:id="@+id/loading_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_gravity="center"
         android:indeterminate="true"
         android:visibility="gone"
-        tools:visibility="visible"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        tools:visibility="visible" />
 
 
 </RelativeLayout>

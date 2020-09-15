@@ -135,7 +135,7 @@ class MineFragment : BaseInjectFragment<UploadFilePresenter>(), UploadFileContra
 
             }
             rl_msg -> {
-                val intent = Intent(activity, MyMsgActivity::class.java)
+                val intent = Intent(activity, MyMsgActivity2::class.java)
                 activity?.startActivity(intent)
 
             }

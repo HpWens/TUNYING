@@ -1,5 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <style name="dialogBottomAnim" parent="android:Animation"> 
+        <item name="android:windowEnterAnimation">@anim/bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/bottom_out</item> 
+    </style>
+
     <!-- Navigation Header -->
     <style name="NavPage">
         <item name="android:layout_width">fill_parent</item>

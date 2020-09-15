@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <include layout="@layout/layout_toolbar" />
 
     <com.flyco.tablayout.CommonTabLayout
@@ -13,7 +14,7 @@
         android:background="@color/white"
         android:paddingBottom="3dp"
         app:layout_scrollFlags="scroll"
-        app:tl_indicator_color="@color/gray_light"
+        app:tl_indicator_color="@color/color_67D0F0"
         app:tl_indicator_height="2dp"
         app:tl_indicator_width="50dp"
         app:tl_textSelectColor="@color/color_67D0F0"
@@ -24,6 +25,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/mViewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/color_ffffff" />
 
 </LinearLayout>

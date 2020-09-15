@@ -58,8 +58,6 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
         priceList.addAll(myWalletEntity.rechargeList)
         depositAdapter.dataList = priceList
         depositAdapter.notifyDataSetChanged()
-
-
     }
 
     override fun initWidget() {
@@ -110,7 +108,7 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
     override fun onClick(p0: View?) {
         when (p0) {
             tv_right_title -> {
-                val intent = Intent(mContext, TransactionRecordsActivity::class.java)
+                val intent = Intent(mContext, TransactionRecordsActivity2::class.java)
                 mContext?.startActivity(intent)
 
             }

@@ -18,7 +18,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginTop="13dp"
             android:layout_weight="2"
-            android:src="@mipmap/left_arrow" />
+            android:src="@mipmap/ic_white_back" />
 
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/mTabLayout"
@@ -34,9 +34,9 @@
             app:tl_indicator_color="@color/white"
             app:tl_indicator_height="2dp"
             app:tl_indicator_width="50dp"
-            app:tl_textSelectColor="@color/white"
-            app:tl_textUnselectColor="@color/gray_light"
-            app:tl_textsize="14sp" />
+            app:tl_textSelectColor="#FFFFFF"
+            app:tl_textUnselectColor="#212179"
+            app:tl_textsize="18sp" />
 
         <ImageView
             android:layout_width="0dp"

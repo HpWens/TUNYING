@@ -80,10 +80,12 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.activity.mine.TransactionRecordsActivity" />
+        <activity android:name=".ui.activity.mine.TransactionRecordsActivity2" />
         <activity android:name=".ui.activity.mine.TunYinVIPDepositActivity" />
         <activity android:name=".ui.activity.mine.MyVoucherActivity" />
         <activity android:name=".ui.activity.mine.MyCollectActivity" />
         <activity android:name=".ui.activity.mine.MyMsgActivity" />
+        <activity android:name=".ui.activity.mine.MyMsgActivity2" />
         <activity android:name=".ui.activity.mine.MyOrderActivity" />
         <activity android:name=".ui.activity.mine.RegisterActivity" />
         <activity

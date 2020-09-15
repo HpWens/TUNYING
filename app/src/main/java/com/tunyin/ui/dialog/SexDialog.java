@@ -19,6 +19,7 @@ public class SexDialog extends AlertDialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setBackgroundDrawableResource(R.color.transparent);
         setContentView(R.layout.dialog_sex);
 
         findViewById(R.id.tv_man).setOnClickListener(v -> {

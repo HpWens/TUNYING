@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="260dp"
     android:background="@drawable/shape_gradient_blue"
     android:orientation="vertical">
 
@@ -10,12 +10,9 @@
         android:id="@+id/rl_profile"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_centerInParent="true"
         app:cardUseCompatPadding="true"
-        app:cornerRadius="13dp"
+        app:cornerRadius="15dp"
         app:shadowSize="8dp"
         app:shadowStartAlpha="30">
 
@@ -27,7 +24,7 @@
             <ImageView
                 android:id="@+id/image_top"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="128dp"
                 android:scaleType="centerCrop"
                 android:src="#fed256" />
 
@@ -37,14 +34,14 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/image_top"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
                 android:singleLine="true"
                 android:text="请音乐睡眠区"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/tv_sub_title_top"
@@ -52,14 +49,14 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_title_top"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
                 android:gravity="center"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
                 android:singleLine="true"
                 android:text="请音乐睡眠区sfdihi"
-                android:textColor="@color/gray_light"
-                android:textSize="16sp" />
+                android:textColor="#9A9A9A"
+                android:textSize="13sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,25 +64,24 @@
                 android:layout_below="@+id/tv_sub_title_top"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
+                android:paddingTop="14dp"
                 android:paddingBottom="10dp">
 
                 <TextView
                     android:id="@+id/tv_price_tip_top"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="钻石"
-                    android:textColor="#67D0F0"
-                    android:textSize="13sp" />
+                    android:text="钻石  "
+                    android:textColor="#908AEE"
+                    android:textSize="10sp" />
 
                 <TextView
                     android:id="@+id/tv_price_top"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
                     android:text="55"
-                    android:textColor="#67D0F0"
-                    android:textSize="18sp" />
+                    android:textColor="#908AEE"
+                    android:textSize="10sp" />
             </LinearLayout>
 
 
@@ -97,7 +93,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:src="@mipmap/icon_rank_gold" />
+        android:src="@mipmap/icon_rank_gold"
+        android:visibility="gone" />
 
 
 </RelativeLayout>

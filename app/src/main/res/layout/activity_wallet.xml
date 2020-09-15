@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -55,10 +54,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:text="请选择充值金额"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textColor="#222"
+                android:textSize="15sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler"
@@ -94,8 +93,8 @@
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="30dp"
                 android:text="支付方式"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textColor="#222"
+                android:textSize="18sp" />
 
             <RelativeLayout
                 android:id="@+id/rl_wechat"
@@ -108,10 +107,10 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:drawableLeft="@mipmap/icon_wechat_pay"
-                    android:drawablePadding="13dp"
+                    android:drawablePadding="10dp"
                     android:text="微信支付"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textColor="#565656"
+                    android:textSize="15sp" />
 
                 <RadioButton
                     android:id="@+id/rb_wechat"
@@ -126,7 +125,8 @@
                 android:layout_height="0.5dp"
                 android:layout_marginStart="14dp"
                 android:layout_marginEnd="14dp"
-                android:background="@drawable/divider_line" />
+                android:background="@drawable/divider_line"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/rl_alipay"
@@ -139,10 +139,10 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:drawableLeft="@mipmap/icon_alipay"
-                    android:drawablePadding="13dp"
+                    android:drawablePadding="10dp"
                     android:text="支付宝"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textColor="#565656"
+                    android:textSize="15sp" />
 
                 <RadioButton
                     android:id="@+id/rb_alipay"
@@ -157,7 +157,8 @@
                 android:layout_height="0.5dp"
                 android:layout_marginStart="14dp"
                 android:layout_marginEnd="14dp"
-                android:background="@drawable/divider_line" />
+                android:background="@drawable/divider_line"
+                android:visibility="gone" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
@@ -167,9 +168,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/bg_red_corners"
         android:gravity="center"
@@ -182,8 +182,8 @@
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:text="确认支付"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textColor="#FEFEFE"
+            android:textSize="15sp" />
     </LinearLayout>
 
 

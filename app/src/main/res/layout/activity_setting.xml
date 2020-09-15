@@ -26,14 +26,14 @@
             android:layout_centerInParent="true"
             android:text="设置"
             android:textColor="@color/black"
-            android:textSize="16sp"></TextView>
+            android:textSize="18sp"></TextView>
 
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rl_person"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="50dp"
         android:background="@color/white">
 
         <TextView
@@ -42,8 +42,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
             android:text="个人信息"
-            android:textColor="@color/black"
-            android:textSize="16sp"></TextView>
+            android:textColor="#565656"
+            android:textSize="15sp"></TextView>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
     <RelativeLayout
         android:id="@+id/rl_msg"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="50dp"
         android:background="@color/white">
 
         <TextView
@@ -71,8 +71,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
             android:text="新消息通知"
-            android:textColor="@color/black"
-            android:textSize="16sp"></TextView>
+            android:textColor="#565656"
+            android:textSize="15sp"></TextView>
 
         <ImageView
             android:id="@+id/iv_message"
@@ -92,7 +92,7 @@
     <RelativeLayout
         android:id="@+id/fl_cache"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="50dp"
         android:background="@color/white">
 
         <TextView
@@ -101,8 +101,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
             android:text="清除缓存"
-            android:textColor="@color/black"
-            android:textSize="16sp"></TextView>
+            android:textColor="#565656"
+            android:textSize="15sp"></TextView>
 
         <TextView
             android:id="@+id/tv_cache_size"
@@ -125,7 +125,7 @@
     <RelativeLayout
         android:id="@+id/rl_update"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="50dp"
         android:background="@color/white">
 
         <TextView
@@ -134,8 +134,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
             android:text="检查更新"
-            android:textColor="@color/black"
-            android:textSize="16sp"></TextView>
+            android:textColor="#565656"
+            android:textSize="15sp"></TextView>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -154,7 +154,7 @@
     <RelativeLayout
         android:id="@+id/fl_feed"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="50dp"
         android:background="@color/white">
 
         <TextView
@@ -163,8 +163,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
             android:text="意见反馈"
-            android:textColor="@color/black"
-            android:textSize="16sp"></TextView>
+            android:textColor="#565656"
+            android:textSize="15sp"></TextView>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -179,20 +179,21 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="#EEEEEE"></View>
+        android:background="#EEEEEE"
+        android:visibility="gone"></View>
 
     <TextView
         android:id="@+id/tv_exit"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginRight="12dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/setting_btn_shape"
         android:gravity="center"
         android:text="退出登录"
-        android:textColor="@color/white"
-        android:textSize="14sp"></TextView>
+        android:textColor="#FEFEFE"
+        android:textSize="15sp"></TextView>
 
     <View
         android:layout_width="0dp"
@@ -205,6 +206,7 @@
         android:layout_marginBottom="16dp"
         android:gravity="center"
         android:text="Copyright@2019-2020 \n 厦门星空大海网络科技有限公司版权所有"
-        android:textSize="12sp"></TextView>
+        android:textColor="#9A9A9A"
+        android:textSize="13sp"></TextView>
 
 </LinearLayout>

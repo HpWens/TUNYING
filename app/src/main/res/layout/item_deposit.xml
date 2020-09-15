@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/ly_contain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/ly_contain"
-    android:gravity="center"
-    android:paddingTop="20dp"
-    android:paddingBottom="20dp"
     android:layout_margin="7dp"
-    android:background="@drawable/shape_bg_frame_gray_oval_3dp">
+    android:background="@drawable/shape_bg_frame_gray_oval_3dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="14dp"
+    android:paddingBottom="14dp">
+
     <TextView
         android:id="@+id/tv_diamond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="100钻石"
+        android:textColor="@color/color_67D0F0"
         android:textSize="14sp"
-        android:textColor="@color/color_67D0F0"/>
+        tools:text="100钻石" />
 
     <TextView
         android:id="@+id/tv_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="¥100"
-        android:textSize="14sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textSize="14sp" />
 
 
 </LinearLayout>

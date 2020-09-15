@@ -73,6 +73,7 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
 
     // 未被选中的图标
     private val mIconUnSelectIds = intArrayOf(R.mipmap.tab_home_unselect, R.mipmap.tab_discovery_unselect, R.mipmap.tab_perchand_unselect, R.mipmap.tab_mine_ubselect)
+
     // 被选中的图标
     private val mIconSelectIds = intArrayOf(R.mipmap.tab_home, R.mipmap.tab_discovery, R.mipmap.tab_perchand, R.mipmap.tab_mine)
 
@@ -115,7 +116,7 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
                     }
                     R.id.nav_timer -> {
                         drawer_layout.closeDrawer(GravityCompat.START)
-                        startActivity(MyMsgActivity.newInstance(mContext))
+                        startActivity(Intent(mContext, MyMsgActivity2::class.java))
                     }
                     R.id.nav_history -> {
                         startActivity(MyCollectActivity.newInstance(mContext))

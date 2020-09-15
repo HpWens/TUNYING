@@ -36,6 +36,7 @@ class MyVoucherActivity : BaseActivity(), OnTabSelectListener, ViewPager.OnPageC
         mTabEntities.add(FlyoutTabEntity("可使用"))
         mTabEntities.add(FlyoutTabEntity("已使用"))
         mTabEntities.add(FlyoutTabEntity("已失效"))
+
         fragments.add(MyVoucherFragment.newInstance("1"))
         fragments.add(MyVoucherFragment.newInstance("2"))
         fragments.add(MyVoucherFragment.newInstance("3"))
