@@ -27,7 +27,7 @@ public class TransactionRecordsActivity2 extends BaseActivity {
 
     @Override
     protected void initView() {
-        Eyes.setStatusBarColor(this, Color.parseColor("#FFFFFF"));
+        Eyes.setStatusBarColor(this, Color.parseColor("#FFFFFF"), true);
 
         mToolbar = findViewById(R.id.toolbar);
         mTvTitle = findViewById(R.id.tv_title);

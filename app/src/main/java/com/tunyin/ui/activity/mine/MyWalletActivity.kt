@@ -14,6 +14,7 @@ import com.tunyin.R
 import com.tunyin.ToastUtils
 import com.tunyin.alipay.PayResult
 import com.tunyin.base.BaseInjectActivity
+import com.tunyin.event.WXPayEvent
 import com.tunyin.mvp.contract.mine.MyWalletContract
 import com.tunyin.mvp.model.mine.MyWalletEntity
 import com.tunyin.mvp.model.mine.PayInfoEntity
@@ -24,6 +25,7 @@ import com.tunyin.utils.StatusBarUtil
 import com.tunyin.utils.WechatUtil
 import kotlinx.android.synthetic.main.activity_wallet.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
+import org.greenrobot.eventbus.Subscribe
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.set
@@ -236,6 +238,26 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mPresenter.getMyWallet()
+    }
+
+    @Subscribe
+    fun onWXPayEvent(event: WXPayEvent?) {
+        if (event != null) {
+            if (event.isSuccess) {
+                ToastUtils.showToast("充值成功")
+            } else {
+                ToastUtils.showToast("充值失败")
+            }
+        }
+    }
+
+    override fun isRegisterEventBus(): Boolean {
+        return true
     }
 
 }
