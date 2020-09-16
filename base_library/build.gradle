@@ -91,7 +91,7 @@ dependencies {
     //UI库
     api "com.github.tamsiree.RxTool:RxUI:v2.4.1"
     //功能库（Zxing扫描与生成二维码条形码 支付宝 微信）
-    api "com.github.tamsiree.RxTool:RxFeature:v2.4.1"
+    // api "com.github.tamsiree.RxTool:RxFeature:v2.4.1"
 
     // rx permission
     // api 'com.github.tbruyelle:rxpermissions:0.10.2'

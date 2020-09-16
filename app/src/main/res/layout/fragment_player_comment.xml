@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/shape_bg_frame_gray_oval_3dp"
             android:orientation="horizontal"
@@ -24,7 +25,7 @@
             <EditText
                 android:id="@+id/et_commend"
                 android:layout_width="0dp"
-                android:layout_height="35dp"
+                android:layout_height="match_parent"
                 android:layout_weight="8"
                 android:background="@null"
                 android:hint="说点什么吧"
@@ -34,13 +35,12 @@
             <TextView
                 android:id="@+id/tv_commend"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/shape_bg_red_corners"
+                android:gravity="center"
                 android:paddingStart="20dp"
-                android:paddingTop="3dp"
                 android:paddingEnd="20dp"
-                android:paddingBottom="3dp"
                 android:text="评论"
                 android:textColor="@color/white" />
 
@@ -59,13 +59,13 @@
 
     <ProgressBar
         android:id="@+id/loading_progress_bar"
-        tools:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
         android:indeterminate="true"
-        android:visibility="gone" />
+        android:visibility="gone"
+        tools:visibility="visible" />
 
 </FrameLayout>

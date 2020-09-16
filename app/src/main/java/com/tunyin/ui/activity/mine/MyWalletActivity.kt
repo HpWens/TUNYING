@@ -13,9 +13,7 @@ import com.alipay.sdk.app.PayTask
 import com.tunyin.R
 import com.tunyin.ToastUtils
 import com.tunyin.alipay.PayResult
-import com.tunyin.base.BaseActivity
 import com.tunyin.base.BaseInjectActivity
-import com.tunyin.listener.OnItemClickListener
 import com.tunyin.mvp.contract.mine.MyWalletContract
 import com.tunyin.mvp.model.mine.MyWalletEntity
 import com.tunyin.mvp.model.mine.PayInfoEntity
@@ -23,9 +21,12 @@ import com.tunyin.mvp.presenter.mine.MyWalletPresenter
 import com.tunyin.ui.adapter.mine.DepositAdapter
 import com.tunyin.utils.AppUtils
 import com.tunyin.utils.StatusBarUtil
+import com.tunyin.utils.WechatUtil
 import kotlinx.android.synthetic.main.activity_wallet.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
-import java.util.HashMap
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.set
 
 /**
  * 我的钱包
@@ -147,7 +148,7 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
                 }
 
                 if (TextUtils.equals("wechatPay", payType.toString())) {
-                    ToastUtils.showToast("微信支付接入中，请先用支付宝")
+                    // ToastUtils.showToast("微信支付接入中，请先用支付宝")
                 }
 
                 val map = HashMap<String, String>()
@@ -168,8 +169,22 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
 
     override fun getPayInfoSuc(payInfoEntity: PayInfoEntity) {
         hideLoading()
-        alipay(payInfoEntity.payInfoData.alipayData)
-
+        if (payInfoEntity.payInfoData == null) {
+            return
+        }
+        if (TextUtils.isEmpty(payInfoEntity.payInfoData.alipayData)) {
+            var payReq = payInfoEntity.payInfoData
+            WechatUtil.getInstance().payOrder(this@MyWalletActivity,
+                    payReq.appid,
+                    payReq.partnerid,
+                    payReq.prepayid,
+                    payReq.packages,
+                    payReq.noncestr,
+                    payReq.timestamp,
+                    payReq.sign)
+        } else {
+            alipay(payInfoEntity.payInfoData.alipayData)
+        }
     }
 
     val SDK_PAY_FLAG = 1
@@ -197,6 +212,7 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
             when (msg.what) {
                 SDK_PAY_FLAG -> {
                     val payResult = PayResult(msg.obj as Map<String, String>)
+
                     /**
                      * 对于支付结果，请商户依赖服务端的异步通知结果。同步通知结果，仅作为支付结束的通知。
                      */

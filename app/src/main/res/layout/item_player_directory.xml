@@ -1,40 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:paddingStart="20dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
     android:paddingEnd="20dp">
 
     <TextView
         android:id="@+id/tv_serial_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="第1集"
-        android:textSize="12sp"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="16dp"
+        android:text="01"
+        android:textColor="#DF1111"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/tv_try"
+        android:layout_alignBaseline="@+id/tv_serial_num"
+        android:layout_marginStart="22dp"
+        android:layout_marginRight="12dp"
+        android:layout_toRightOf="@+id/tv_serial_num"
+        android:singleLine="true"
         android:text="花好月圆"
-        android:layout_marginStart="10dp"
-        android:textSize="12sp"
-        android:textColor="@color/black"
-        android:layout_toRightOf="@+id/tv_serial_num"/>
+        android:textColor="#DF1111"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_alignLeft="@+id/tv_title"
+        android:layout_marginTop="6dp"
         android:text="16:50"
-        android:textSize="12sp"
-        android:textColor="@color/font_gray"
-        android:layout_alignParentRight="true"/>
+        android:textColor="#999"
+        android:textSize="10sp" />
 
+    <com.meis.base.mei.widget.radius.RadiusTextView
+        android:id="@+id/tv_voice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_serial_num"
+        android:layout_marginTop="4dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="音频"
+        android:textColor="#999"
+        android:textSize="10sp"
+        app:rv_radius="4dp"
+        app:rv_strokeColor="#ACACAC"
+        app:rv_strokeWidth="0.5dp" />
 
+    <com.meis.base.mei.widget.radius.RadiusTextView
+        android:id="@+id/tv_try"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="8dp"
+        android:paddingTop="2dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="2dp"
+        android:text="试听"
+        android:textColor="#999"
+        android:textSize="13sp"
+        app:rv_radius="8dp"
+        app:rv_strokeColor="#999"
+        app:rv_strokeWidth="0.5dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/tv_voice"
+        android:layout_marginTop="12dp"
+        android:background="#ECECEC"></View>
 
 </RelativeLayout>
