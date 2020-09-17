@@ -1,6 +1,7 @@
 package com.tunyin.utils;
 
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.CallBack;
 
 import io.reactivex.Observable;
 
@@ -32,5 +33,13 @@ public class HttpUtils {
                 .params("offset", ((page - 1) * 20) + "")
                 .params("limit", "20")
                 .execute(String.class);
+    }
+
+    // 微信登录
+    public void wechatLogin(String openId, CallBack<String> callBack) {
+        EasyHttp.post("api/user/thirdPartyLogin")
+                .params("type", "wechat")
+                .params("openid", openId)
+                .execute(callBack);
     }
 }

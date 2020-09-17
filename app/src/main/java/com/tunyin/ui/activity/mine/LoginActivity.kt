@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.os.IBinder
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.tunyin.MainActivity
@@ -17,8 +16,11 @@ import com.tunyin.mvp.contract.mine.LoginContract
 import com.tunyin.mvp.model.SelfBean
 import com.tunyin.mvp.model.mine.LoginEntity
 import com.tunyin.mvp.presenter.mine.LoginPresenter
+import com.tunyin.utils.HttpUtils
 import com.tunyin.utils.SocialUtil
 import com.tunyin.utils.StatusBarUtil
+import com.zhouyou.http.callback.SimpleCallBack
+import com.zhouyou.http.exception.ApiException
 import kotlinx.android.synthetic.main.activity_login.*
 import net.arvin.socialhelper.callback.SocialLoginCallback
 import net.arvin.socialhelper.entities.ThirdInfoEntity
@@ -95,7 +97,18 @@ class LoginActivity : BaseInjectActivity<LoginPresenter>(), View.OnClickListener
                 // ToastUtils.showToast("还没开放")
                 SocialUtil.INSTANCE.socialHelper.loginWX(this, object : SocialLoginCallback {
                     override fun loginSuccess(info: ThirdInfoEntity?) {
-                        Log.e("-------------------", "************" + info);
+                        var openId = info?.wxInfo?.openid
+                        openId?.let {
+                            HttpUtils.getInstance().wechatLogin(it, object : SimpleCallBack<String>() {
+                                override fun onSuccess(t: String?) {
+
+                                }
+
+                                override fun onError(e: ApiException?) {
+
+                                }
+                            })
+                        }
                     }
 
                     override fun socialError(msg: String?) {

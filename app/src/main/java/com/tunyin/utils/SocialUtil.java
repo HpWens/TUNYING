@@ -17,7 +17,7 @@ public enum SocialUtil {
         socialHelper = new SocialHelper.Builder()
                 .setQqAppId("qqAppId")
                 .setWxAppId("wx35481040e7c07c5f")
-                .setWxAppSecret("f34a224e5d40536e0d69e61d2f24f579")
+                .setWxAppSecret("77eac078531ef77316212eae55c7ea76")
                 .setWbAppId("wbAppId")
                 .setWbRedirectUrl("wbRedirectUrl")
                 .build();
