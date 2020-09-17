@@ -18,18 +18,18 @@ public class HttpUtils {
 
     // 交易记录
     public Observable<String> getTransactionRecordList(int page, int type) {
-        return EasyHttp.get("api/user/transactionRecord")
+        return EasyHttp.post("api/user/transactionRecord")
                 .params("type", type + "")
-                .params("offset", (page * 20) + "")
+                .params("offset", ((page - 1) * 20) + "")
                 .params("limit", "20")
                 .execute(String.class);
     }
 
     // 我的消息
     public Observable<String> getMyMsgList(int page, int type) {
-        return EasyHttp.get("api/user/transactionRecord")
+        return EasyHttp.post("api/message/myMessage")
                 .params("type", type + "")
-                .params("offset", (page * 20) + "")
+                .params("offset", ((page - 1) * 20) + "")
                 .params("limit", "20")
                 .execute(String.class);
     }

@@ -22,6 +22,8 @@ public class RecordsAdapter extends MeiBaseAdapter<RecordsEntity> implements Loa
 
     @Override
     protected void convert(@NotNull BaseViewHolder baseViewHolder, @Nullable RecordsEntity recordsEntity) {
-
+        baseViewHolder.setText(R.id.tv_name, getNonEmpty(recordsEntity.title))
+                .setText(R.id.tv_time, getNonEmpty(recordsEntity.createDate))
+                .setText(R.id.tv_price, (isConsumed ? "-" : "+") + recordsEntity.money + "钻石");
     }
 }

@@ -20,7 +20,6 @@ import com.tunyin.ui.activity.index.SearchActivity
 import com.tunyin.ui.activity.mine.LoginActivity
 import com.tunyin.ui.adapter.discovery.DiscoveryRVAdapter
 import com.tunyin.ui.adapter.index.*
-import com.tunyin.utils.EventBusUtil
 import com.tunyin.utils.ImageUtil
 import kotlinx.android.synthetic.main.fragment_index.*
 import org.greenrobot.eventbus.EventBus
@@ -212,11 +211,11 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
         mDiscoveryRVAdapter?.notifyDataSetChanged()
     }
 
-    override fun showRefreshHotAnchor(anchorListBean: IndexEntity.AnchorListBean) {
+    override fun showRefreshHotAnchor(anchorListBean: List<IndexEntity.AnchorListBean>) {
 
         mAnchorList.clear()
         var indexEntity = IndexEntity()
-        indexEntity?.anchorList.add(anchorListBean)
+        indexEntity?.anchorList.addAll(anchorListBean)
         mAnchorList.add(indexEntity)
         mDiscoveryRVAdapter?.notifyDataSetChanged()
     }
@@ -239,10 +238,11 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
 
     override fun showError(msg: String) {
         super<IndexContract.View>.showError(msg)
-
         if (msg != null && (msg.contains("token") || msg.contains("Token"))) {
             SelfBean.instance.token = ""
-            startActivity(LoginActivity.newInstance(activity))
+            var intent = LoginActivity.newInstance(activity)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
             return
         }
 

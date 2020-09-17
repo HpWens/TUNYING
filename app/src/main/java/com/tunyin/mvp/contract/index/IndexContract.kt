@@ -13,7 +13,7 @@ class IndexContract {
         fun showRefreshGuessLike(guessLikeBean: IndexEntity.GuessLikeBean)
 
         fun showRefreshSleepTop(sleepTopBean: IndexEntity.SleepTopBean)
-        fun showRefreshHotAnchor(anchorListBean: IndexEntity.AnchorListBean)
+        fun showRefreshHotAnchor(anchorListBean: List<IndexEntity.AnchorListBean>)
         fun showRefreshFree(freeListBean: IndexEntity.FreeListBean)
         fun showRreshFeaturedRecommend(featuredRecommendBean: IndexEntity.FeaturedRecommendBean)
         override fun showError(msg: String){

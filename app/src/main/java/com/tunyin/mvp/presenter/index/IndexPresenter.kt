@@ -16,8 +16,8 @@ class IndexPresenter @Inject constructor(private val mRetrofitHelper: RetrofitHe
     override fun refreshHotAnchor() {
         val subscriber = mRetrofitHelper.refreshHotAnchor()
                 .compose(rxSchedulerHelper())
-                .subscribeWith(object : BaseSubscriber<BaseEntity<IndexEntity.AnchorListBean>>(mView) {
-                    override fun onSuccess(mData: BaseEntity<IndexEntity.AnchorListBean>) {
+                .subscribeWith(object : BaseSubscriber<BaseEntity<List<IndexEntity.AnchorListBean>>>(mView) {
+                    override fun onSuccess(mData: BaseEntity<List<IndexEntity.AnchorListBean>>) {
                         mView?.showRefreshHotAnchor(mData.content)
                     }
                 })

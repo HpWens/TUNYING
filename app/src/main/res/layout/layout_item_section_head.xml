@@ -3,9 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/more_header"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:paddingStart="@dimen/dp15"
-    android:paddingEnd="@dimen/dp15">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp">
 
     <TextView
         android:id="@+id/headTitle"
@@ -34,5 +36,14 @@
         android:text="换一批"
         android:textColor="#999"
         android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/iv_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/arrow_right_icon"
+        android:visibility="gone"></ImageView>
 
 </RelativeLayout>

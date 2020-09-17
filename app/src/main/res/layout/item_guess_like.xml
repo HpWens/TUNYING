@@ -5,10 +5,11 @@
     android:id="@+id/rl_profile"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
     android:orientation="vertical"
     app:cardUseCompatPadding="true"
     app:cornerRadius="15dp"
-    app:shadowSize="5dp"
+    app:shadowSize="3dp"
     app:shadowStartAlpha="15">
 
     <LinearLayout

@@ -39,7 +39,7 @@ class GuideActivity : BaseActivity() {
     override fun initWidget() {
         StatusBarUtil.setTranslucentForImageView(this, 0, null)
 
-        SelfBean.instance.isEnter=true
+        SelfBean.instance.isEnter = true
         setBanner()
 
         bv_banner.setPageSelectedListener(object : OnPageSelectedListener {
@@ -50,8 +50,8 @@ class GuideActivity : BaseActivity() {
                     bv_banner.release()
                     handler.postDelayed(runnable, DELAY_TIME.toLong())
                 }
-                if (position==3){
-                    bv_banner.setOnClickListener(object :View.OnClickListener{
+                if (position == 3) {
+                    bv_banner.setOnClickListener(object : View.OnClickListener {
                         override fun onClick(p0: View?) {
                             ToastUtils.showToast("woshi ")
                         }
@@ -74,7 +74,9 @@ class GuideActivity : BaseActivity() {
      * 跳转到登录界面
      */
     private fun gotoLogin() {
-        startActivity(Intent(this@GuideActivity, LoginActivity::class.java))
+        var intent = Intent(this@GuideActivity, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
         finish()
     }
 

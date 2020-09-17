@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/view_bg"
+        android:layout_width="260dp"
+        android:layout_height="224dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape_white_16dp">
+
+    </View>
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/view_bg"
+        android:layout_alignRight="@+id/view_bg"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="请输入自定义金额"
+        android:textColor="#ff000000"
+        android:textSize="18sp" />
+
+    <com.meis.base.mei.widget.radius.RadiusEditText
+        android:id="@+id/et_amount"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/tv_title"
+        android:layout_alignLeft="@+id/view_bg"
+        android:layout_alignRight="@+id/view_bg"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="42dp"
+        android:gravity="center_vertical"
+        android:hint="请输入自定义金额"
+        android:inputType="number"
+        android:maxLength="8"
+        android:paddingLeft="16dp"
+        app:rv_backgroundColor="#ECECEC"
+        app:rv_radius="15dp"></com.meis.base.mei.widget.radius.RadiusEditText>
+
+    <com.meis.base.mei.widget.radius.RadiusTextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/view_bg"
+        android:layout_alignRight="@+id/view_bg"
+        android:layout_alignBottom="@+id/view_bg"
+        android:layout_marginLeft="42dp"
+        android:layout_marginRight="42dp"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="#ffffff"
+        android:textSize="13sp"
+        app:rv_backgroundColor="#F85353"
+        app:rv_radius="10dp" />
+
+</RelativeLayout>

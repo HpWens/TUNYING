@@ -45,7 +45,7 @@ class RetrofitHelper(private val mApiService: ApiService) {
     fun refreshSleepTop(): Flowable<BaseEntity<IndexEntity.SleepTopBean>> = mApiService.refreshSleepTop()
 
     //首页热门主播换一批
-    fun refreshHotAnchor(): Flowable<BaseEntity<IndexEntity.AnchorListBean>> = mApiService.refreshHotAnchor()
+    fun refreshHotAnchor(): Flowable<BaseEntity<List<IndexEntity.AnchorListBean>>> = mApiService.refreshHotAnchor()
 
     //首页免费版换一批
     fun refreshFree(): Flowable<BaseEntity<IndexEntity.FreeListBean>> = mApiService.refreshFree()

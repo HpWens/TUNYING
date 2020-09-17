@@ -22,20 +22,20 @@
             android:layout_height="200dp"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.Toolbar
+            <LinearLayout
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_marginTop="@dimen/statusbar_view_height"
                 android:background="@color/transpaent_bg"
-                app:contentInsetEnd="0dp"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/main_toolbar_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -45,13 +45,15 @@
                         android:layout_gravity="center"
                         android:textColor="@color/text_color"
                         android:textSize="@dimen/text_size_20"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_action_down" />
+                        android:src="@drawable/ic_action_down"
+                        android:visibility="gone" />
 
 
                     <LinearLayout
@@ -59,7 +61,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="34dp"
                         android:layout_gravity="center"
-                        android:layout_marginEnd="30dp"
+                        android:layout_marginEnd="20dp"
                         android:background="@drawable/main_search_background"
                         android:gravity="center">
 
@@ -82,14 +84,14 @@
 
                 </LinearLayout>
 
-            </androidx.appcompat.widget.Toolbar>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:visibility="gone"
-                android:background="@color/white" />
+                android:background="@color/white"
+                android:visibility="gone" />
         </LinearLayout>
 
 

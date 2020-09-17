@@ -93,6 +93,9 @@ class SearchResultActivity : BaseInjectActivity<SearchResultPresenter>(), TabLay
     override fun initWidget() {
         StatusBarUtil.setTranslucentForImageView(this, 0, null)
 
+        iv_back.setOnClickListener { finish() }
+        tv_cancel.setOnClickListener { finish() }
+
 //        for (i in 0 until mTitles.size) {
 //            tablayout.addTab(tablayout.newTab().setText(mTitles[i]))
 //            tablayout.addTab(tablayout.newTab().setTag(i))

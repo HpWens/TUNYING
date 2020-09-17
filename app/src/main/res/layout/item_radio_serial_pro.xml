@@ -3,17 +3,17 @@
     xmlns:roundiv="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingRight="10dp">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_marginRight="20dp">
+    <com.tunyin.widget.SquareRelativeLayout
+        android:layout_width="105dp"
+        android:layout_height="wrap_content">
 
         <com.tunyin.widget.CustomRoundAngleImageView
             android:id="@+id/iv_bg"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="#fed256"
             roundiv:radius="6dp" />
@@ -46,7 +46,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:src="@mipmap/icon_stop_trangel" />
-    </RelativeLayout>
+    </com.tunyin.widget.SquareRelativeLayout>
 
     <TextView
         android:id="@+id/tv_title"

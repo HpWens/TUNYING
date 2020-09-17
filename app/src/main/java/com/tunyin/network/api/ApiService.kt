@@ -76,7 +76,7 @@ interface ApiService {
      * 首页热门主播换一批
      */
     @POST("api/home/hotAnchor")
-    fun refreshHotAnchor(): Flowable<BaseEntity<IndexEntity.AnchorListBean>>
+    fun refreshHotAnchor(): Flowable<BaseEntity<List<IndexEntity.AnchorListBean>>>
 
     /**
      * 首页免费版换一批

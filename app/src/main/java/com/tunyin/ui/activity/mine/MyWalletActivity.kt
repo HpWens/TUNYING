@@ -2,6 +2,7 @@ package com.tunyin.ui.activity.mine
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Paint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -20,6 +21,7 @@ import com.tunyin.mvp.model.mine.MyWalletEntity
 import com.tunyin.mvp.model.mine.PayInfoEntity
 import com.tunyin.mvp.presenter.mine.MyWalletPresenter
 import com.tunyin.ui.adapter.mine.DepositAdapter
+import com.tunyin.ui.dialog.EditAmountDialog
 import com.tunyin.utils.AppUtils
 import com.tunyin.utils.StatusBarUtil
 import com.tunyin.utils.WechatUtil
@@ -65,6 +67,8 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
 
     override fun initWidget() {
         StatusBarUtil.setColorNoTranslucent(this, AppUtils.getColor(R.color.white))
+
+        tv_protocol.paint.flags = Paint.UNDERLINE_TEXT_FLAG
         tv_title.text = "充值"
         tv_right_title.text = "交易记录"
         tv_right_title.visibility = View.VISIBLE
@@ -74,10 +78,12 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
         rl_wechat.setOnClickListener(this)
         rl_alipay.setOnClickListener(this)
         ly_pay.setOnClickListener(this)
+        et_price.setOnClickListener(this)
 
         depositAdapter = DepositAdapter()
         recycler.layoutManager = GridLayoutManager(mContext, 3)
         depositAdapter.setOnItemClickListener { _, position ->
+            et_price.text = ""
             selectPosition = position
             depositAdapter.setDefSelect(position)
         }
@@ -113,7 +119,6 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
             tv_right_title -> {
                 val intent = Intent(mContext, TransactionRecordsActivity2::class.java)
                 mContext?.startActivity(intent)
-
             }
 
             rb_wechat, rl_wechat -> {
@@ -164,6 +169,17 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
                 showLoading()
                 mPresenter.getPayInfo(map)
 
+            }
+
+            et_price -> {
+                EditAmountDialog(this@MyWalletActivity, EditAmountDialog.OnClickListener { dialog, amount ->
+                    et_price.text = amount + "元"
+
+                    selectPosition = -1
+                    depositAdapter.setDefSelect(-1)
+
+                    dialog.dismiss()
+                }).show()
             }
         }
     }

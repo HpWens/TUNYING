@@ -1,12 +1,11 @@
 package com.tunyin.ui.fragment.mine
 
-import android.app.Activity
 import android.content.Intent
 import android.text.TextUtils
 import android.view.View
 import androidx.fragment.app.FragmentActivity
 import com.tunyin.BaseInjectFragment
-import com.tunyin.MainActivity
+import com.tunyin.PersonalActivity
 import com.tunyin.R
 import com.tunyin.SettingActivity
 import com.tunyin.mvp.contract.UploadFileContract
@@ -68,6 +67,7 @@ class MineFragment : BaseInjectFragment<UploadFilePresenter>(), UploadFileContra
         rl_customer_service.setOnClickListener(this)
         iv_avatar.setOnClickListener(this)
         rl_setting.setOnClickListener(this)
+        fl_personal_info.setOnClickListener(this)
         requestPermission()
 
 //        https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573299081266&di=3539ee4863f614576acd82dec4b0bcb7&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201605%2F09%2F20160509144239_xSTPX.thumb.700_0.jpeg
@@ -155,6 +155,10 @@ class MineFragment : BaseInjectFragment<UploadFilePresenter>(), UploadFileContra
 
                 startActivity(Intent(activity, SettingActivity::class.java))
 
+            }
+
+            fl_personal_info -> {
+                startActivity(Intent(activity, PersonalActivity::class.java))
             }
         }
     }

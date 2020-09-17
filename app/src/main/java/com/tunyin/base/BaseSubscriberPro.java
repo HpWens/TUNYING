@@ -1,5 +1,6 @@
 package com.tunyin.base;
 
+import android.content.Intent;
 import android.text.TextUtils;
 
 import com.tunyin.BaseContract;
@@ -40,7 +41,9 @@ public abstract class BaseSubscriberPro<M> extends ResourceSubscriber<BaseEntity
                 ToastUtils.INSTANCE.showToast(mBaseEntity.desc);
             } else if (TextUtils.equals("401", mBaseEntity.code)) {
                 SelfBean.getInstance().setToken("");
-                AppUtils.getAppContext().startActivity(LoginActivity.newInstance(AppUtils.getAppContext()));
+                Intent intent = LoginActivity.newInstance(AppUtils.getAppContext());
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                AppUtils.getAppContext().startActivity(intent);
             } else {
                 onSuccess(mBaseEntity.content);
             }

@@ -1,5 +1,6 @@
 package com.tunyin.mvp.model.index;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class IndexEntity {
@@ -21,7 +22,7 @@ public class IndexEntity {
     private SleepTopBean sleepTop;
     private List<ClassifyListBean> classifyList;
     private List<BannerListBean> bannerList;
-    private List<AnchorListBean> anchorList;
+    private List<AnchorListBean> anchorList = new ArrayList<>();
     private String hotSearch;
 
     public String getHotSearch() {

@@ -1,5 +1,6 @@
 package com.tunyin.ui.activity;
 
+import android.content.Intent;
 import android.widget.TextView;
 
 import com.tunyin.R;
@@ -46,7 +47,9 @@ public class MyRankActivity extends BaseInjectActivity<GradePresenter> implement
         if (msg.contains("Token") ||
                 msg.contains("token")) {
             SelfBean.getInstance().setToken("");
-            startActivity(LoginActivity.newInstance(this));
+            Intent intent = LoginActivity.newInstance(this);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         }
     }
 
