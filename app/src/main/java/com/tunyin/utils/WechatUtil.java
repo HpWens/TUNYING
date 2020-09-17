@@ -84,12 +84,16 @@ public class WechatUtil {
     /**
      * 微信登录，监听到数据后通过eventbus返回到对应的界面
      */
-    public void loginWechat(String appid) {
+    public boolean loginWechat(String appid) {
         regiestWechat(appid);
-        SendAuth.Req req = new SendAuth.Req();
-        req.scope = "snsapi_userinfo";//获取用户信息的授权域
-        req.state = "wechat_sdk_login" + System.currentTimeMillis();
-        iwxapi.sendReq(req);
+        if (iwxapi.isWXAppInstalled()) {
+            SendAuth.Req req = new SendAuth.Req();
+            req.scope = "snsapi_userinfo";//获取用户信息的授权域
+            req.state = "wechat_sdk_login" + System.currentTimeMillis();
+            iwxapi.sendReq(req);
+            return true;
+        }
+        return false;
     }
 
     /**

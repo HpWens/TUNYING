@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.os.IBinder
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.tunyin.MainActivity
@@ -16,8 +17,11 @@ import com.tunyin.mvp.contract.mine.LoginContract
 import com.tunyin.mvp.model.SelfBean
 import com.tunyin.mvp.model.mine.LoginEntity
 import com.tunyin.mvp.presenter.mine.LoginPresenter
+import com.tunyin.utils.SocialUtil
 import com.tunyin.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_login.*
+import net.arvin.socialhelper.callback.SocialLoginCallback
+import net.arvin.socialhelper.entities.ThirdInfoEntity
 
 /**
  * 登录
@@ -89,7 +93,14 @@ class LoginActivity : BaseInjectActivity<LoginPresenter>(), View.OnClickListener
 
             iv_wechat -> {
                 // ToastUtils.showToast("还没开放")
+                SocialUtil.INSTANCE.socialHelper.loginWX(this, object : SocialLoginCallback {
+                    override fun loginSuccess(info: ThirdInfoEntity?) {
+                        Log.e("-------------------", "************" + info);
+                    }
 
+                    override fun socialError(msg: String?) {
+                    }
+                })
             }
 
             iv_weibo -> {
