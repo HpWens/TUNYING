@@ -15,9 +15,29 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        debug {
+            storeFile file("../tun.jks")
+            storePassword '123456'
+            keyAlias 'tun'
+            keyPassword '123456'
+        }
+
+        release {
+            storeFile file("../tun.jks")
+            storePassword '123456'
+            keyAlias 'tun'
+            keyPassword '123456'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -90,7 +110,7 @@ dependencies {
     implementation 'com.trello.rxlifecycle2:rxlifecycle:2.1.0'
     implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
     //Flycotablayout
-    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    // implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
     implementation 'com.github.hymanme.tagflowlayout:tagflowlayout:0.2.2'
     //轮播图
     implementation 'com.github.pinguo-zhouwei:MZBannerView:v2.0.2'

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#F1F1F1"
     android:orientation="vertical">
 
     <include layout="@layout/layout_toolbar" />
@@ -13,30 +13,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
-        android:paddingBottom="80dp"
-        android:background="@color/white"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#F3F4F6"
-            android:orientation="vertical"
-            android:paddingBottom="150dp">
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#F3F4F6"
+                android:background="@color/color_ffffff"
                 android:orientation="horizontal"
-                android:paddingStart="40dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp">
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="10dp">
 
                 <com.tunyin.widget.CircleImageView
                     android:id="@+id/iv_avatar"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="39dp"
+                    android:layout_height="39dp"
                     tools:background="@color/colorAccent" />
 
                 <TextView
@@ -46,8 +43,8 @@
                     android:layout_marginStart="10dp"
                     android:layout_toRightOf="@+id/iv_avatar"
                     android:text="我是昵称"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textColor="#222"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/tv_grade"
@@ -56,8 +53,28 @@
                     android:layout_below="@+id/tv_name"
                     android:layout_marginStart="10dp"
                     android:layout_toRightOf="@+id/iv_avatar"
-                    android:text="当前用户未开通豚音会员"
-                    android:textSize="14sp" />
+                    android:text="当前用户未开通豚音贵族"
+                    android:textColor="#4B4B4B"
+                    android:textSize="10sp" />
+
+                <com.meis.base.mei.widget.radius.RadiusTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_toRightOf="@+id/tv_name"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="8dp"
+                    android:paddingBottom="2dp"
+                    android:text="贵族"
+                    android:textColor="@color/color_ffffff"
+                    android:textSize="8sp"
+                    app:rv_backgroundColor="#CBCBCB"
+                    app:rv_radius="3dp">
+
+                </com.meis.base.mei.widget.radius.RadiusTextView>
+
             </RelativeLayout>
 
             <LinearLayout
@@ -68,7 +85,8 @@
                 android:paddingStart="20dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="20dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                tools:visibility="gone">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -81,18 +99,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="畅想贵族专属特权+充值特权"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textColor="#222"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#F3F4F6"
+                android:background="@color/color_ffffff"
                 android:paddingStart="20dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="请选择贵族等级" />
+                android:text="请选择贵族等级"
+                android:textColor="#999" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler"
@@ -102,30 +121,32 @@
                 android:paddingStart="10dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="10dp"
-                android:paddingBottom="15dp" />
+                android:paddingBottom="15dp"
+                tools:visibility="gone" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#F3F4F6"
                 android:paddingStart="20dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="请选择充值时间" />
+                android:text="请选择充值时间"
+                android:visibility="gone" />
 
-            <LinearLayout
+            <com.meis.base.mei.widget.radius.RadiusLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="14dp"
-                android:background="@color/white"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:rv_backgroundColor="@color/color_ffffff"
+                app:rv_bottomLeftRadius="15dp"
+                app:rv_bottomRightRadius="15dp">
 
                 <RelativeLayout
                     android:id="@+id/rl_monthly"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp">
+                    android:layout_height="60dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -137,15 +158,17 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:text="连续包月"
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:textColor="#908AEE"
+                            android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
+                            android:layout_marginTop="8dp"
                             android:text="新用户专享首月优惠，每月自动续费，可随时取消"
-                            android:textSize="12sp" />
+                            android:textColor="#999"
+                            android:textSize="13sp" />
                     </LinearLayout>
 
                     <RadioButton
@@ -161,16 +184,15 @@
                 <RelativeLayout
                     android:id="@+id/rl_1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp">
+                    android:layout_height="60dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="1个月贵族"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textColor="#555"
+                        android:textSize="15sp" />
 
                     <RadioButton
                         android:id="@+id/rb_1"
@@ -185,16 +207,15 @@
                 <RelativeLayout
                     android:id="@+id/rl_6"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp">
+                    android:layout_height="60dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="6个月贵族"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textColor="#555"
+                        android:textSize="15sp" />
 
                     <RadioButton
                         android:id="@+id/rb_6"
@@ -209,16 +230,15 @@
                 <RelativeLayout
                     android:id="@+id/rl_12"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp">
+                    android:layout_height="60dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="12个月贵族"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textColor="#555"
+                        android:textSize="15sp" />
 
                     <RadioButton
                         android:id="@+id/rb_12"
@@ -227,56 +247,97 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true" />
                 </RelativeLayout>
-            </LinearLayout>
+            </com.meis.base.mei.widget.radius.RadiusLinearLayout>
 
-            <RelativeLayout
+            <com.meis.base.mei.widget.radius.RadiusRelativeLayout
                 android:id="@+id/rl_diamond"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="@color/white"
-                android:padding="12dp">
+                app:rv_backgroundColor="@color/color_ffffff"
+                app:rv_topLeftRadius="15dp"
+                app:rv_topRightRadius="15dp">
 
                 <TextView
+                    android:id="@+id/tv_way"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="12dp"
-                    android:drawableLeft="@mipmap/icon_pay_diamond"
-                    android:drawablePadding="13dp"
-                    android:text="钻石支付"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="16dp"
+                    android:text="请选择支付方式"
+                    android:textColor="#ff010101"
+                    android:textSize="15sp" />
 
-                <RadioButton
-                    android:id="@+id/rb_diamond"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="14dp" />
-            </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/tv_way"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:drawableLeft="@mipmap/icon_pay_diamond"
+                        android:drawablePadding="13dp"
+                        android:gravity="center_vertical"
+                        android:text="钻石支付"
+                        android:textColor="#555"
+                        android:textSize="15sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_diamond"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="14dp"
+                        android:checked="true" />
+
+                </LinearLayout>
+
+            </com.meis.base.mei.widget.radius.RadiusRelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_height="220dp"
+                android:background="@color/color_ffffff"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="《豚音贵族服务协议》"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:text="《豚音贵族服务协议》《连续包月服务协议》"
+                    android:textColor="#999999"
+                    android:textSize="13sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="《连续包月服务协议》"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                <LinearLayout
+                    android:id="@+id/ly_pay"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="70dp"
+                    android:background="@drawable/bg_red_corners"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="确认支付"
+                        android:textColor="#FEFEFE"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
             </LinearLayout>
 
 
@@ -284,28 +345,4 @@
 
     </androidx.core.widget.NestedScrollView>
 
-
-    <LinearLayout
-        android:id="@+id/ly_pay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/bg_red_corners"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:text="确认支付"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-    </LinearLayout>
 </RelativeLayout>

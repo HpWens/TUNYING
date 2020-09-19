@@ -8,6 +8,8 @@ import android.graphics.Shader
 import android.os.IBinder
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.meis.base.mei.utils.ParseJsonUtils
+import com.tunyin.App
 import com.tunyin.MainActivity
 import com.tunyin.R
 import com.tunyin.ToastUtils
@@ -19,6 +21,7 @@ import com.tunyin.mvp.presenter.mine.LoginPresenter
 import com.tunyin.utils.HttpUtils
 import com.tunyin.utils.SocialUtil
 import com.tunyin.utils.StatusBarUtil
+import com.vondear.rxtool.view.RxToast
 import com.zhouyou.http.callback.SimpleCallBack
 import com.zhouyou.http.exception.ApiException
 import kotlinx.android.synthetic.main.activity_login.*
@@ -101,7 +104,10 @@ class LoginActivity : BaseInjectActivity<LoginPresenter>(), View.OnClickListener
                         openId?.let {
                             HttpUtils.getInstance().wechatLogin(it, object : SimpleCallBack<String>() {
                                 override fun onSuccess(t: String?) {
-
+                                    var result = ParseJsonUtils.parseDataToResult(t, LoginEntity::class.java)
+                                    if (result.isOk) {
+                                        showLoginData(result.content)
+                                    }
                                 }
 
                                 override fun onError(e: ApiException?) {
@@ -112,6 +118,7 @@ class LoginActivity : BaseInjectActivity<LoginPresenter>(), View.OnClickListener
                     }
 
                     override fun socialError(msg: String?) {
+                        RxToast.showToast(msg)
                     }
                 })
             }
@@ -156,10 +163,24 @@ class LoginActivity : BaseInjectActivity<LoginPresenter>(), View.OnClickListener
 //        AccountHelper.saveToken(loginEntity.token)
         SelfBean.instance.token = loginEntity.token
         SelfBean.instance.userId = loginEntity.userId
-        SelfBean.instance.username = loginEntity.username
-        SelfBean.instance.nickName = loginEntity.nickName
-        SelfBean.instance.headUrl = loginEntity.headUrl
-        SelfBean.instance.phone = loginEntity.phone
+
+        loginEntity.username?.let {
+            SelfBean.instance.username = it
+        }
+
+        loginEntity.nickName?.let {
+            SelfBean.instance.nickName = it
+        }
+
+        loginEntity.headUrl?.let {
+            SelfBean.instance.headUrl = it
+        }
+
+        loginEntity.phone?.let {
+            SelfBean.instance.phone = it
+        }
+
+        (application as App).addEasyTokenHeader()
 
         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
 

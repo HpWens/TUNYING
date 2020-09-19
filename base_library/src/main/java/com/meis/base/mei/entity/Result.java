@@ -15,6 +15,7 @@ public class Result<T> implements Serializable {
     public String msg = "";
     public String desc;
     public T data;
+    public T content;
 
     public boolean success;
     public int status = -1;
@@ -53,6 +54,14 @@ public class Result<T> implements Serializable {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public T getContent() {
+        return content;
+    }
+
+    public void setContent(T content) {
+        this.content = content;
     }
 
     public boolean isOk() {

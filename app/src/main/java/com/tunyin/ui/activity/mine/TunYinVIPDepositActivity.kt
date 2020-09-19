@@ -1,11 +1,14 @@
 package com.tunyin.ui.activity.mine
 
+import android.content.Intent
+import android.text.TextUtils
 import android.view.View
 import android.widget.RadioButton
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.meis.base.mei.utils.ParseJsonUtils
 import com.tunyin.R
-import com.tunyin.ToastUtils
-import com.tunyin.base.BaseActivity
 import com.tunyin.base.BaseInjectActivity
 import com.tunyin.mvp.contract.mine.TunyinVipContract
 import com.tunyin.mvp.model.SelfBean
@@ -13,8 +16,11 @@ import com.tunyin.mvp.model.mine.TunyinVipEntity
 import com.tunyin.mvp.presenter.mine.TunyinVipPresenter
 import com.tunyin.ui.adapter.mine.TunYinVipDepositAdapter
 import com.tunyin.utils.AppUtils
-import com.tunyin.utils.ImageUtil
+import com.tunyin.utils.HttpUtils
 import com.tunyin.utils.StatusBarUtil
+import com.vondear.rxtool.view.RxToast
+import com.zhouyou.http.callback.SimpleCallBack
+import com.zhouyou.http.exception.ApiException
 import kotlinx.android.synthetic.main.activity_vip_deposit.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
@@ -57,7 +63,14 @@ class TunYinVIPDepositActivity : BaseInjectActivity<TunyinVipPresenter>(), View.
         rl_6.setOnClickListener(this)
         rl_12.setOnClickListener(this)
         rl_diamond.setOnClickListener(this)
-        ImageUtil.load(SelfBean.instance.headUrl).isCircle.on(iv_avatar)
+        ly_pay.setOnClickListener(this)
+
+        // ImageUtil.load(SelfBean.instance.headUrl).isCircle.on(iv_avatar)
+        Glide.with(this@TunYinVIPDepositActivity)
+                .load(SelfBean.instance.headUrl)
+                .transform(CircleCrop())
+                .into(iv_avatar)
+
         tv_name.text = SelfBean.instance.nickName
 
         tunYinVipDepositAdapter = TunYinVipDepositAdapter()
@@ -84,6 +97,51 @@ class TunYinVIPDepositActivity : BaseInjectActivity<TunyinVipPresenter>(), View.
 
     override fun onClick(p0: View?) {
         when (p0) {
+            ly_pay -> {
+                if (TextUtils.isEmpty(nobleEquityId)) {
+                    RxToast.showToast("请选择贵族等级")
+                    return
+                }
+                var type = ""
+                when {
+                    rb_monthly.isChecked -> {
+                        type = "isAuto"
+                    }
+                    rb_1.isChecked -> {
+                        type = "oneMonth"
+                    }
+                    rb_6.isChecked -> {
+                        type = "sixMonth"
+                    }
+                    rb_12.isChecked -> {
+                        type = "oneYear"
+                    }
+                }
+                if (TextUtils.isEmpty(type)) {
+                    RxToast.showToast("请选择充值时间")
+                    return
+                }
+                ly_pay.isEnabled = false
+                HttpUtils.getInstance().confirmPayment(nobleEquityId, type, object : SimpleCallBack<String>() {
+                    override fun onSuccess(t: String?) {
+                        var result = ParseJsonUtils.parseDataToResult(t, String::class.java)
+
+                        var intent = Intent(this@TunYinVIPDepositActivity, RechargeResultActivity::class.java)
+                        intent.putExtra("is_success", result.isOk)
+                        startActivity(intent)
+
+                        if (result.isOk) {
+                            finish()
+                        } else {
+                            ly_pay.isEnabled = true
+                        }
+                    }
+
+                    override fun onError(e: ApiException?) {
+                        ly_pay.isEnabled = true
+                    }
+                })
+            }
             rb_monthly, rl_monthly -> {
                 if (listRb.contains(rb_monthly)) {
                     return

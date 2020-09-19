@@ -42,4 +42,18 @@ public class HttpUtils {
                 .params("openid", openId)
                 .execute(callBack);
     }
+
+    /**
+     * 贵族充值
+     *
+     * @param nobleEquityId
+     * @param type
+     * @param callBack
+     */
+    public void confirmPayment(String nobleEquityId, String type, CallBack<String> callBack) {
+        EasyHttp.post("api/noble/confirmPayment")
+                .params("nobleEquityId", nobleEquityId)
+                .params("type", type)
+                .execute(callBack);
+    }
 }

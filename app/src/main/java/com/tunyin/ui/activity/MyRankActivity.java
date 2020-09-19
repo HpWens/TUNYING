@@ -63,7 +63,6 @@ public class MyRankActivity extends BaseInjectActivity<GradePresenter> implement
             finish();
         });
 
-
     }
 
     @Override
@@ -73,7 +72,7 @@ public class MyRankActivity extends BaseInjectActivity<GradePresenter> implement
 
     @Override
     public void getGradeCallBack(@NotNull MyGradeEntity entity) {
-        rankProgressView.refreshProgress(entity.wealthValue, entity.nextValue, entity.userGrade);
+        rankProgressView.refreshProgress(entity.nextValue, entity.wealthValue, entity.userGrade);
         tvGrade.setText(entity.userGrade + "");
     }
 }
