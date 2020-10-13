@@ -8,6 +8,7 @@ import com.tunyin.BaseInjectFragment
 import com.tunyin.PersonalActivity
 import com.tunyin.R
 import com.tunyin.SettingActivity
+import com.tunyin.base.WebActivity
 import com.tunyin.mvp.contract.UploadFileContract
 import com.tunyin.mvp.model.SelfBean
 import com.tunyin.mvp.model.UploadFileEntity
@@ -140,9 +141,10 @@ class MineFragment : BaseInjectFragment<UploadFilePresenter>(), UploadFileContra
 
             }
             rl_customer_service -> {
-                val intent = Intent(activity, ServiceActivity::class.java)
-                activity?.startActivity(intent)
+                // val intent = Intent(activity, ServiceActivity::class.java)
+                // activity?.startActivity(intent)
                 // ToastUtils.showToast("暂时没有客服哦")
+                activity?.startActivity(mContext?.let { WebActivity.newIntent(it, "入驻合作", "http://api.itunyin.com/api/html/h5?type=ruzhuhezuo") })
             }
 
             iv_avatar -> {

@@ -134,7 +134,7 @@ class RegisterActivity : BaseInjectActivity<RegisterPresenter>(), View.OnClickLi
             }
 
             ll_agreement -> {
-                startActivity(mContext?.let { WebActivity.newIntent(it, "协议", "www.baidu.com") })
+                startActivity(mContext?.let { WebActivity.newIntent(it, "用户协议", "http://api.itunyin.com/api/html/h5?type=useragreement") })
 
             }
         }
