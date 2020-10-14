@@ -152,7 +152,8 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
         }
 
         ivIvatar.setOnClickListener {
-            ToastUtils.showToast("我是头像")
+            // ToastUtils.showToast("我是头像")
+            startActivity(Intent(this@MainActivity, PersonalActivity::class.java))
             drawer_layout.closeDrawer(GravityCompat.START)
         }
         tvNickName.setOnClickListener {

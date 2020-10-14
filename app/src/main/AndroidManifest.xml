@@ -89,6 +89,7 @@
         <activity android:name=".ui.activity.mine.MyOrderActivity" />
         <activity android:name=".ui.activity.mine.RegisterActivity" />
         <activity android:name=".ui.activity.mine.RechargeResultActivity" />
+        <activity android:name=".ui.activity.mine.RechargeProtocolActivity" />
         <activity
             android:name=".ui.activity.mine.LoginActivity"
             android:launchMode="singleTask" />

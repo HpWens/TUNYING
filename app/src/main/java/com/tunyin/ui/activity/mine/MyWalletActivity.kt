@@ -79,6 +79,7 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
         rl_alipay.setOnClickListener(this)
         ly_pay.setOnClickListener(this)
         et_price.setOnClickListener(this)
+        tv_protocol.setOnClickListener(this)
 
         depositAdapter = DepositAdapter()
         recycler.layoutManager = GridLayoutManager(mContext, 3)
@@ -181,6 +182,11 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
                     dialog.dismiss()
                 }).show()
             }
+
+            tv_protocol -> {
+                startActivity(Intent(this@MyWalletActivity, RechargeProtocolActivity::class.java))
+            }
+
         }
     }
 

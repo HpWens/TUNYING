@@ -29,6 +29,10 @@ class ResetPasswordPresenter @Inject constructor(private val mRetrofitHelper: Re
                     override fun onSuccess(mData: BaseEntity<String>) {
                         mView?.sendMsmSuc(mData.content)
                     }
+
+                    override fun onFailure(code: Int, message: String) {
+                        super.onFailure(code, message)
+                    }
                 })
         addSubscribe(subscriber)
     }
