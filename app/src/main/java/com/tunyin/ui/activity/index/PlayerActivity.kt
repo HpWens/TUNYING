@@ -30,10 +30,7 @@ import com.tunyin.ui.adapter.PagerAdapter
 import com.tunyin.ui.fragment.index.PlayerCommentFragment
 import com.tunyin.ui.fragment.index.PlayerDetailFragment
 import com.tunyin.ui.fragment.index.PlayerDirectoryFragment
-import com.tunyin.utils.EventBusUtil
-import com.tunyin.utils.ImageUtil
-import com.tunyin.utils.StatusBarUtil
-import com.tunyin.utils.SystemUtils
+import com.tunyin.utils.*
 import com.tunyin.widget.dialog.PaySucDialog
 import kotlinx.android.synthetic.main.coordinator_layout.*
 import java.util.*
@@ -52,12 +49,12 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
     private var money: String? = null
     private var isListen: Boolean? = false
     private var isBuyCatlog: Boolean? = false
-    private var listeningTime: String? = null
     private var priceSingle: String? = null
     private var priceAll: String? = null
     private var payAllThemeId: String? = ""
     private var mMusicEntity: MusicEntity? = null
     private var mAutoPlay: Boolean = true
+
     // 是否收藏
     private var isCollected: Boolean = false
 
@@ -207,9 +204,10 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         tv_sub_title.text = musicEntity.content
         isListen = musicEntity.isListen
         isBuyCatlog = musicEntity.isBuyCatlog
-        listeningTime = musicEntity.listeningTime
+        musicEntity.listeningTime?.let {
+            mListeningTime = musicEntity.listeningTime
+        }
         payAllThemeId = musicEntity.themeId
-
         money = musicEntity.price
         priceSingle = musicEntity.price
         priceAll = musicEntity.price
@@ -377,7 +375,13 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
             }
 
             tv_right_title -> {
-                ToastUtils.showToast("分享的分享到哪里还不确定")
+                // 标题取作品名称，说明取作品详情，图片取作品封面图
+                // ToastUtils.showToast("分享的分享到哪里还不确定")
+                // mMusicEntity.image
+                // mMusicEntity.title
+                if (mMusicEntity != null) {
+                    WechatUtil.getInstance().shareWechat(mContext, "wx35481040e7c07c5f", getString(R.string.app_name), mMusicEntity?.title, mMusicEntity?.image, "")
+                }
             }
             tv_to_pay -> {
 //                ToastUtils.showToast("去购买待定")
