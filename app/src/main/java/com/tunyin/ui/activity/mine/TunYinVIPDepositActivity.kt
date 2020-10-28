@@ -10,6 +10,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.meis.base.mei.utils.ParseJsonUtils
 import com.tunyin.R
 import com.tunyin.base.BaseInjectActivity
+import com.tunyin.base.WebActivity
 import com.tunyin.mvp.contract.mine.TunyinVipContract
 import com.tunyin.mvp.model.SelfBean
 import com.tunyin.mvp.model.mine.TunyinVipEntity
@@ -90,6 +91,13 @@ class TunYinVIPDepositActivity : BaseInjectActivity<TunyinVipPresenter>(), View.
 
         mPresenter.getTunyinVip()
 
+        tv_web.setOnClickListener{
+            startActivity(mContext?.let { WebActivity.newIntent(it, "豚音贵族服务协议", "http://api.itunyin.com/api/html/h5?type=nobleservice") })
+        }
+
+        tv_Web2.setOnClickListener {
+            startActivity(mContext?.let { WebActivity.newIntent(it, "连续包月服务协议", "http://api.itunyin.com/api/html/h5?type=continuous") })
+        }
     }
 
     override fun payTunyinCallback(string: String) {

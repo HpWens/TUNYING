@@ -295,7 +295,7 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
             }
 
         })
-        if (mAnchorList.size != 0) mDiscoveryRVAdapter?.addSection(anchorTopSelection)
+       // if (mAnchorList.size != 0) mDiscoveryRVAdapter?.addSection(anchorTopSelection)
 
         var freeSelection = FreeSelection(mFreeList)
         freeSelection.setRefreshFreeListener(object : FreeSelection.OnRefreshFreeListener {
@@ -323,7 +323,7 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
 //        })
 
 
-        if (mFeaturedActivityList.size != 0) mDiscoveryRVAdapter?.addSection(FeaturedActivitySelection(mFeaturedActivityList))
+        // if (mFeaturedActivityList.size != 0) mDiscoveryRVAdapter?.addSection(FeaturedActivitySelection(mFeaturedActivityList))
 
         var featuredRecommendSelection = FeaturedRecommendSelection(mFeaturedRecommendList)
         featuredRecommendSelection.setRefreshReaturedREcommendListener(object : FeaturedRecommendSelection.OnRefreshReaturedREcommendListener {

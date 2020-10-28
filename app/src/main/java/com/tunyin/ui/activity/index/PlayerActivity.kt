@@ -27,6 +27,7 @@ import com.tunyin.myservice.Music
 import com.tunyin.myservice.OnPlayerEventListener
 import com.tunyin.ui.activity.mine.MyWalletActivity
 import com.tunyin.ui.adapter.PagerAdapter
+import com.tunyin.ui.dialog.ShareDialog
 import com.tunyin.ui.fragment.index.PlayerCommentFragment
 import com.tunyin.ui.fragment.index.PlayerDetailFragment
 import com.tunyin.ui.fragment.index.PlayerDirectoryFragment
@@ -379,9 +380,21 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
                 // ToastUtils.showToast("分享的分享到哪里还不确定")
                 // mMusicEntity.image
                 // mMusicEntity.title
-                if (mMusicEntity != null) {
-                    WechatUtil.getInstance().shareWechat(mContext, "wx35481040e7c07c5f", getString(R.string.app_name), mMusicEntity?.title, mMusicEntity?.image, "")
-                }
+                ShareDialog(mContext, object : ShareDialog.OnClickListener {
+                    override fun onCircle() {
+                        if (mMusicEntity != null) {
+                            WechatUtil.getInstance().shareWechatComment(mContext, "wx35481040e7c07c5f", getString(R.string.app_name), mMusicEntity?.title, "http://api.itunyin.com/api/html/share/id/${mMusicEntity?.id}")
+                        }
+                    }
+
+                    override fun onWechat() {
+                        if (mMusicEntity != null) {
+                            WechatUtil.getInstance().shareWechat(mContext, "wx35481040e7c07c5f", getString(R.string.app_name), mMusicEntity?.title, "http://api.itunyin.com/api/html/share/id/${mMusicEntity?.id}", "")
+                        }
+                    }
+
+                }).show()
+
             }
             tv_to_pay -> {
 //                ToastUtils.showToast("去购买待定")

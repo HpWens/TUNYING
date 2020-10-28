@@ -2,6 +2,7 @@ package com.tunyin.ui.adapter.index;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tunyin.R;
@@ -28,6 +29,7 @@ public class FreeItemAdapter extends BaseAdapter<IndexEntity.FreeListBean.ListBe
         TextView tvTitle, tvSubTitle;
         TextView tvNum;
         CustomRoundAngleImageView imageView;
+        LinearLayout layoutContent;
 
         public BroadcastItemViewHolder(View itemView) {
             super(itemView);
@@ -35,6 +37,8 @@ public class FreeItemAdapter extends BaseAdapter<IndexEntity.FreeListBean.ListBe
             tvNum = bindView(R.id.tv_num);
             tvSubTitle = bindView(R.id.tv_sub_title);
             imageView = bindView(R.id.image);
+            layoutContent = bindView(R.id.layout_content);
+
         }
 
         @Override
@@ -45,12 +49,9 @@ public class FreeItemAdapter extends BaseAdapter<IndexEntity.FreeListBean.ListBe
             tvSubTitle.setText(listBean.getContent());
             tvNum.setText(listBean.getNum().equals("-1") ? "0" : listBean.getNum());
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = PlayerActivity.newInstance(itemView.getContext(), listBean.getId());
-                    itemView.getContext().startActivity(intent);
-                }
+            layoutContent.setOnClickListener(view -> {
+                Intent intent = PlayerActivity.newInstance(itemView.getContext(), listBean.getId());
+                itemView.getContext().startActivity(intent);
             });
 
         }

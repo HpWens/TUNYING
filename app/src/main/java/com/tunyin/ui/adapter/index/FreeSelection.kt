@@ -6,8 +6,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tunyin.R
-import com.tunyin.ToastUtils
 import com.tunyin.mvp.model.index.IndexEntity
+import com.tunyin.ui.activity.index.PlayerActivity.Companion.newInstance
 import com.tunyin.ui.adapter.discovery.StateBroadcast
 import com.tunyin.widget.section.ViewHolder
 import com.vondear.rxtool.RxImageTool
@@ -20,6 +20,11 @@ class FreeSelection(list: List<IndexEntity.FreeListBean>?) : StateBroadcast<Inde
             zhuanlan.let {
                 var freeItemAdapter = FreeItemAdapter()
                 freeItemAdapter.dataList = zhuanlan.list
+                freeItemAdapter.setOnItemClickListener { v, position ->
+                    var listBean = zhuanlan.list.get(position)
+                    val intent = newInstance(itemView.context, listBean.getId())
+                    itemView.context.startActivity(intent)
+                }
                 getView<RecyclerView>(R.id.recycler).layoutManager = GridLayoutManager(mContext, 2)
                 getView<RecyclerView>(R.id.recycler).adapter = freeItemAdapter
                 for (i in 0 until getView<RecyclerView>(R.id.recycler).itemDecorationCount) {
@@ -43,9 +48,6 @@ class FreeSelection(list: List<IndexEntity.FreeListBean>?) : StateBroadcast<Inde
                         }
                     }
                 })
-                itemView.setOnClickListener {
-                    //                    mContext.startActivity(Intent(mContext, WebViewActivity::class.java))
-                }
             }
         }
     }

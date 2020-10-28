@@ -260,6 +260,7 @@
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
                     android:paddingStart="25dp"
+                    android:visibility="gone"
                     android:paddingEnd="25dp">
 
                     <TextView
@@ -292,6 +293,7 @@
                     </RelativeLayout>
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/tv_next"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -312,7 +314,8 @@
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
                     android:paddingStart="25dp"
-                    android:paddingEnd="25dp">
+                    android:paddingEnd="25dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -335,7 +338,8 @@
                     android:layout_height="1px"
                     android:layout_marginLeft="25dp"
                     android:layout_marginRight="25dp"
-                    android:background="#ECECEC"></View>
+                    android:background="#ECECEC"
+                    android:visibility="gone"></View>
 
                 <RelativeLayout
                     android:id="@+id/rl_collect"
