@@ -56,4 +56,15 @@ public class HttpUtils {
                 .params("type", type)
                 .execute(callBack);
     }
+
+    public void commitUser(String headUrl, String nickName, String sex, String birthday, String messageNotice, CallBack<String> callBack) {
+        EasyHttp.post("api/user/updateData")
+                .params("headUrl", headUrl)
+                .params("nickName", nickName)
+                .params("sex", sex)
+                .params("birthday", birthday)
+                .params("messageNotice", messageNotice)
+                .execute(callBack);
+
+    }
 }

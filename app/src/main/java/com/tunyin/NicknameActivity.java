@@ -4,13 +4,16 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.tunyin.mvp.model.SelfBean;
+import com.tunyin.utils.HttpUtils;
 import com.tunyin.utils.eye.Eyes;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 public class NicknameActivity extends AppCompatActivity {
 
@@ -35,12 +38,37 @@ public class NicknameActivity extends AppCompatActivity {
 
         findViewById(R.id.tv_save).setOnClickListener(v -> {
             saveNick = etNick.getText().toString();
-            if (!TextUtils.isEmpty(saveNick)) {
-                Intent intent = new Intent();
-                intent.putExtra(NICK, saveNick);
-                setResult(1, intent);
-                finish();
+
+            String sex = SelfBean.getInstance().getSex();
+            if (sex.equals("未填写")) {
+                sex = "";
+            } else {
+                sex = sex.equals("男") ? "1" : "2";
             }
+
+            String birthday = SelfBean.getInstance().getBirthday();
+            if (birthday.equals("未填写")) {
+                birthday = "";
+            }
+
+            HttpUtils.getInstance().commitUser(SelfBean.getInstance().getHeadUrl(),
+                    saveNick, sex, birthday, SelfBean.getInstance().getMessageNotice(),
+                    new SimpleCallBack<String>() {
+                        @Override
+                        public void onError(ApiException e) {
+                            finish();
+                        }
+
+                        @Override
+                        public void onSuccess(String s) {
+                            if (!TextUtils.isEmpty(saveNick)) {
+                                Intent intent = new Intent();
+                                intent.putExtra(NICK, saveNick);
+                                setResult(1, intent);
+                                finish();
+                            }
+                        }
+                    });
         });
 
         findViewById(R.id.iv_back).setOnClickListener(v -> {
