@@ -160,8 +160,12 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
                 }
 
                 val map = HashMap<String, String>()
-                if (!TextUtils.isEmpty(et_price.text.trim().toString()) && et_price.text.trim().toString().toInt() > 0) {
-                    map["money"] = et_price.text.trim().toString()
+                var inputPrice = et_price.text.trim().toString()
+                if (!TextUtils.isEmpty(inputPrice)) {
+                    inputPrice = inputPrice.substring(0, inputPrice.length - 1)
+                }
+                if (!TextUtils.isEmpty(inputPrice) && inputPrice.toInt() > 0) {
+                    map["money"] = inputPrice
                 } else {
                     map["rechargeId"] = depositAdapter.dataList[selectPosition].id
                 }
