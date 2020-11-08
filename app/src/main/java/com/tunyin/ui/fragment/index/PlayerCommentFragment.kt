@@ -7,17 +7,19 @@ import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.tunyin.BaseFragment
 import com.tunyin.R
 import com.tunyin.ToastUtils
 import com.tunyin.base.BaseRefreshFragment
 import com.tunyin.mvp.contract.index.PlayerCommentContract
+import com.tunyin.mvp.model.Event
 import com.tunyin.mvp.model.index.AddCommendEntity
+import com.tunyin.mvp.model.index.MusicEntity
 import com.tunyin.mvp.model.index.PlayerCommentEntity
 import com.tunyin.mvp.presenter.index.PlayerCommentPresenter
 import com.tunyin.ui.adapter.index.PlayerCommentAdapter
-import com.tunyin.ui.adapter.index.PlayerDirectoryAdapter
 import kotlinx.android.synthetic.main.fragment_player_comment.*
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 /**
  * 播放——评论
@@ -111,8 +113,11 @@ class PlayerCommentFragment : BaseRefreshFragment<PlayerCommentPresenter, Player
 
     override fun initDatas() {
         mMusicId = arguments?.getString("mMusicId")
+        // mIsListen = arguments!!.getBoolean("isListen")
         showLoading()
         mPresenter.getComment(mMusicId.toString())
+
+        //comment_layout.visibility = if (mIsListen) View.INVISIBLE else View.VISIBLE
     }
 
     override fun initRecyclerView() {

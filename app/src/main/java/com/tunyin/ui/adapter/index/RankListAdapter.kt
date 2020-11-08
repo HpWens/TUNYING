@@ -59,8 +59,8 @@ class RankListAdapter : BaseMutableAdapter<RankListEntity.ListBean>() {
                 }
 
                 var isFree = itemBean.is_free != null && itemBean.is_free.equals("1")
-                itemView.tv_price_tip.visibility = if (isFree) View.GONE else View.VISIBLE
-                itemView.tv_price.visibility = if (isFree) View.GONE else View.VISIBLE
+                itemView.tv_price_tip.visibility = if (!isFree) View.GONE else View.VISIBLE
+                itemView.tv_price.visibility = if (!isFree) View.GONE else View.VISIBLE
             }
 
         }

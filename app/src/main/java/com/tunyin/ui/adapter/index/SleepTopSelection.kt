@@ -19,7 +19,7 @@ class SleepTopSelection(list: List<IndexEntity.SleepTopBean.ListBeanXXXX>?) :
 
                 setText(R.id.tv_title, it.title)
                 setText(R.id.tv_sub_title, it.content)
-                setText(R.id.tv_diamond_num, it.member_price)
+                setText(R.id.tv_diamond_num, it.price)
 
                 ImageUtil.load(it.image).on(getView(R.id.image))
 

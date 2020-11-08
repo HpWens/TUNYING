@@ -87,6 +87,8 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
             et_price.text = ""
             selectPosition = position
             depositAdapter.setDefSelect(position)
+
+            tv__confirm_price.text = "确定支付${depositAdapter.dataList[position].money}元"
         }
         recycler.adapter = depositAdapter
         depositAdapter.dataList = priceList
@@ -182,6 +184,8 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
 
                     selectPosition = -1
                     depositAdapter.setDefSelect(-1)
+
+                    tv__confirm_price.text = "确定支付${amount}元"
 
                     dialog.dismiss()
                 }).show()

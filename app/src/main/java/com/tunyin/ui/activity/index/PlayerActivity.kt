@@ -245,6 +245,10 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         if (mAutoPlay) {
             autoPlayHandler.sendEmptyMessage(1)
         }
+
+        // 显示评论
+        // var commentEvent: Event<MusicEntity> = Event(118, musicEntity)
+        // EventBusUtil.sendStickyEvent(commentEvent)
     }
 
     private var autoPlayHandler: Handler = object : Handler() {
