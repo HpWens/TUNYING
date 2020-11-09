@@ -46,6 +46,10 @@ public class PagerAdapter extends FragmentPagerAdapter {
         notifyDataSetChanged();
     }
 
+    public List<BaseFragment> getFragments() {
+        return fragments;
+    }
+
     @Override
     public CharSequence getPageTitle(int position) {
         if (mTitles != null)

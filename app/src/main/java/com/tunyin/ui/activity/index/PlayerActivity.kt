@@ -245,10 +245,6 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         if (mAutoPlay) {
             autoPlayHandler.sendEmptyMessage(1)
         }
-
-        // 显示评论
-        // var commentEvent: Event<MusicEntity> = Event(118, musicEntity)
-        // EventBusUtil.sendStickyEvent(commentEvent)
     }
 
     private var autoPlayHandler: Handler = object : Handler() {
@@ -320,7 +316,6 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         MyAudioPlayer.get().songId = mMusicId
         MyAudioPlayer.get().addOnPlayEventListener(this)
         progressSb.setOnSeekBarChangeListener(this)
-        getMusic()
 
         play.setOnClickListener(this)
         tv_right_title.setOnClickListener(this)
@@ -365,6 +360,8 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         adapter = PagerAdapter(supportFragmentManager, fragments)
         mViewPager.adapter = adapter
         mViewPager.addOnPageChangeListener(this)
+
+        getMusic()
     }
 
     override fun onClick(p0: View?) {
@@ -452,6 +449,17 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
 
     override fun onPageSelected(position: Int) {
         mTabLayout.currentTab = position
+        if (position == 2) {
+            var isVisibility = ly_price.visibility == View.VISIBLE
+            if (adapter != null) {
+                var list = adapter?.fragments
+                for (i in list!!.indices) {
+                    if (list[i] is PlayerCommentFragment) {
+                        (list[i] as PlayerCommentFragment).setInputLayoutVisibility(isVisibility)
+                    }
+                }
+            }
+        }
     }
 
     override fun onTabSelect(position: Int) {

@@ -3,6 +3,7 @@ package com.tunyin;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,11 +20,14 @@ import com.tunyin.mvp.model.UploadFileEntity;
 import com.tunyin.mvp.presenter.mine.PersonalPresenter;
 import com.tunyin.ui.activity.mine.ResetPasswordActivity;
 import com.tunyin.ui.dialog.SexDialog;
+import com.tunyin.utils.HttpUtils;
 import com.tunyin.utils.ImagePickHelper;
 import com.tunyin.utils.ImageUtil;
 import com.tunyin.utils.UriUtil;
 import com.tunyin.utils.eye.Eyes;
 import com.zhihu.matisse.Matisse;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -172,5 +176,30 @@ public class PersonalActivity extends BaseInjectActivity<PersonalPresenter> impl
     public void uploadFileSuc(@NotNull UploadFileEntity uploadFileEntity) {
         String headerUrl = uploadFileEntity.getUrl();
         SelfBean.getInstance().setHeadUrl(headerUrl);
+
+        String sex = SelfBean.getInstance().getSex();
+        if (sex.equals("未填写")) {
+            sex = "";
+        } else {
+            sex = sex.equals("男") ? "1" : "2";
+        }
+
+        String birthday = SelfBean.getInstance().getBirthday();
+        if (birthday.equals("未填写")) {
+            birthday = "";
+        }
+
+        HttpUtils.getInstance().commitUser(headerUrl,
+                SelfBean.getInstance().getNickName(), sex, birthday, SelfBean.getInstance().getMessageNotice(),
+                new SimpleCallBack<String>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        finish();
+                    }
+
+                    @Override
+                    public void onSuccess(String s) {
+                    }
+                });
     }
 }

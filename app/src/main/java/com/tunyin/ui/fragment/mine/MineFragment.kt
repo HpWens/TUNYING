@@ -80,6 +80,7 @@ class MineFragment : BaseInjectFragment<UploadFilePresenter>(), UploadFileContra
     override fun onResume() {
         super.onResume()
         tv_nickname.text = if (TextUtils.isEmpty(SelfBean.instance.nickName)) "无昵称" else SelfBean.instance.nickName
+        ImageUtil.load(SelfBean.instance.headUrl).isCircle.on(iv_avatar)
     }
 
     private fun requestPermission() {
