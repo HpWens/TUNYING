@@ -9,11 +9,13 @@ import android.text.TextUtils;
 import com.tunyin.mvp.model.Event;
 import com.tunyin.mvp.model.IsTryEntity;
 import com.tunyin.mvp.model.SelfBean;
+import com.tunyin.mvp.model.index.PlayerDirectoryEntity;
 import com.tunyin.myservice.AudioFocusManager;
 import com.tunyin.myservice.OnPlayerEventListener;
 import com.tunyin.utils.EventBusUtil;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * create by wangrongchao
@@ -66,6 +68,10 @@ public class MyAudioPlayer {
     private MyAudioPlayer() {
     }
 
+    public void reset() {
+        mediaPlayer.reset();
+    }
+
     public void init(Context context) {
         this.context = context.getApplicationContext();
         audioFocusManager = new AudioFocusManager(context);
@@ -78,8 +84,27 @@ public class MyAudioPlayer {
 //                startPlayer();
             }
         });
-        mediaPlayer.setOnBufferingUpdateListener((mp, percent) -> myListeners.onBufferingUpdate(percent));
+        mediaPlayer.setOnCompletionListener(mp -> {
+            if (mediaPlayer.getCurrentPosition() > 10000) {
+                List<PlayerDirectoryEntity.ListBean> playList = MyPlayService.currentPlayList;
+                if (playList.isEmpty()) return;
+                int playIndex = 0;
+                for (int j = 0; j < playList.size(); j++) {
+                    if (playList.get(j).getImage().equals(mImgUrl)) {
+                        playIndex = j + 1;
+                    }
+                }
 
+                if (playIndex >= playList.size()) {
+                    playIndex = 0;
+                }
+
+                play(playList.get(playIndex).getUrl(), false, playList.get(playIndex).getImage());
+                SelfBean.getInstance().setMusicHisId(playList.get(playIndex).getId());
+                handler.postDelayed(() -> startPlayer(), 1000);
+            }
+        });
+        mediaPlayer.setOnBufferingUpdateListener((mp, percent) -> myListeners.onBufferingUpdate(percent));
     }
 
     public void addOnPlayEventListener(OnPlayerEventListener listener) {
@@ -133,6 +158,7 @@ public class MyAudioPlayer {
                 mediaPlayer.reset();
                 mediaPlayer.setDataSource(url);
                 mediaPlayer.prepareAsync();
+                // mediaPlayer.prepare();
                 state = STATE_PREPARING;
 //            for (OnPlayerEventListener listener : listeners) {
 //                myListeners.onChange(music);
@@ -158,13 +184,10 @@ public class MyAudioPlayer {
 
     public long getDuration() {
         if (mediaPlayer != null) {
-            int it = mediaPlayer.getDuration();
-//            LogUtils.INSTANCE.d("----mediaPlayer------" + it);
             return mediaPlayer.getDuration();
         }
         return 0;
     }
-
 
     /**
      * 跳转到指定的时间位置

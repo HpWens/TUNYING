@@ -66,6 +66,9 @@
             <ImageView
                 android:id="@+id/iv_like"
                 android:layout_width="wrap_content"
+                android:paddingTop="2dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="6dp"
                 android:layout_toLeftOf="@+id/tv_like_num"

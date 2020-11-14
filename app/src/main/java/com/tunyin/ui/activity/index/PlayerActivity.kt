@@ -100,7 +100,7 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
     }
 
     override fun showCancelCollectSuccess() {
-        ToastUtils.showToast("取消收藏成功")
+        ToastUtils.showToast("取消收藏")
         isCollected = false
         iv_collect.setImageResource(R.mipmap.collect_white)
     }
@@ -112,8 +112,7 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
     }
 
     override fun onPublish(progress: Int) {
-        var mediaDuration = formatTime(MyAudioPlayer.get().duration);
-        if (mediaDuration.length > 7) {
+        if (MyAudioPlayer.get().duration.toString().length > 7) {
             MyAudioPlayer.get().pausePlayer()
             getMusic()
             return
@@ -163,10 +162,7 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
                     dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(mContext!!.resources.getColor(R.color.black))
                 } catch (e: Exception) {
                 }
-//                }
-
                 tryEnd = true
-
             } else {
                 if (!tryEnd!!) {
 //                    LogUtils.d("----progressTvprogressTv----" + (MyAudioPlayer.get().audioPosition.toInt()))
@@ -178,17 +174,22 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         }
     }
 
+    override fun onBackPressed() {
+        if (ly_price.visibility == View.VISIBLE) {
+            MyAudioPlayer.get().pausePlayer()
+        }
+        super.onBackPressed()
+    }
+
     override fun onBufferingUpdate(percent: Int) {
         progressSb.setSecondaryProgress(progressSb.getMax() * 100 / percent)
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance(context: Context, musicId: String): Intent {
             val intent = Intent(context, PlayerActivity::class.java)
             intent.putExtra("musicId", musicId)
-
             return intent
         }
     }
@@ -236,6 +237,7 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
             }
         }
 
+        //MyAudioPlayer.get().reset()
         MyAudioPlayer.get().play(musicEntity.url, isTry, musicEntity.image)
         SelfBean.instance.musicUrl = musicEntity.url
         onChangeImpl()
@@ -308,6 +310,8 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         }
     }
 
+    private lateinit var playerDirectoryFragment: PlayerDirectoryFragment
+
     override fun initWidget() {
         StatusBarUtil.setTranslucentForImageView(this, 0, null)
 //        StatusBarUtil.setTranslucentForImageView(this, 0, null)
@@ -330,24 +334,10 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         mTabEntities.add(FlyoutTabEntity("目录"))
         mTabEntities.add(FlyoutTabEntity("评论"))
 
-        var playerDirectoryFragment = PlayerDirectoryFragment.newInstance(mMusicId.toString())
+        playerDirectoryFragment = PlayerDirectoryFragment.newInstance(mMusicId.toString())
         playerDirectoryFragment.setChangeMusicListener(object : PlayerDirectoryFragment.OnChangeMusicListener {
             override fun changeMusic(id: String) {
-                mMusicId = id
-                MyAudioPlayer.get().songId = mMusicId
-                mListeningTime = Constants.TRY_LISTEN.toString()
-                tryEnd = false
-                play.setImageDrawable(mContext!!.resources.getDrawable(R.mipmap.icon_pause))
-                handler.removeCallbacksAndMessages(null)
-//                musicControl?.clear()
-//                unbindService(conn)
-                showLoading()
-                mPresenter.getMusic(id)
-                SelfBean.instance.musicHisId = id
-
-                // 更新详情页
-                var updateEvent: Event<String> = Event(101, id)
-                EventBusUtil.sendEvent(updateEvent)
+                changeMusicById(id)
             }
         })
         fragments.add(PlayerDetailFragment.newInstance(mMusicId.toString()))
@@ -361,7 +351,69 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         mViewPager.adapter = adapter
         mViewPager.addOnPageChangeListener(this)
 
+        mToolbar!!.setNavigationOnClickListener { onBackPressed() }
+
         getMusic()
+    }
+
+    private fun changeMusicById(id: String) {
+        mMusicId = id
+        MyAudioPlayer.get().songId = mMusicId
+        mListeningTime = Constants.TRY_LISTEN.toString()
+        tryEnd = false
+        play.setImageDrawable(mContext!!.resources.getDrawable(R.mipmap.icon_pause))
+        handler.removeCallbacksAndMessages(null)
+        //                musicControl?.clear()
+        //                unbindService(conn)
+        showLoading()
+        mPresenter.getMusic(id)
+        SelfBean.instance.musicHisId = id
+
+        // 更新详情页
+        var updateEvent: Event<String> = Event(101, id)
+        EventBusUtil.sendEvent(updateEvent)
+    }
+
+    fun prevPlay(v: View) {
+        // mMusicId
+        MyAudioPlayer.get().pausePlayer()
+        var currentPlayList = MyPlayService.currentPlayList
+        if (currentPlayList.isEmpty()) return
+        var playIndex = 0
+        for (index in currentPlayList.indices) {
+            if (currentPlayList[index].id == mMusicId) {
+                playIndex = index - 1
+            }
+        }
+        if (playIndex < 0) {
+            playIndex = currentPlayList.size - 1
+        }
+        changeMusicById(currentPlayList[playIndex].id)
+
+        if (playerDirectoryFragment != null) {
+            playerDirectoryFragment.setCurrentPosition(playIndex)
+        }
+    }
+
+    fun nextPlay(v: View) {
+        // mMusicId
+        MyAudioPlayer.get().pausePlayer()
+        var currentPlayList = MyPlayService.currentPlayList
+        if (currentPlayList.isEmpty()) return
+        var playIndex = 0
+        for (index in currentPlayList.indices) {
+            if (currentPlayList[index].id == mMusicId) {
+                playIndex = index + 1
+            }
+        }
+        if (playIndex >= currentPlayList.size) {
+            playIndex = 0
+        }
+        changeMusicById(currentPlayList[playIndex].id)
+
+        if (playerDirectoryFragment != null) {
+            playerDirectoryFragment.setCurrentPosition(playIndex)
+        }
     }
 
     override fun onClick(p0: View?) {
@@ -395,7 +447,6 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
                     }
 
                 }).show()
-
             }
             tv_to_pay -> {
 //                ToastUtils.showToast("去购买待定")
@@ -432,7 +483,9 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
     private fun ivIsPlayingTwo() {
         if (MyAudioPlayer.get().isPausing) {
             play.setImageDrawable(mContext!!.resources.getDrawable(R.mipmap.icon_stop))
-            durationTv.text = formatTime(MyAudioPlayer.get().duration)
+            if (MyAudioPlayer.get().duration.toString().length <= 7) {
+                durationTv.text = formatTime(MyAudioPlayer.get().duration)
+            }
         }
     }
 

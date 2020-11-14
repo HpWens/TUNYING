@@ -5,7 +5,6 @@ package com.tunyin.mvp.model;
  * on 2019/12/15
  **/
 public class IsTryEntity {
-
     public IsTryEntity(boolean isTry, boolean isPlaying,String imgUrl) {
         this.isTry = isTry;
         this.isPlaying = isPlaying;

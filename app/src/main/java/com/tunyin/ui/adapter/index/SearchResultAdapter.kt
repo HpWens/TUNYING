@@ -29,7 +29,6 @@ class SearchResultAdapter : BaseAdapter<SearchEntity.ListBean>() {
             itemView.tv_sub_title.text = itemBean.content
             itemView.tv_price.text = itemBean.price ?: "0"
             ImageUtil.load(itemBean.image).on(itemView.image)
-
         }
     }
 }

@@ -7,8 +7,10 @@ import com.tunyin.R
 import com.tunyin.ToastUtils
 import com.tunyin.base.BaseRefreshFragment
 import com.tunyin.mvp.contract.mine.OrderContract
+import com.tunyin.mvp.model.SelfBean
 import com.tunyin.mvp.model.mine.OrderEntity
 import com.tunyin.mvp.presenter.mine.OrderPresenter
+import com.tunyin.ui.activity.index.PlayerActivity
 import com.tunyin.ui.activity.mine.OrderDetailActivity
 import com.tunyin.ui.adapter.mine.OrderAdapter
 import com.vondear.rxtool.RxNetTool
@@ -41,14 +43,16 @@ class PurchasedFragment : BaseRefreshFragment<OrderPresenter, OrderEntity>(), Or
                 var createDateFormat = it.get(position)?.createDateFormat ?: ""
                 var totalPrice = it.get(position)?.totalPrice ?: ""
                 var songId = it.get(position)?.songId ?: ""
-                startActivity(OrderDetailActivity.newInstance(mContext, mAdapter!!.dataList[position].id,
-                        title,
-                        image,
-                        orderNo,
-                        createDateFormat,
-                        totalPrice,
-                        songId
-                ))
+
+//                startActivity(OrderDetailActivity.newInstance(mContext, mAdapter!!.dataList[position].id,
+//                        title,
+//                        image,
+//                        orderNo,
+//                        createDateFormat,
+//                        totalPrice,
+//                        songId ))
+
+                startActivity(PlayerActivity.newInstance(context!!, songId))
             }
         }
         mAdapter!!.setOnDeleteClickListener(object : OrderAdapter.OnDeleteClickLister {
@@ -57,7 +61,6 @@ class PurchasedFragment : BaseRefreshFragment<OrderPresenter, OrderEntity>(), Or
                 mPresenter.delOrder(mAdapter!!.dataList[position].id)
                 mAdapter!!.dataList.removeAt(position)
                 recycler.closeMenu()
-
             }
         })
 

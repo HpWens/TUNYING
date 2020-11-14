@@ -2,7 +2,9 @@ package com.tunyin.ui.activity.index
 
 import android.content.Context
 import android.content.Intent
+import android.text.Editable
 import android.text.TextUtils
+import android.text.TextWatcher
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -30,8 +32,7 @@ import kotlinx.android.synthetic.main.activity_search_result.*
  * on 2019/10/31
  *搜索结果
  **/
-class SearchResultActivity : BaseInjectActivity<SearchResultPresenter>(), TabLayout.OnTabSelectedListener, SearchResultContract.View, View.OnClickListener {
-
+ class SearchResultActivity : BaseInjectActivity<SearchResultPresenter>(), TabLayout.OnTabSelectedListener, SearchResultContract.View, View.OnClickListener {
 
     override fun getLayoutId(): Int = R.layout.activity_search_result
     private var mSearchContent: String = ""
@@ -69,7 +70,7 @@ class SearchResultActivity : BaseInjectActivity<SearchResultPresenter>(), TabLay
                             }
 
                             mSelectedPosition = 0
-                            mPresenter.search("0", "20", mSearchContent, mTabList[0].id.toString())
+                            mPresenter.search("0", "200", mSearchContent, mTabList[0].id.toString())
                         }
                     }
                 })
@@ -111,21 +112,33 @@ class SearchResultActivity : BaseInjectActivity<SearchResultPresenter>(), TabLay
             startActivity(mContext?.let { PlayerActivity.newInstance(it, mAdapter!!.dataList[position].id) })
         }
 
+        et_search_content.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+        })
+
         et_search_content.setOnEditorActionListener(object : TextView.OnEditorActionListener {
             override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     var keyword = et_search_content.text.toString().trim()
                     if (!TextUtils.isEmpty(keyword)) {
                         showLoading()
                         mSearchContent = keyword
-                        mPresenter.search("0", "20", mSearchContent, mTabList[mSelectedPosition].id.toString())
+                        mPresenter.search("0", "200", mSearchContent, mTabList[mSelectedPosition].id.toString())
                     }
                     RxKeyboardTool.hideSoftInput(mContext, et_search_content)
                     return true
                 }
                 return false
             }
-
         })
     }
 
@@ -140,7 +153,7 @@ class SearchResultActivity : BaseInjectActivity<SearchResultPresenter>(), TabLay
         if (p0 != null) {
             mSelectedPosition = p0.position
         }
-        mPresenter.search("0", "20", et_search_content.text.trim().toString(), mTabList[mSelectedPosition].id.toString())
+        mPresenter.search("0", "200", et_search_content.text.trim().toString(), mTabList[mSelectedPosition].id.toString())
     }
 
 

@@ -42,8 +42,8 @@ class RankingListActivity : BaseActivity(), OnTabSelectListener, ViewPager.OnPag
         val mTabEntities = ArrayList<CustomTabEntity>()
         val fragments = ArrayList<BaseFragment>()
 
-        mTabEntities.add(FlyoutTabEntity("付费版"))
-        mTabEntities.add(FlyoutTabEntity("免费版"))
+        mTabEntities.add(FlyoutTabEntity("付费榜"))
+        mTabEntities.add(FlyoutTabEntity("免费榜"))
         fragments.add(RankingListFragment.newInstance("1"))
         fragments.add(RankingListFragment.newInstance("2"))
 

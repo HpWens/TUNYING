@@ -44,12 +44,10 @@ class CollectAdapter constructor(listener: OnCollectListener) : BaseAdapter<Coll
                 itemView.tv_cancel_collect.setBackgroundResource(R.drawable.shape_bg_gray_oval)
             }
             itemView.tv_cancel_collect.setOnClickListener {
-                mListener?.let {
-                    if (itemBean.isHelperCollect) {
-                        mListener.onCancelCollect(adapterPosition, itemBean.id)
-                    } else {
-                        mListener.onAddCollect(adapterPosition, itemBean.id)
-                    }
+                if (itemBean.isHelperCollect) {
+                    mListener.onCancelCollect(adapterPosition, itemBean.id)
+                } else {
+                    mListener.onAddCollect(adapterPosition, itemBean.id)
                 }
             }
         }

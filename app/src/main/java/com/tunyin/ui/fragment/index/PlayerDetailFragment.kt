@@ -2,6 +2,7 @@ package com.tunyin.ui.fragment.index
 
 import android.os.Bundle
 import android.text.Html
+import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.tunyin.base.BaseRefreshFragment
@@ -30,14 +31,17 @@ class PlayerDetailFragment : BaseRefreshFragment<PlayerDetailSinglePresenter, St
 
         // tv_detail.text = Html.fromHtml(palyDetailSingleEntity.detail, MImageGetter(tv_detail, mContext), null)
 
+        web_view.visibility = View.INVISIBLE
         web_view.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                 view?.loadUrl(url)
                 return true
             }
         }
-
         web_view.loadUrl("http://api.itunyin.com/api/html/noteDetail?id=${musicId}")
+        web_view.postDelayed({
+            web_view.visibility = View.VISIBLE
+        }, 400)
 
         // showDetailContent(palyDetailSingleEntity.detail)
 

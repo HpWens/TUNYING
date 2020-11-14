@@ -5,10 +5,8 @@ import com.tunyin.ToastUtils
 import com.tunyin.base.BaseSubscriberPro
 import com.tunyin.base.RxPresenter
 import com.tunyin.mvp.contract.index.PlayerCommentContract
-import com.tunyin.mvp.contract.index.PlayerDirectoryContract
 import com.tunyin.mvp.model.index.AddCommendEntity
 import com.tunyin.mvp.model.index.PlayerCommentEntity
-import com.tunyin.mvp.model.index.PlayerDirectoryEntity
 import com.tunyin.utils.rxSchedulerHelper
 import javax.inject.Inject
 
@@ -31,7 +29,7 @@ class PlayerCommentPresenter @Inject constructor(private val mRetrofitHelper: Re
                 .compose(rxSchedulerHelper())
                 .subscribeWith(object : BaseSubscriberPro<String>(mView) {
                     override fun onSuccess(m: String) {
-                        ToastUtils.showToast(m)
+                        ToastUtils.showToast("取消点赞")
                         mView?.cancelPraiseSuc(m)
                     }
 

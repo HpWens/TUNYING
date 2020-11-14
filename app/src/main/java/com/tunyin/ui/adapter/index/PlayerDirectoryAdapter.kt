@@ -17,7 +17,6 @@ class PlayerDirectoryAdapter constructor(currentPos: String) : BaseAdapter<Playe
 
     open fun setCurrentPos(currentPos: String) {
         mCurrentPos = currentPos
-
     }
 
     override fun layoutId(): Int {
@@ -42,7 +41,6 @@ class PlayerDirectoryAdapter constructor(currentPos: String) : BaseAdapter<Playe
                 itemView.tv_serial_num.setTextColor(itemView.context.resources.getColor(R.color.black))
                 itemView.tv_title.setTextColor(itemView.context.resources.getColor(R.color.black))
             }
-
 
         }
     }

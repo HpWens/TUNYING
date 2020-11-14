@@ -1,28 +1,26 @@
 package com.tunyin.ui.fragment.index
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tunyin.LogUtils
-import com.tunyin.MyAudioPlayer
 import com.tunyin.R
-import com.tunyin.ToastUtils
 import com.tunyin.base.BaseRefreshFragment
 import com.tunyin.mvp.contract.index.IndexContract
 import com.tunyin.mvp.model.Event
 import com.tunyin.mvp.model.IsTryEntity
-import com.tunyin.mvp.model.MessageEvent
 import com.tunyin.mvp.model.SelfBean
 import com.tunyin.mvp.model.index.IndexEntity
 import com.tunyin.mvp.presenter.index.IndexPresenter
 import com.tunyin.ui.activity.index.PlayerActivity
 import com.tunyin.ui.activity.index.SearchActivity
 import com.tunyin.ui.activity.mine.LoginActivity
+import com.tunyin.ui.activity.mine.MyWalletActivity
 import com.tunyin.ui.adapter.discovery.DiscoveryRVAdapter
 import com.tunyin.ui.adapter.index.*
 import com.tunyin.utils.ImageUtil
 import kotlinx.android.synthetic.main.fragment_index.*
-import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
@@ -31,7 +29,6 @@ import org.greenrobot.eventbus.ThreadMode
  * 首页
  */
 class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexContract.View, View.OnClickListener {
-
 
     private val mBannerList = ArrayList<IndexEntity.BannerListBean>() // 顶部
     private val mClassifyList = ArrayList<IndexEntity>()
@@ -45,13 +42,13 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
 
     private var isTry: Boolean = false
 
+    private var isEnterDetail = false
 
     override fun initPresenter() = mPresenter.attachView(this)
 
     override fun initInject() = fragmentComponent.inject(this)
 
     override fun lazyLoadData() = mPresenter.getIndex()
-
 
     override fun getLayoutId(): Int = R.layout.fragment_index
 
@@ -67,10 +64,7 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
         tv_expand.setOnClickListener(this)
         tv_play.setOnClickListener(this)
         play.setOnClickListener(this)
-
 //        play.startRotate()
-
-
     }
 
     override fun onClick(p0: View?) {
@@ -80,17 +74,23 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
                 activity?.startActivity(intent)
             }
             tv_expand -> {
-                EventBus.getDefault().post(MessageEvent("Hello EventBus!"))
+                //  EventBus.getDefault().post(MessageEvent("Hello EventBus!"))
+                val intent = Intent(activity, MyWalletActivity::class.java)
+                activity?.startActivity(intent)
             }
 
             tv_play -> {
                 startActivity(PlayerActivity.newInstance(context!!, SelfBean.instance.musicHisId))
             }
             play -> {
-                if (!isTry) {
-                    MyAudioPlayer.get().playPause()
-                } else {
-                    ToastUtils.showToast("你未购买当前歌曲，请前往购买")
+//                if (!isTry) {
+//                    MyAudioPlayer.get().playPause()
+//                } else {
+//                    ToastUtils.showToast("你未购买当前歌曲，请前往购买")
+//                    startActivity(PlayerActivity.newInstance(context!!, SelfBean.instance.musicHisId))
+//                }
+
+                if (isEnterDetail) {
                     startActivity(PlayerActivity.newInstance(context!!, SelfBean.instance.musicHisId))
                 }
 
@@ -109,8 +109,6 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
 //                intent.putExtra("musicId", SelfBean.instance.musicUrl)
 //                mContext?.startService(intent)
             }
-
-
         }
     }
 
@@ -123,7 +121,6 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
         if (event != null) {
             receiveEvent(event!!)
         }
-
     }
 
     var temp: Int = -1
@@ -131,25 +128,22 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
     var isShowImg: Boolean = true
 
     override fun receiveEvent(event: Event<*>) {
+        isEnterDetail = true
         if (event.code == 1) {
-            isTry = (event.data as IsTryEntity).isTry
             ImageUtil.load((event.data as IsTryEntity).imageUrl).isCircle.on(play)
+            isTry = (event.data as IsTryEntity).isTry
             if ((event.data as IsTryEntity).isPlaying) {
                 isPlay = true
-                play.setBackgroundResource(R.mipmap.icon_pause)//
-
+                //play.setBackgroundResource(R.mipmap.icon_pause)
 //                play.setImageDrawable(mContext!!.resources.getDrawable(R.mipmap.icon_pause))
                 play.startRotate()
             } else {
                 isPlay = false
-                play.setBackgroundResource(R.mipmap.icon_stop)//
-
+                //play.setBackgroundResource(R.mipmap.icon_stop)
 //                play.setBackgroundResource(mContext!!.resources.getDrawable(R.mipmap.icon_stop))
                 play.stopRotate()
             }
         }
-
-
 //        if (event.code == 1) {
 //            LogUtils.d("----mymusic---------temp=----" + temp + "-------data=" + event.data)
 //            if (event.data != temp) {
@@ -166,22 +160,18 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
 ////                play.setBackgroundResource(mContext!!.resources.getDrawable(R.mipmap.icon_stop))
 //                play.stopRotate()
 //            }
-
-
 //            temp = event.data as Int
-
-
 //        }
     }
 
 
+    @SuppressLint("WrongConstant")
     override fun initRecyclerView() {
         mDiscoveryRVAdapter = DiscoveryRVAdapter()
         val mLayoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
         mRecycler?.layoutManager = mLayoutManager
         mRecycler?.adapter = mDiscoveryRVAdapter
     }
-
 
     override fun showIndex(indexEntity: IndexEntity) {
         LogUtils.d("hellll", "-----index---")
@@ -212,7 +202,6 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
     }
 
     override fun showRefreshHotAnchor(anchorListBean: List<IndexEntity.AnchorListBean>) {
-
         mAnchorList.clear()
         var indexEntity = IndexEntity()
         indexEntity?.anchorList.addAll(anchorListBean)
@@ -225,7 +214,6 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
         mFreeList.clear()
         mFreeList.add(freeListBean)
         mDiscoveryRVAdapter?.notifyDataSetChanged()
-
     }
 
     override fun showRreshFeaturedRecommend(featuredRecommendBean: IndexEntity.FeaturedRecommendBean) {
@@ -234,7 +222,6 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
         mFeaturedRecommendList.addAll(featuredRecommendBean.list)
         mDiscoveryRVAdapter?.notifyDataSetChanged()
     }
-
 
     override fun showError(msg: String) {
         super<IndexContract.View>.showError(msg)
@@ -245,7 +232,6 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
             startActivity(intent)
             return
         }
-
         hideLoading()
     }
 
@@ -272,10 +258,8 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
                 showLoading()
                 mPresenter.refreshGuessLike()
             }
-
         })
         if (mGuessLikeList.size != 0) mDiscoveryRVAdapter?.addSection(guessLikeSelection)
-
 
         var sleepTopSelection = SleepTopSelection(mSleepTopList)
         sleepTopSelection.setRefreshSleepTopListener(object : SleepTopSelection.OnRefreshSleepTopListener {
@@ -283,19 +267,16 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
                 showLoading()
                 mPresenter.refreshSleepTop()
             }
-
         })
         if (mSleepTopList.size != 0) mDiscoveryRVAdapter?.addSection(sleepTopSelection)
-
 
         var anchorTopSelection = AnchorTopSelection(mAnchorList)
         anchorTopSelection.setRefreshAnchorTopListener(object : AnchorTopSelection.OnRefreshAnchorTopListener {
             override fun refreshAnchorTopData() {
                 mPresenter.refreshHotAnchor()
             }
-
         })
-       // if (mAnchorList.size != 0) mDiscoveryRVAdapter?.addSection(anchorTopSelection)
+        // if (mAnchorList.size != 0) mDiscoveryRVAdapter?.addSection(anchorTopSelection)
 
         var freeSelection = FreeSelection(mFreeList)
         freeSelection.setRefreshFreeListener(object : FreeSelection.OnRefreshFreeListener {
@@ -303,7 +284,6 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
                 showLoading()
                 mPresenter.refreshFree()
             }
-
         })
         if (mFreeList.size != 0) mDiscoveryRVAdapter?.addSection(freeSelection)
 
@@ -311,7 +291,6 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
 //            mDiscoveryRVAdapter?.addSection(freeSelection)
 //            str = mDiscoveryRVAdapter?.addSection(freeSelection)
 //        }
-
 //        freeSelection.setRefreshFreeListener(object : FreeSelection.OnRefreshFreeListener {
 //            override fun refreshFreeData() {
 //                ToastUtils.showToast("我是换一批")
@@ -319,11 +298,9 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
 ////                mDiscoveryRVAdapter?.removeSection(str)
 ////                mDiscoveryRVAdapter?.notifyDataSetChanged()
 //            }
-//
 //        })
 
-
-        // if (mFeaturedActivityList.size != 0) mDiscoveryRVAdapter?.addSection(FeaturedActivitySelection(mFeaturedActivityList))
+        if (mFeaturedActivityList.size != 0) mDiscoveryRVAdapter?.addSection(FeaturedActivitySelection(mFeaturedActivityList))
 
         var featuredRecommendSelection = FeaturedRecommendSelection(mFeaturedRecommendList)
         featuredRecommendSelection.setRefreshReaturedREcommendListener(object : FeaturedRecommendSelection.OnRefreshReaturedREcommendListener {
@@ -331,12 +308,10 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
                 showLoading()
                 mPresenter.refreshFeaturedRecommend()
             }
-
         })
         if (mFeaturedRecommendList.size != 0) mDiscoveryRVAdapter?.addSection(featuredRecommendSelection)
         mDiscoveryRVAdapter?.notifyDataSetChanged()
     }
-
 
 //    override fun showRefreshFreeData(freeListBean: IndexEntity.FreeListBean) {
 ////        mFreeList.clear()
@@ -344,6 +319,5 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
 ////        mDiscoveryRVAdapter?.removeSection(str)
 //        mDiscoveryRVAdapter?.notifyDataSetChanged()
 //    }
-
 
 }

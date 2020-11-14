@@ -4,12 +4,15 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
-import android.util.Log;
 
-import androidx.annotation.Nullable;
-
+import com.tunyin.mvp.model.index.PlayerDirectoryEntity;
 import com.tunyin.myservice.Actions;
 import com.tunyin.myservice.AudioPlayer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * create by wangrongchao
@@ -17,10 +20,26 @@ import com.tunyin.myservice.AudioPlayer;
  **/
 public class MyPlayService extends Service {
 
+    public static List<PlayerDirectoryEntity.ListBean> currentPlayList = new ArrayList<>();
+
     public class PlayBinder extends Binder {
         public MyPlayService getService() {
             return MyPlayService.this;
         }
+    }
+
+    public static String getPrice(String price) {
+        if (price.equals("0") || price.equals("0.0") || price.equals("0.00")) {
+            return "";
+        }
+        return price;
+    }
+
+    public static boolean isFree(String price) {
+        if (price.equals("0") || price.equals("0.0") || price.equals("0.00")) {
+            return true;
+        }
+        return false;
     }
 
     @Override

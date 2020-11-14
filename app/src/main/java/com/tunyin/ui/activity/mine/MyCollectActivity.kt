@@ -2,6 +2,7 @@ package com.tunyin.ui.activity.mine
 
 import android.content.Context
 import android.content.Intent
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tunyin.R
 import com.tunyin.ToastUtils
@@ -12,7 +13,8 @@ import com.tunyin.mvp.presenter.mine.CollectPresenter
 import com.tunyin.ui.adapter.mine.CollectAdapter
 import com.tunyin.utils.AppUtils
 import com.tunyin.utils.StatusBarUtil
-import kotlinx.android.synthetic.main.activity_search_result.*
+import kotlinx.android.synthetic.main.activity_my_collect.*
+import kotlinx.android.synthetic.main.activity_search_result.recycler
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 /**
@@ -33,6 +35,8 @@ class MyCollectActivity : BaseInjectActivity<CollectPresenter>(), CollectContrac
         collectList.addAll(collectEntity.list)
         mAdapter?.dataList = collectList
         mAdapter?.notifyDataSetChanged()
+
+        tv_empty.visibility = if (collectEntity.list.isEmpty()) View.VISIBLE else View.GONE
     }
 
     override fun showError(msg: String) {
@@ -40,7 +44,7 @@ class MyCollectActivity : BaseInjectActivity<CollectPresenter>(), CollectContrac
     }
 
     override fun showCancelCollectSuccess(pos: Int) {
-        ToastUtils.showToast("取消收藏成功")
+        ToastUtils.showToast("取消收藏")
         if (mAdapter != null && mAdapter!!.dataList.size > pos) {
             mAdapter!!.dataList[pos].isHelperCollect = false
             mAdapter!!.notifyItemChanged(pos)

@@ -8,10 +8,11 @@
 
     <ImageView
         android:id="@+id/iv_header"
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/toolbar"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         android:src="@mipmap/home_header_bg"></ImageView>
 
     <androidx.appcompat.widget.Toolbar

@@ -52,14 +52,13 @@
                         android:drawableStart="@drawable/search_icon"
                         android:drawablePadding="6dp"
                         android:hint="倾耳倾听"
+                        android:imeOptions="actionSearch"
                         android:singleLine="true"
                         android:textColor="#999999"
                         android:textColorHint="#999999"
                         android:textSize="15sp" />
 
-
                 </LinearLayout>
-
 
             </LinearLayout>
 

@@ -2,6 +2,7 @@ package com.tunyin.ui.fragment.index
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tunyin.MyPlayService
 import com.tunyin.R
 import com.tunyin.base.BaseRefreshFragment
 import com.tunyin.mvp.contract.index.PlayerDirectoryContract
@@ -28,6 +29,11 @@ class PlayerDirectoryFragment : BaseRefreshFragment<PlayerDirectoryPresenter, Pl
 //        mAdapter?.dataList = playerDirectoryEntity.list
 //        mAdapter?.notifyDataSetChanged()
 
+        // 保存 list
+        if (playerDirectoryEntity?.list != null) {
+            MyPlayService.currentPlayList = playerDirectoryEntity.list
+        }
+
         hideLoading()
         mAdapter = PlayerDirectoryAdapter(playerDirectoryEntity.currentEpisode)
         mRecycler?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
@@ -39,9 +45,13 @@ class PlayerDirectoryFragment : BaseRefreshFragment<PlayerDirectoryPresenter, Pl
                 mAdapter!!.notifyDataSetChanged()
                 onChangeMusicListener.changeMusic(mAdapter!!.dataList[position].id.toString())
             }
-
         }
+    }
 
+    fun setCurrentPosition(position: Int) {
+        if (mAdapter == null) return
+        mAdapter!!.setCurrentPos((position + 1).toString())
+        mAdapter!!.notifyDataSetChanged()
     }
 
     override fun showError(msg: String) {
@@ -76,11 +86,9 @@ class PlayerDirectoryFragment : BaseRefreshFragment<PlayerDirectoryPresenter, Pl
 
     fun setChangeMusicListener(listener: OnChangeMusicListener) {
         this.onChangeMusicListener = listener
-
     }
 
     private lateinit var onChangeMusicListener: OnChangeMusicListener
-
 
     interface OnChangeMusicListener {
         fun changeMusic(id: String)

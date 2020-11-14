@@ -1,7 +1,6 @@
 package com.tunyin.ui.adapter.discovery
 
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.tunyin.R
 import com.tunyin.mvp.model.discovery.DiscoveryEntity
 import com.tunyin.ui.activity.index.PlayerActivity
@@ -19,7 +18,7 @@ class DiscoveryPaidSelection(list: List<DiscoveryEntity.PaidSelectionBean.ListBe
 
                 setText(R.id.tv_title, it.title)
                 setText(R.id.tv_sub_title, it.content)
-                setText(R.id.tv_diamond_num, it.member_price)
+                setText(R.id.tv_diamond_num, it.price)
 //                setText(R.id.special_content, it.introduction)
                 ImageUtil.load(it.image).on(getView(R.id.iv_bg))
                 var id=it.id

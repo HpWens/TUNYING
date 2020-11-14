@@ -1,6 +1,7 @@
 package com.tunyin.ui.adapter.index
 
 import android.widget.TextView
+import com.tunyin.MyPlayService
 import com.tunyin.R
 import com.tunyin.mvp.model.index.IndexEntity
 import com.tunyin.ui.activity.index.PlayerActivity
@@ -19,14 +20,15 @@ class SleepTopSelection(list: List<IndexEntity.SleepTopBean.ListBeanXXXX>?) :
 
                 setText(R.id.tv_title, it.title)
                 setText(R.id.tv_sub_title, it.content)
-                setText(R.id.tv_diamond_num, it.price)
+                setText(R.id.tv_diamond, if (MyPlayService.isFree(it.price)) "免费" else "钻石")
+                setText(R.id.tv_diamond_num, MyPlayService.getPrice(it.price))
 
                 ImageUtil.load(it.image).on(getView(R.id.image))
 
-                var id=it.id
+                var id = it.id
 
                 itemView.setOnClickListener {
-                    itemView.context.startActivity(PlayerActivity.newInstance(itemView.context,id))
+                    itemView.context.startActivity(PlayerActivity.newInstance(itemView.context, id))
                     //                    mContext.startActivity(Intent(mContext, WebViewActivity::class.java))
                 }
 
@@ -34,7 +36,7 @@ class SleepTopSelection(list: List<IndexEntity.SleepTopBean.ListBeanXXXX>?) :
 //                    itemView.context.startActivity(PlayerActivity.newInstance(itemView.context, it.id.toString()))
 //                    var intent=Intent(PlayerActivity.newInstance(itemView.context,it.id.toString()))
 //                    itemView.context.startActivity(intent)
-                    //                    mContext.startActivity(Intent(mContext, WebViewActivity::class.java))
+                //                    mContext.startActivity(Intent(mContext, WebViewActivity::class.java))
 //                }
             }
         }

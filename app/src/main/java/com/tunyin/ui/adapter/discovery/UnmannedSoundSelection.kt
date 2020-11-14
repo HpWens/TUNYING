@@ -37,7 +37,7 @@ class UnmannedSoundSelection(list: List<DiscoveryEntity.UnmannedSoundBean>?) : S
     override fun onBindHeaderViewHolder(holder: ViewHolder?) {
         holder?.setText(R.id.headTitle, "无人声")?.setVisible(R.id.headMore, false)?.setVisible(R.id.iv_more, true)
         holder?.itemView?.setOnClickListener {
-            it.context.startActivity(PayStuffActivity.newInstance(it.context, "6", "无人音"))
+            it.context.startActivity(PayStuffActivity.newInstance(it.context, "6", "无人声"))
         }
     }
 }

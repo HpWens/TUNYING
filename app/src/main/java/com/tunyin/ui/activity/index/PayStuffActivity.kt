@@ -37,7 +37,6 @@ class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContra
 
     override fun initPresenter() = mPresenter.attachView(this)
 
-
     override fun showBannerData(payStaffBannerEntity: PayStaffBannerEntity) {
         mBannerList.addAll(payStaffBannerEntity.list)
         mPresenter.getPayStaff("0", "200", typeId)

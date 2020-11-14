@@ -6,14 +6,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.tunyin.mvp.model.SelfBean;
 import com.tunyin.utils.HttpUtils;
 import com.tunyin.utils.eye.Eyes;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class NicknameActivity extends AppCompatActivity {
 
@@ -37,7 +37,7 @@ public class NicknameActivity extends AppCompatActivity {
         }
 
         findViewById(R.id.tv_save).setOnClickListener(v -> {
-            saveNick = etNick.getText().toString();
+            saveNick = etNick.getText().toString().replaceAll(" ", "");
 
             String sex = SelfBean.getInstance().getSex();
             if (sex.equals("未填写")) {

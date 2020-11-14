@@ -43,14 +43,11 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
     private val listRb = arrayListOf<RadioButton>()
     private val priceList = ArrayList<MyWalletEntity.RechargeListBean>()
 
-
     override fun initInject() = activityComponent.inject(this)
 
     override fun initPresenter() = mPresenter.attachView(this)
 
-
     override fun getLayoutId(): Int = R.layout.activity_wallet
-
 
     override fun showError(msg: String) {
         hideLoading()

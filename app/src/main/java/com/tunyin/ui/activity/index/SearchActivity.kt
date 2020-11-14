@@ -25,7 +25,6 @@ import kotlinx.android.synthetic.main.activity_search.*
  */
 class SearchActivity : BaseInjectActivity<SearchHotPresenter>(), SearchContract.View, View.OnClickListener {
 
-
     private var mAdapter: SearchHotAdapter? = null
     override fun getLayoutId(): Int = com.tunyin.R.layout.activity_search
     private val hotList = ArrayList<SearchHotEntity.ListBean>()
@@ -54,7 +53,7 @@ class SearchActivity : BaseInjectActivity<SearchHotPresenter>(), SearchContract.
 
     override fun showSearchHotData(searchHotEntity: SearchHotEntity) {
         hideLoading()
-        et_search_content.hint = searchHotEntity.hotSearch
+        et_search_content.hint = "搜索"
         hotList.clear()
         hotList.addAll(searchHotEntity.list)
         mAdapter?.dataList = hotList
@@ -93,7 +92,7 @@ class SearchActivity : BaseInjectActivity<SearchHotPresenter>(), SearchContract.
         search_layout.setOnClickListener(this)
         et_search_content.setOnClickListener(this)
         et_search_content.setOnEditorActionListener { v, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 startActivity(SearchResultActivity.newInstance(mContext, et_search_content.text.trim().toString()))
                 true
             } else false
