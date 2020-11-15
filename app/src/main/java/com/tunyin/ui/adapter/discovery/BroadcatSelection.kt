@@ -36,8 +36,8 @@ class BroadcatSelection(list: List<DiscoveryEntity.BroadcastBean>?) : StateBroad
                                 outRect.right = RxImageTool.dip2px(5f)
                             }
                             pos % 3 == 1 -> {
-                                outRect.right = RxImageTool.dip2px(5f)
-                                outRect.left = RxImageTool.dip2px(5f)
+                                outRect.right = RxImageTool.dip2px(7.5f)
+                                outRect.left = RxImageTool.dip2px(7.5f)
                             }
                             else -> {
                                 outRect.right = RxImageTool.dip2px(10f)
