@@ -102,6 +102,7 @@
             android:text="删除"
             android:textColor="@color/white"
             android:textSize="12sp"
+            android:visibility="invisible"
             roundiv:rv_backgroundColor="#F85454"
             roundiv:rv_radius="8dp" />
 

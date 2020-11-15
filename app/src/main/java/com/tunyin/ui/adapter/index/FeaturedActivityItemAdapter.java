@@ -37,7 +37,6 @@ public class FeaturedActivityItemAdapter extends BaseAdapter<IndexEntity.Feature
             ImageUtil.load(listBean.getImage()).on(imageView);
             tvTitle.setText(listBean.getTitle());
             tvSubTiele.setText(listBean.getContent());
-
         }
     }
 }

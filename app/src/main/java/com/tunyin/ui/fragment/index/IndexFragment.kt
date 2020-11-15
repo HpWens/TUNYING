@@ -67,6 +67,11 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
 //        play.startRotate()
     }
 
+    override fun initDatas() {
+        super.initDatas()
+        ImageUtil.load(R.mipmap.ic_eryu).isCircle.on(play)
+    }
+
     override fun onClick(p0: View?) {
         when (p0) {
             search_layout, et_search_content -> {

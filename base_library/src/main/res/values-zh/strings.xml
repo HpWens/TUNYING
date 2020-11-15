@@ -1,5 +1,5 @@
 <resources>
-    <string name="mei_hint_empty">一片荒芜</string>
+    <string name="mei_hint_empty"></string>
     <string name="mei_hint_loading">加载中...</string>
     <string name="mei_hint_error">无法访问网络~</string>
     <string name="mei_pull_refresh">下拉可以刷新</string>

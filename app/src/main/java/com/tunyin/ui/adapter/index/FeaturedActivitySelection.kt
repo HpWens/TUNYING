@@ -1,11 +1,13 @@
 package com.tunyin.ui.adapter.index
 
+import android.content.Intent
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tunyin.R
 import com.tunyin.mvp.model.index.IndexEntity
+import com.tunyin.ui.activity.WebViewActivity
 import com.tunyin.ui.adapter.discovery.StateBroadcast
 import com.tunyin.widget.section.ViewHolder
 import com.vondear.rxtool.RxImageTool
@@ -20,6 +22,7 @@ class FeaturedActivitySelection(list: List<IndexEntity.FeaturedActivityBean>?) :
                 featuredActivityItemAdapter.dataList = zhuanlan.list
                 getView<RecyclerView>(R.id.recycler).layoutManager = GridLayoutManager(mContext, 2)
                 getView<RecyclerView>(R.id.recycler).adapter = featuredActivityItemAdapter
+                featuredActivityItemAdapter.setOnItemClickListener { v, position -> mContext.startActivity(Intent(mContext, WebViewActivity::class.java)) }
                 for (i in 0 until getView<RecyclerView>(R.id.recycler).itemDecorationCount) {
                     getView<RecyclerView>(R.id.recycler).removeItemDecorationAt(i)
                 }
@@ -34,9 +37,9 @@ class FeaturedActivitySelection(list: List<IndexEntity.FeaturedActivityBean>?) :
                         }
                     }
                 })
-
+//
 //                itemView.setOnClickListener {
-//                    //                    mContext.startActivity(Intent(mContext, WebViewActivity::class.java))
+//                    mContext.startActivity(Intent(mContext, WebViewActivity::class.java))
 //                }
             }
         }

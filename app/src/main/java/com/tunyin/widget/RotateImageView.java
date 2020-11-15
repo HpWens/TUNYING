@@ -61,7 +61,7 @@ public class RotateImageView extends ImageView {
         mPaint.setAntiAlias(true);
         mPaint.setColor(Color.WHITE);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(10);
+        mPaint.setStrokeWidth(dp2px(4));
 
         mValueAnimator = ValueAnimator.ofFloat(0, 1f);
         mValueAnimator.setDuration(5000);
@@ -73,6 +73,11 @@ public class RotateImageView extends ImageView {
             setPivotY(getHeight() / 2);
             setRotation(360 * value);
         });
+    }
+
+    public int dp2px(float dpValue) {
+        final float scale = getContext().getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 
     public void startRotate() {
@@ -154,7 +159,7 @@ public class RotateImageView extends ImageView {
 //        }
 
         super.onDraw(canvas);
-        //canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, mPaint);
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2 - dp2px(4) / 2, mPaint);
     }
 
     private Bitmap getCuttedPicture(Drawable DrawbleSrc) {

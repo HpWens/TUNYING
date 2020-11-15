@@ -40,7 +40,7 @@ public class MsgListFragment extends BaseListFragment<MsgEntity> {
         }
         super.initView();
 
-        setEmptyIconAndText(R.mipmap.no_order_record, R.string.no_msg);
+        setEmptyIconAndText(R.mipmap.mei_comm_ic_empty3, R.string.no_msg2);
     }
 
     @Override
