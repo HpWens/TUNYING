@@ -143,6 +143,7 @@ class DiscoveryFragment : BaseRefreshFragment<DiscoveryPresenter, DiscoveryEntit
         if (mRadioList.size != 0) mDiscoveryRVAdapter?.addSection(radioSelection)
         if (mNaturalSoundList.size != 0) mDiscoveryRVAdapter?.addSection(NatureSoundSelection(mNaturalSoundList))
         if (mUnmannedSoundList.size != 0) mDiscoveryRVAdapter?.addSection(UnmannedSoundSelection(mUnmannedSoundList))
+
         mDiscoveryRVAdapter?.notifyDataSetChanged()
     }
 
