@@ -8,13 +8,19 @@ import com.tunyin.ui.activity.index.PlayerActivity
 import com.tunyin.ui.adapter.discovery.StateBroadcast
 import com.tunyin.widget.section.ViewHolder
 
-class PayStuffForAcSelection(list: List<PayStuffEntity>?) : StateBroadcast<PayStuffEntity>(R.layout.layout_empty,
+class PayStuffForAcSelection(list: List<PayStuffEntity>?, typeId: String) : StateBroadcast<PayStuffEntity>(R.layout.layout_empty,
         R.layout.item_index_guess_like, list) {
+
+    var typeId = "1"
+
+    init {
+        this.typeId = typeId
+    }
 
     override fun convert(holder: ViewHolder, zhuanlan: PayStuffEntity, position: Int) {
         with(holder) {
             zhuanlan.let {
-                var payStuffForAcAdapter = PayStuffForAcAdapter()
+                var payStuffForAcAdapter = PayStuffForAcAdapter(typeId)
                 payStuffForAcAdapter.dataList = zhuanlan.list
                 getView<RecyclerView>(R.id.recycler).layoutManager = GridLayoutManager(mContext, 2)
                 getView<RecyclerView>(R.id.recycler).adapter = payStuffForAcAdapter

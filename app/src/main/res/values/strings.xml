@@ -10,7 +10,7 @@
     <string name="play_mode">%1$s("%2$d")</string>
     <string name="no_order" translatable="false">暂无订单</string>
     <string name="no_msg" translatable="false">暂无消息</string>
-    <string name="no_msg2" translatable="false"></string>
+    <string name="no_msg2" translatable="false">暂无数据</string>
 
     <color name="dialogButtonIOSNormal">#007aff</color>
     <color name="dialogButtonBlueLight">#DCE9F7</color>

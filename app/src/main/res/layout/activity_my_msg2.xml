@@ -23,6 +23,7 @@
         app:tl_indicator_width_equal_title="false"
         app:tl_indicator_width="32dp"
         app:tl_tab_space_equal="true"
+        android:visibility="gone"
         app:tl_textSelectColor="#908AEE"
         app:tl_textUnselectColor="#565656"
         app:tl_textsize="15sp" />
@@ -39,6 +40,7 @@
         android:id="@+id/view_page"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="?attr/actionBarSize"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_line">

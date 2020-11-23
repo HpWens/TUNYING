@@ -22,7 +22,7 @@ public class MyMsgActivity2 extends BaseActivity {
     private ViewPager mViewPager;
 
     private final String[] mTabTitles = {
-            "评论", "赞", "系统通知"
+            "系统通知"
     };
 
     @Override

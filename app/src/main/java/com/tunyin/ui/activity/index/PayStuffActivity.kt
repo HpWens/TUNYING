@@ -51,7 +51,7 @@ class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContra
 
     fun finishTask() {
         if (mBannerList.size != 0) mDiscoveryRVAdapter?.addSection(PayStaffBannerSelection(mBannerList))
-        if (mPayStuffList.size != 0) mDiscoveryRVAdapter?.addSection(PayStuffForAcSelection(mPayStuffList))
+        if (mPayStuffList.size != 0) mDiscoveryRVAdapter?.addSection(PayStuffForAcSelection(mPayStuffList,typeId))
         mDiscoveryRVAdapter?.notifyDataSetChanged()
     }
 

@@ -1,6 +1,7 @@
 package com.tunyin.ui.adapter.index
 
 import android.view.View
+import com.tunyin.MyPlayService
 import com.tunyin.R
 import com.tunyin.base.BaseAdapter
 import com.tunyin.base.BaseViewHolder
@@ -13,16 +14,22 @@ import kotlinx.android.synthetic.main.item_pay_stuff_ac.view.*
  * on 2019/11/10
  *
  **/
-class PayStuffForAcAdapter : BaseAdapter<PayStuffEntity.ListBean>() {
+class PayStuffForAcAdapter(typeId: String) : BaseAdapter<PayStuffEntity.ListBean>() {
 
     var loadMore = true
+
+    var typeId = "1"
+
+    init {
+        this.typeId = typeId
+    }
 
     override fun layoutId(): Int {
         return R.layout.item_pay_stuff_ac
     }
 
     override fun getViewHolder(view: View): BaseViewHolder<*> {
-        return ViewHolder(view)
+        return ViewHolder(view, typeId)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -33,14 +40,17 @@ class PayStuffForAcAdapter : BaseAdapter<PayStuffEntity.ListBean>() {
         super.onBindViewHolder(holder, position)
     }
 
-    inner class ViewHolder(itemView: View) : BaseViewHolder<PayStuffEntity.ListBean>(itemView) {
+    inner class ViewHolder(itemView: View, typeId: String) : BaseViewHolder<PayStuffEntity.ListBean>(itemView) {
 
         override fun bindData(itemBean: PayStuffEntity.ListBean) {
             ImageUtil.load(itemBean.image).on(itemView.image)
             itemView.tv_title.text = itemBean.title
             itemView.tv_sub_title.text = itemBean.content
-            itemView.tv_diamond_num.text = itemBean.price
+            itemView.tv_diamond.text = if (MyPlayService.isFree(itemBean.price)) "免费" else "钻石"
+            itemView.tv_diamond_num.text = MyPlayService.getPrice(itemBean.price)
         }
 
     }
+
+
 }
