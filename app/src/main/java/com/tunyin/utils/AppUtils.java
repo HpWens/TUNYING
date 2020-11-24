@@ -1,16 +1,22 @@
 package com.tunyin.utils;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 import androidx.annotation.ArrayRes;
 import androidx.annotation.StringRes;
+
+import com.meis.base.mei.BaseApplication;
+import com.tunyin.App;
 
 /**
  * @author: ym  作者 E-mail: 15622113269@163.com
@@ -119,5 +125,18 @@ public class AppUtils {
 
     public static DisplayMetrics getDisplayMetrics() {
         return mContext.getResources().getDisplayMetrics();
+    }
+
+    public static void copy(String content) {
+        if (!TextUtils.isEmpty(content)) {
+            if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
+                ClipboardManager clipboard = (ClipboardManager) App.instance.getSystemService(Context.CLIPBOARD_SERVICE);
+                clipboard.setText(content);
+            } else {
+                ClipboardManager clipboard = (ClipboardManager) App.instance.getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText(content, content);
+                clipboard.setPrimaryClip(clip);
+            }
+        }
     }
 }

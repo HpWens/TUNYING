@@ -4,10 +4,7 @@ import android.content.Intent
 import android.text.TextUtils
 import android.view.View
 import androidx.fragment.app.FragmentActivity
-import com.tunyin.BaseInjectFragment
-import com.tunyin.PersonalActivity
-import com.tunyin.R
-import com.tunyin.SettingActivity
+import com.tunyin.*
 import com.tunyin.base.WebActivity
 import com.tunyin.mvp.contract.UploadFileContract
 import com.tunyin.mvp.model.SelfBean
@@ -15,10 +12,7 @@ import com.tunyin.mvp.model.UploadFileEntity
 import com.tunyin.mvp.presenter.UploadFilePresenter
 import com.tunyin.ui.activity.MyRankActivity
 import com.tunyin.ui.activity.mine.*
-import com.tunyin.utils.ImagePickHelper
-import com.tunyin.utils.ImageUtil
-import com.tunyin.utils.PermissionHelper
-import com.tunyin.utils.UriUtil
+import com.tunyin.utils.*
 import com.zhihu.matisse.Matisse
 import kotlinx.android.synthetic.main.fragment_mine.*
 import okhttp3.MediaType
@@ -69,6 +63,13 @@ class MineFragment : BaseInjectFragment<UploadFilePresenter>(), UploadFileContra
         rl_setting.setOnClickListener(this)
         fl_personal_info.setOnClickListener(this)
         requestPermission()
+
+        tv_uid.text = "用户ID：${SelfBean.instance.uId}"
+
+        tv_uid.setOnClickListener {
+            AppUtils.copy(SelfBean.instance.uId)
+            ToastUtils.showToast("已复制用户ID")
+        }
 
 //        https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573299081266&di=3539ee4863f614576acd82dec4b0bcb7&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201605%2F09%2F20160509144239_xSTPX.thumb.700_0.jpeg
         ImageUtil.load(SelfBean.instance.headUrl).isCircle.on(iv_avatar)
@@ -157,8 +158,8 @@ class MineFragment : BaseInjectFragment<UploadFilePresenter>(), UploadFileContra
             }
             rl_setting -> {
 //                if (activity is MainActivity) {
-////                    (activity as MainActivity).switchDrawer();
-////                }
+//                    (activity as MainActivity).switchDrawer();
+//                }
 
                 startActivity(Intent(activity, SettingActivity::class.java))
 

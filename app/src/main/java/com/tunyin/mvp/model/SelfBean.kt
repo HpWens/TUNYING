@@ -44,7 +44,7 @@ class SelfBean {
     var messageNotice by AutoPreference("messageNotice", "1")
     var sex by AutoPreference("sex", "未填写")
     var birthday by AutoPreference("birthday", "未填写")
-
+    var uId by AutoPreference("uid", "")
 
     // 普通的
     var something: Boolean = true

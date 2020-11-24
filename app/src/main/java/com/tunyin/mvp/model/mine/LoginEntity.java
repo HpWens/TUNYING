@@ -9,25 +9,34 @@ public class LoginEntity {
      * desc : 操作成功
      */
 
-        /**
-         * token : f71cf13b00bd4e7cb2629f6e44119019
-         * userId : da3965a525fe44dfa347965235cb57aa
-         * username : 15659879896
-         * phone : 15080311579
-         * loginTime : 1570837567822
-         * expiresTime : 1573429567822
-         */
+    /**
+     * token : f71cf13b00bd4e7cb2629f6e44119019
+     * userId : da3965a525fe44dfa347965235cb57aa
+     * username : 15659879896
+     * phone : 15080311579
+     * loginTime : 1570837567822
+     * expiresTime : 1573429567822
+     */
 
-        private String token;
-        private String userId;
-        private String username;
-        private String nickName;
-        private String headUrl;
+    private String token;
+    private String userId;
+    private String username;
+    private String nickName;
+    private String headUrl;
 
-        private String phone;
-        private long loginTime;
-        private long expiresTime;
+    private String phone;
+    private long loginTime;
+    private long expiresTime;
 
+    private String uid;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public String getNickName() {
         return nickName;
@@ -46,50 +55,50 @@ public class LoginEntity {
     }
 
     public String getToken() {
-            return token;
-        }
+        return token;
+    }
 
-        public void setToken(String token) {
-            this.token = token;
-        }
+    public void setToken(String token) {
+        this.token = token;
+    }
 
-        public String getUserId() {
-            return userId;
-        }
+    public String getUserId() {
+        return userId;
+    }
 
-        public void setUserId(String userId) {
-            this.userId = userId;
-        }
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-        public String getUsername() {
-            return username;
-        }
+    public String getUsername() {
+        return username;
+    }
 
-        public void setUsername(String username) {
-            this.username = username;
-        }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-        public String getPhone() {
-            return phone;
-        }
+    public String getPhone() {
+        return phone;
+    }
 
-        public void setPhone(String phone) {
-            this.phone = phone;
-        }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-        public long getLoginTime() {
-            return loginTime;
-        }
+    public long getLoginTime() {
+        return loginTime;
+    }
 
-        public void setLoginTime(long loginTime) {
-            this.loginTime = loginTime;
-        }
+    public void setLoginTime(long loginTime) {
+        this.loginTime = loginTime;
+    }
 
-        public long getExpiresTime() {
-            return expiresTime;
-        }
+    public long getExpiresTime() {
+        return expiresTime;
+    }
 
-        public void setExpiresTime(long expiresTime) {
-            this.expiresTime = expiresTime;
-        }
+    public void setExpiresTime(long expiresTime) {
+        this.expiresTime = expiresTime;
+    }
 }

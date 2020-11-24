@@ -66,7 +66,8 @@
                             android:layout_above="@+id/ly_wallet_order"
                             android:layout_marginStart="30dp"
                             android:layout_marginEnd="30dp"
-                            android:background="#ECECEC" />
+                            android:background="#ECECEC"
+                            android:visibility="gone" />
 
                         <LinearLayout
                             android:id="@+id/ly_wallet_order"
@@ -155,6 +156,13 @@
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         tools:text="xiaowang" />
+
+                    <TextView
+                        android:id="@+id/tv_uid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="用户ID  13546" />
 
                 </LinearLayout>
 
@@ -260,8 +268,8 @@
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
                     android:paddingStart="25dp"
-                    android:visibility="gone"
-                    android:paddingEnd="25dp">
+                    android:paddingEnd="25dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -293,12 +301,12 @@
                     </RelativeLayout>
 
                     <TextView
-                        android:visibility="gone"
                         android:id="@+id/tv_next"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:drawableRight="@mipmap/module_common_right_arrow" />
+                        android:drawableRight="@mipmap/module_common_right_arrow"
+                        android:visibility="gone" />
                 </RelativeLayout>
 
                 <View

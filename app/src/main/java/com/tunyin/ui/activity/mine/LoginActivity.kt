@@ -180,6 +180,10 @@ class LoginActivity : BaseInjectActivity<LoginPresenter>(), View.OnClickListener
             SelfBean.instance.phone = it
         }
 
+        loginEntity.uid?.let {
+            SelfBean.instance.uId = it
+        }
+
         (application as App).addEasyTokenHeader()
 
         startActivity(Intent(this@LoginActivity, MainActivity::class.java))

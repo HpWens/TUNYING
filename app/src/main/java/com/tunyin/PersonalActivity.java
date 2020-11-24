@@ -3,7 +3,6 @@ package com.tunyin;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,7 +11,6 @@ import androidx.annotation.Nullable;
 
 import com.bigkoo.pickerview.builder.TimePickerBuilder;
 import com.bigkoo.pickerview.view.TimePickerView;
-import com.bumptech.glide.Glide;
 import com.tunyin.base.BaseInjectActivity;
 import com.tunyin.mvp.contract.mine.PersonContract;
 import com.tunyin.mvp.model.SelfBean;
@@ -47,6 +45,7 @@ public class PersonalActivity extends BaseInjectActivity<PersonalPresenter> impl
     TextView tvSex;
     TextView tvNick;
     ImageView ivHeader;
+    TextView tvUid;
 
     @Override
     public void initWidget() {
@@ -56,11 +55,13 @@ public class PersonalActivity extends BaseInjectActivity<PersonalPresenter> impl
         tvSex = findViewById(R.id.tv_sex);
         tvNick = findViewById(R.id.tv_nick);
         ivHeader = findViewById(R.id.iv_header);
+        tvUid = findViewById(R.id.tv_uid);
 
         tvDay.setText(SelfBean.getInstance().getBirthday());
         ImageUtil.load(SelfBean.getInstance().getHeadUrl()).isCircle().on(ivHeader);
         tvNick.setText(SelfBean.getInstance().getNickName());
         tvSex.setText(SelfBean.getInstance().getSex());
+        tvUid.setText(SelfBean.getInstance().getUId());
 
         findViewById(R.id.iv_back).setOnClickListener(v -> {
             finish();
