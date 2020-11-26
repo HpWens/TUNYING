@@ -64,7 +64,7 @@ class MineFragment : BaseInjectFragment<UploadFilePresenter>(), UploadFileContra
         fl_personal_info.setOnClickListener(this)
         requestPermission()
 
-        tv_uid.text = "用户ID：${SelfBean.instance.uId}"
+        tv_uid.text = "ID：${SelfBean.instance.uId}"
 
         tv_uid.setOnClickListener {
             AppUtils.copy(SelfBean.instance.uId)
