@@ -17,6 +17,8 @@ class FeaturedRecommendSelection(list: List<IndexEntity.FeaturedRecommendBean.Li
                 ImageUtil.load(it.image).on(getView(R.id.image))
 
                 setText(R.id.tv_title, it.title)
+                setText(R.id.tv_lenth, it.durationDict)
+                setText(R.id.tv_num, it.countView)
                 setText(R.id.tv_like_num, if (it.collectNum.contains("-")) "0" else it.collectNum)
                 setText(R.id.tv_commend_num, it.commentNum)
                 var id = it.id

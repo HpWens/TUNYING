@@ -154,6 +154,15 @@ public class IndexEntity {
             private String id;
             private String create_date;
             private String modify_date;
+            private String durationDict = "";
+
+            public String getDurationDict() {
+                return durationDict;
+            }
+
+            public void setDurationDict(String durationDict) {
+                this.durationDict = durationDict;
+            }
 
             public String getImage() {
                 return image;
@@ -330,6 +339,15 @@ public class IndexEntity {
             private String id;
             private String create_date;
             private String modify_date;
+            public String count_view;
+
+            public String getCount_view() {
+                return count_view;
+            }
+
+            public void setCount_view(String count_view) {
+                this.count_view = count_view;
+            }
 
             public String getImage() {
                 return image;

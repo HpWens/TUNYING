@@ -47,7 +47,7 @@ public class FreeItemAdapter extends BaseAdapter<IndexEntity.FreeListBean.ListBe
 //            tvNum.setText(listBean.getC);//todo
             tvTitle.setText(listBean.getTitle());
             tvSubTitle.setText(listBean.getContent());
-            tvNum.setText(listBean.getNum().equals("-1") ? "0" : listBean.getNum());
+            tvNum.setText(listBean.getCount_view().equals("-1") ? "0" : listBean.getCount_view());
 
             layoutContent.setOnClickListener(view -> {
                 Intent intent = PlayerActivity.newInstance(itemView.getContext(), listBean.getId());

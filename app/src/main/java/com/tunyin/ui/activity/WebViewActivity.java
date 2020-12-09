@@ -10,6 +10,7 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
@@ -40,6 +41,8 @@ public class WebViewActivity extends BaseActivity implements IWebPageView {
     // 全屏时视频加载view
     private FrameLayout videoFullView;
 
+    private TextView tvTitle;
+
     private String mUrl = "https://www.baidu.com/";
     private String mTitle = "";
 
@@ -52,7 +55,15 @@ public class WebViewActivity extends BaseActivity implements IWebPageView {
         }
         Eyes.translucentStatusBar(mContext);
 
-        mUrl = "https://www.baidu.com/";
+        // mUrl = "https://www.baidu.com/";
+
+        tvTitle = findViewById(R.id.tv_title);
+
+        if (!TextUtils.isEmpty(mTitle)) {
+            tvTitle.setText(mTitle);
+        }
+
+        findViewById(R.id.iv_back).setOnClickListener(v -> finish());
     }
 
     @Override

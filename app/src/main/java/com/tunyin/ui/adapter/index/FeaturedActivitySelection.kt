@@ -22,7 +22,14 @@ class FeaturedActivitySelection(list: List<IndexEntity.FeaturedActivityBean>?) :
                 featuredActivityItemAdapter.dataList = zhuanlan.list
                 getView<RecyclerView>(R.id.recycler).layoutManager = GridLayoutManager(mContext, 2)
                 getView<RecyclerView>(R.id.recycler).adapter = featuredActivityItemAdapter
-                featuredActivityItemAdapter.setOnItemClickListener { v, position -> mContext.startActivity(Intent(mContext, WebViewActivity::class.java)) }
+                featuredActivityItemAdapter.setOnItemClickListener { v, position ->
+
+                    var intent = Intent(mContext, WebViewActivity::class.java)
+                    intent.putExtra("load_url", zhuanlan.list[position].url)
+                    intent.putExtra("title", zhuanlan.list[position].title)
+                    mContext.startActivity(Intent(mContext, WebViewActivity::class.java))
+
+                }
                 for (i in 0 until getView<RecyclerView>(R.id.recycler).itemDecorationCount) {
                     getView<RecyclerView>(R.id.recycler).removeItemDecorationAt(i)
                 }

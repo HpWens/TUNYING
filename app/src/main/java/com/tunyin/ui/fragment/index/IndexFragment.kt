@@ -32,7 +32,7 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
 
     private val mBannerList = ArrayList<IndexEntity.BannerListBean>() // 顶部
     private val mClassifyList = ArrayList<IndexEntity>()
-    private val mGuessLikeList = ArrayList<IndexEntity.GuessLikeBean>() // 猜你喜欢
+    private val mGuessLikeList = ArrayList<IndexEntity.GuessLikeBean>() // 耳语
     private val mSleepTopList = ArrayList<IndexEntity.SleepTopBean.ListBeanXXXX>() //最佳哄睡
     private val mAnchorList = ArrayList<IndexEntity>() //热门主播
     private val mFreeList = ArrayList<IndexEntity.FreeListBean>() // 免费版

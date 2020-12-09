@@ -15,6 +15,7 @@
             android:scaleType="centerCrop"></ImageView>
 
         <ImageView
+            android:id="@+id/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="24dp"
@@ -23,6 +24,7 @@
             android:src="@mipmap/icon_back_circle"></ImageView>
 
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"

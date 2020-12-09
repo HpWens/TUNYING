@@ -39,7 +39,7 @@ public class GuessLikeItemAdapter extends BaseAdapter<IndexEntity.GuessLikeBean.
         @Override
         protected void bindData(final IndexEntity.GuessLikeBean.ListBeanXX listBean) {
             ImageUtil.load(listBean.getImage()).on(imageView);
-            tvNum.setText(getNum(listBean.getCollectNum()));
+            tvNum.setText(getNum(listBean.getCountView()));
             tvTitle.setText(listBean.getTitle());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

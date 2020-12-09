@@ -32,7 +32,6 @@ import com.tunyin.ui.fragment.index.PlayerCommentFragment
 import com.tunyin.ui.fragment.index.PlayerDetailFragment
 import com.tunyin.ui.fragment.index.PlayerDirectoryFragment
 import com.tunyin.utils.*
-import com.tunyin.widget.dialog.PaySucDialog
 import kotlinx.android.synthetic.main.coordinator_layout.*
 import java.util.*
 
@@ -626,7 +625,8 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
     }
 
     override fun cerateOrderCallBack(createOrderEntity: CreateOrderEntity) {
-        PaySucDialog.getInstance().show(fragmentManager, "1")
+        // PaySucDialog.getInstance().show(fragmentManager, "1")
+        ToastUtils.showToast("购买成功")
         hideLoading()
         tryEnd = false
         mPresenter.getMusic(mMusicId!!)
