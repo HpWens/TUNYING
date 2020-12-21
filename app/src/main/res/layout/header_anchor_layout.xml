@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="180dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/icon_banner_bg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.tunyin.widget.CircleImageView
+        android:id="@+id/iv_header"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="知名男主播"
+        android:textColor="@color/color_ffffff"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_header"
+        app:layout_constraintTop_toBottomOf="@+id/iv_header" />
+
+
+    <com.meis.base.mei.widget.radius.RadiusTextView
+        android:id="@+id/tv_sex"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="4dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+        app:layout_constraintLeft_toRightOf="@+id/tv_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_name"
+        app:rv_backgroundColor="#67D0F0"
+        app:rv_radiusHalfHeightEnable="true" />
+
+    <ImageView
+        android:id="@+id/iv_sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/woman_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_sex"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_sex"
+        app:layout_constraintRight_toRightOf="@+id/tv_sex"
+        app:layout_constraintTop_toTopOf="@+id/tv_sex" />
+
+    <TextView
+        android:id="@+id/tv_cons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="2dp"
+        android:background="@mipmap/anchor_con_bg"
+        android:gravity="center"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="摩羯座"
+        android:textColor="@color/color_ffffff"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+        app:layout_constraintLeft_toRightOf="@+id/iv_sex"
+        app:layout_constraintTop_toTopOf="@+id/tv_name" />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="28dp"
+        android:lines="2"
+        android:text="个人简介：你眼里的春秋你眼里的春秋你眼里的春秋你眼里的春秋你眼里的春秋你眼里的春秋"
+        android:textColor="@color/color_ffffff"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

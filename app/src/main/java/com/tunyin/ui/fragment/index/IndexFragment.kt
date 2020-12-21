@@ -13,6 +13,7 @@ import com.tunyin.mvp.model.IsTryEntity
 import com.tunyin.mvp.model.SelfBean
 import com.tunyin.mvp.model.index.IndexEntity
 import com.tunyin.mvp.presenter.index.IndexPresenter
+import com.tunyin.ui.activity.index.PayStuffActivity
 import com.tunyin.ui.activity.index.PlayerActivity
 import com.tunyin.ui.activity.index.SearchActivity
 import com.tunyin.ui.activity.mine.LoginActivity
@@ -278,10 +279,11 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
         var anchorTopSelection = AnchorTopSelection(mAnchorList)
         anchorTopSelection.setRefreshAnchorTopListener(object : AnchorTopSelection.OnRefreshAnchorTopListener {
             override fun refreshAnchorTopData() {
-                mPresenter.refreshHotAnchor()
+                // mPresenter.refreshHotAnchor()
+                startActivity(PayStuffActivity.newAnchorInstance(context))
             }
         })
-        // if (mAnchorList.size != 0) mDiscoveryRVAdapter?.addSection(anchorTopSelection)
+        if (mAnchorList.size != 0) mDiscoveryRVAdapter?.addSection(anchorTopSelection)
 
         var freeSelection = FreeSelection(mFreeList)
         freeSelection.setRefreshFreeListener(object : FreeSelection.OnRefreshFreeListener {

@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tunyin.R
 import com.tunyin.mvp.model.index.PayStuffEntity
+import com.tunyin.ui.activity.AnchorDetailActivity
 import com.tunyin.ui.activity.index.PlayerActivity
 import com.tunyin.ui.adapter.discovery.StateBroadcast
 import com.tunyin.widget.section.ViewHolder
@@ -25,8 +26,13 @@ class PayStuffForAcSelection(list: List<PayStuffEntity>?, typeId: String) : Stat
                 getView<RecyclerView>(R.id.recycler).layoutManager = GridLayoutManager(mContext, 2)
                 getView<RecyclerView>(R.id.recycler).adapter = payStuffForAcAdapter
                 payStuffForAcAdapter.setOnItemClickListener { v, position ->
-                    var id = zhuanlan.list[position].id
-                    itemView.context.startActivity(PlayerActivity.newInstance(itemView.context, id))
+                    var isAnchor = typeId.equals("-1")
+                    if (isAnchor) {
+                        mContext.startActivity(AnchorDetailActivity.start(mContext, zhuanlan.list[position].id))
+                    } else {
+                        var id = zhuanlan.list[position].id
+                        itemView.context.startActivity(PlayerActivity.newInstance(itemView.context, id))
+                    }
                 }
 
 //                 var guessLikeItemAdapter = GuessLikeItemAdapter()

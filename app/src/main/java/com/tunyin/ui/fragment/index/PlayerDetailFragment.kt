@@ -1,8 +1,11 @@
 package com.tunyin.ui.fragment.index
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.text.Html
 import android.view.View
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.tunyin.base.BaseRefreshFragment
@@ -32,6 +35,7 @@ class PlayerDetailFragment : BaseRefreshFragment<PlayerDetailSinglePresenter, St
         // tv_detail.text = Html.fromHtml(palyDetailSingleEntity.detail, MImageGetter(tv_detail, mContext), null)
 
         web_view.visibility = View.INVISIBLE
+        initWebView(web_view)
         web_view.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                 view?.loadUrl(url)
@@ -67,6 +71,45 @@ class PlayerDetailFragment : BaseRefreshFragment<PlayerDetailSinglePresenter, St
 //                "加拿大原为印第安人与因纽特人的居住地。16世纪后，英国和法国殖民者先后侵入；1763年沦为英国殖民地。 [1]  1867年成为英国自治领。1926年英国承认其\"平等地位\"，获得外交独立权。1931年成为英联邦成员国，其议会也获得了同英国议会同等的立法权，1982年，英国女王签署《加拿大宪法法案》，加拿大议会获得立宪、修宪的全部权利。 [1] \n" +
 //                "加拿大是一个高度发达的资本主义国家，得益于丰富的自然资源和高度发达的科技，使其成为世界上拥有最高生活水准、社会最富裕、经济最发达的国家之一。加拿大为继乌拉圭之后第二个大麻合法化的国家。 [2]  也是世界上最大的钻石生产国之一。 [3]  加拿大在教育、政府的透明度、社会自由度、生活品质及经济自由的国际排名都名列前茅。同时，加拿大也是八国集团、20国集团、北约、联合国、法语国家组织、世界贸易组织等国际组织的成员国"
 //
+    }
+
+    @SuppressLint("SetJavaScriptEnabled", "AddJavascriptInterface")
+    private fun initWebView(webView: WebView) {
+        val ws: WebSettings = webView.getSettings()
+        // 网页内容的宽度是否可大于WebView控件的宽度
+        ws.loadWithOverviewMode = false
+        // 保存表单数据
+        ws.saveFormData = true
+        // 是否应该支持使用其屏幕缩放控件和手势缩放
+        ws.setSupportZoom(true)
+        ws.builtInZoomControls = true
+        ws.displayZoomControls = false
+        // 启动应用缓存
+        ws.setAppCacheEnabled(true)
+        // 设置缓存模式
+        ws.cacheMode = WebSettings.LOAD_DEFAULT
+        // setDefaultZoom  api19被弃用
+        // 设置此属性，可任意比例缩放。
+        ws.useWideViewPort = true
+        // 不缩放
+        webView.setInitialScale(100)
+        // 告诉WebView启用JavaScript执行。默认的是false。
+        ws.javaScriptEnabled = true
+        //  页面加载好以后，再放开图片
+        ws.blockNetworkImage = false
+        // 使用localStorage则必须打开
+        ws.domStorageEnabled = true
+        // 排版适应屏幕
+        ws.layoutAlgorithm = WebSettings.LayoutAlgorithm.NARROW_COLUMNS
+        // WebView是否新窗口打开(加了后可能打不开网页)
+//        ws.setSupportMultipleWindows(true);
+
+        // webview从5.0开始默认不允许混合模式,https中不能加载http资源,需要设置开启。
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ws.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+        }
+        /** 设置字体默认缩放大小(改变网页字体大小,setTextSize  api14被弃用) */
+        ws.textZoom = 100
     }
 
     fun showDetailContent(content: String): Unit {

@@ -20,7 +20,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:background="@drawable/shape_bg_frame_gray_oval_30dp"
-        android:drawableEnd="@mipmap/icon_repeat"
         android:drawablePadding="4dp"
         android:drawableTint="#999"
         android:gravity="center_vertical"
@@ -28,7 +27,7 @@
         android:paddingTop="2dp"
         android:paddingEnd="8dp"
         android:paddingBottom="2dp"
-        android:text="换一批"
+        android:text="查看全部"
         android:textColor="#999"
         android:textSize="12sp" />
 

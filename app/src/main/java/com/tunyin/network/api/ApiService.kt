@@ -398,6 +398,14 @@ interface ApiService {
                       @Field("limit") limit: String): Flowable<BaseEntity<PayStuffEntity>>
 
     /**
+     * 主播列表
+     */
+    @FormUrlEncoded
+    @POST("api/song/anchorList")
+    fun getAnchorList(@Field("offset") offset: String,
+                      @Field("limit") limit: String): Flowable<BaseEntity<PayStuffEntity>>
+
+    /**
      * 获取电台 广播剧
      */
     @FormUrlEncoded

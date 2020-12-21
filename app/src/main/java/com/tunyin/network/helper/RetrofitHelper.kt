@@ -171,6 +171,8 @@ class RetrofitHelper(private val mApiService: ApiService) {
 
         if (typeId.equals("0")) {
             return mApiService.paidSelection(offset, limit)
+        } else if (typeId.equals("-1")) {
+            return mApiService.getAnchorList(offset, limit)
         } else {
             return mApiService.getHomeBroadcastAndStation("0", "200", typeId)
         }

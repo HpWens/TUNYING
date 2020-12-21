@@ -51,7 +51,7 @@ class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContra
 
     fun finishTask() {
         if (mBannerList.size != 0) mDiscoveryRVAdapter?.addSection(PayStaffBannerSelection(mBannerList))
-        if (mPayStuffList.size != 0) mDiscoveryRVAdapter?.addSection(PayStuffForAcSelection(mPayStuffList,typeId))
+        if (mPayStuffList.size != 0) mDiscoveryRVAdapter?.addSection(PayStuffForAcSelection(mPayStuffList, typeId))
         mDiscoveryRVAdapter?.notifyDataSetChanged()
     }
 
@@ -112,6 +112,14 @@ class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContra
             val intent = Intent(context, PayStuffActivity::class.java)
             intent.putExtra(TYPE_ID, typeId)
             intent.putExtra(NAME, name)
+            return intent
+        }
+
+        @JvmStatic
+        fun newAnchorInstance(context: Context?): Intent {
+            val intent = Intent(context, PayStuffActivity::class.java)
+            intent.putExtra(TYPE_ID, "-1")
+            intent.putExtra(NAME, "主播哄睡")
             return intent
         }
 

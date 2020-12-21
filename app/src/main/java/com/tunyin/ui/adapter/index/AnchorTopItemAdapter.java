@@ -53,7 +53,6 @@ public class AnchorTopItemAdapter extends BaseAdapter<IndexEntity.AnchorListBean
             params2.width = width2;
             imageView.setLayoutParams(params2);
 
-
         }
 
         @Override
