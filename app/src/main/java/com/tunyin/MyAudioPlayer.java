@@ -80,8 +80,9 @@ public class MyAudioPlayer {
         handler = new Handler(Looper.getMainLooper());
 
         mediaPlayer.setOnPreparedListener(mp -> {
+            state = STATE_PREPARING;
             if (isPreparing()) {
-//                startPlayer();
+                startPlayer();
             }
         });
         mediaPlayer.setOnCompletionListener(mp -> {
@@ -119,7 +120,9 @@ public class MyAudioPlayer {
         if (audioFocusManager.requestAudioFocus()) {
             mediaPlayer.start();
             state = STATE_PLAYING;
-            handler.post(mPublishRunnable);
+            if (mediaPlayer.isPlaying()) {
+                handler.post(mPublishRunnable);
+            }
 //            Notifier.get().showPlay(getPlayMusic());
 //            MediaSessionManager.get().updatePlaybackState();
 //            context.registerReceiver(noisyReceiver, noisyFilter);

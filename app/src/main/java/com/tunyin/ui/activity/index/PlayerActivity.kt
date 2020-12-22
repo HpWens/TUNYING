@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Message
 import android.text.TextUtils
 import android.text.format.DateUtils
+import android.util.Log
 import android.view.View
 import android.widget.SeekBar
 import androidx.appcompat.app.AlertDialog
@@ -111,7 +112,7 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
     }
 
     override fun onPublish(progress: Int) {
-        if (MyAudioPlayer.get().duration.toString().length > 7) {
+        if (MyAudioPlayer.get().duration.toInt() < 0) {
             MyAudioPlayer.get().pausePlayer()
             getMusic()
             return
