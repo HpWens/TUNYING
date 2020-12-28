@@ -357,7 +357,8 @@
         android:layout_width="match_parent"
         android:layout_height="66dp"
         android:layout_alignParentBottom="true"
-        android:background="@mipmap/detail_bottom_bg"
+        android:background="@color/color_ffffff"
+        android:elevation="4dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:visibility="gone"
@@ -367,22 +368,38 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="钻石  "
+                    android:textColor="#8E8EEE"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="45"
+                    android:textColor="#8E8EEE"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="钻石  "
-                android:textColor="#8E8EEE"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/tv_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="45"
-                android:textColor="#8E8EEE"
-                android:textSize="15sp" />
+                android:layout_marginTop="4dp"
+                android:text="只有购买才能评论"
+                android:textColor="#666666"
+                android:textSize="12sp"></TextView>
 
         </LinearLayout>
 

@@ -46,9 +46,12 @@ class PayStuffForAcAdapter(typeId: String) : BaseAdapter<PayStuffEntity.ListBean
             var isAnchor = typeId.equals("-1")
             ImageUtil.load(if (isAnchor) itemBean.headUrl else itemBean.image).on(itemView.image)
             itemView.tv_title.text = if (isAnchor) itemBean.name else itemBean.title
-            itemView.tv_sub_title.text = if (isAnchor) itemBean.summary else itemBean.content
+            itemView.tv_sub_title.text = if (isAnchor) itemBean.shortSummary else itemBean.content
             itemView.tv_diamond.text = if (isAnchor) "粉丝" else (if (MyPlayService.isFree(itemBean.price)) "免费" else "钻石")
             itemView.tv_diamond_num.text = if (isAnchor) itemBean.fans.toString() else MyPlayService.getPrice(itemBean.price)
+
+            itemView.tv_num.visibility = if (isAnchor) View.GONE else View.VISIBLE
+            itemView.tv_num.text = itemBean.count_view
         }
 
     }

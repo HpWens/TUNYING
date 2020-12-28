@@ -41,6 +41,7 @@ class PlayerDirectoryAdapter constructor(currentPos: String) : BaseAdapter<Playe
                 itemView.tv_serial_num.setTextColor(itemView.context.resources.getColor(R.color.black))
                 itemView.tv_title.setTextColor(itemView.context.resources.getColor(R.color.black))
             }
+            itemView.tv_try.visibility = if (itemBean.isBuy) View.GONE else View.VISIBLE
 
         }
     }

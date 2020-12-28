@@ -7,7 +7,6 @@ import android.os.Handler
 import android.os.Message
 import android.text.TextUtils
 import android.text.format.DateUtils
-import android.util.Log
 import android.view.View
 import android.widget.SeekBar
 import androidx.appcompat.app.AlertDialog
@@ -17,6 +16,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener
 import com.tunyin.*
 import com.tunyin.base.BaseInjectActivity
 import com.tunyin.constants.Constants
+import com.tunyin.event.PaySuccessfulEvent
 import com.tunyin.mvp.contract.index.PlayerContract
 import com.tunyin.mvp.model.Event
 import com.tunyin.mvp.model.FlyoutTabEntity
@@ -34,6 +34,7 @@ import com.tunyin.ui.fragment.index.PlayerDetailFragment
 import com.tunyin.ui.fragment.index.PlayerDirectoryFragment
 import com.tunyin.utils.*
 import kotlinx.android.synthetic.main.coordinator_layout.*
+import org.greenrobot.eventbus.EventBus
 import java.util.*
 
 
@@ -220,6 +221,8 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
             rl_listen_try.visibility = View.GONE
             ly_price.visibility = View.GONE
             isTry = false//不用试听
+
+            EventBus.getDefault().post(PaySuccessfulEvent(mMusicId))
         } else {
             if (isListen!!) {//购买了单首歌
                 isTry = false//不用试听
@@ -227,6 +230,8 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
                 ly_price.visibility = View.GONE
                 rl_listen_try.visibility = View.GONE
                 tv_price_try.text = "免费试听中，只需" + priceAll + "钻石即可收听全剧"
+
+                EventBus.getDefault().post(PaySuccessfulEvent(mMusicId))
             } else {
                 isTry = true//需要试听
 

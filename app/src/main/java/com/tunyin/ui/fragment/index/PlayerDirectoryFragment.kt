@@ -5,10 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.tunyin.MyPlayService
 import com.tunyin.R
 import com.tunyin.base.BaseRefreshFragment
+import com.tunyin.event.PaySuccessfulEvent
 import com.tunyin.mvp.contract.index.PlayerDirectoryContract
 import com.tunyin.mvp.model.index.PlayerDirectoryEntity
 import com.tunyin.mvp.presenter.index.PlayerDirectoryPresenter
 import com.tunyin.ui.adapter.index.PlayerDirectoryAdapter
+import org.greenrobot.eventbus.Subscribe
 
 /**
  * 播放——目录
@@ -46,6 +48,25 @@ class PlayerDirectoryFragment : BaseRefreshFragment<PlayerDirectoryPresenter, Pl
                 onChangeMusicListener.changeMusic(mAdapter!!.dataList[position].id.toString())
             }
         }
+    }
+
+    @Subscribe
+    fun onPaySuccessfulEvent(event: PaySuccessfulEvent?) {
+        if (event != null) {
+            if (event.musicId == mMusicId) {
+                mAdapter?.let {
+                    var list = it.dataList
+                    for (i in list.indices) {
+                        list[i].isBuy = true
+                    }
+                    it.notifyDataSetChanged()
+                }
+            }
+        }
+    }
+
+    override fun isRegisterEventBus(): Boolean {
+        return true
     }
 
     fun setCurrentPosition(position: Int) {

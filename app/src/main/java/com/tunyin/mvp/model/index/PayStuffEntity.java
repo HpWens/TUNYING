@@ -207,6 +207,7 @@ public class PayStuffEntity {
         public String modifyDate;
         public String summary;
         public String sex;
+        public String shortSummary = "";
         public String constellation;
         public int fans;
 

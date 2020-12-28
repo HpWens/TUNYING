@@ -41,8 +41,6 @@ public class UnmannedSoundItemAdapter extends BaseAdapter<DiscoveryEntity.Unmann
             ImageUtil.load(listBean.getImage()).on(imageView);
             tvNum.setText(listBean.getCountView());
             tvTitle.setText(listBean.getTitle());
-
-
         }
     }
 }
