@@ -186,6 +186,9 @@ class IndexFragment : BaseRefreshFragment<IndexPresenter, IndexEntity>(), IndexC
         mSleepTopList.addAll(indexEntity.sleepTop.list)
         mAnchorList.add(indexEntity)
         mFreeList.add(indexEntity.freeList)
+        if (indexEntity.activity != null) {
+            indexEntity.featuredActivity.list = indexEntity.activity;
+        }
         mFeaturedActivityList.add(indexEntity.featuredActivity)
         mFeaturedRecommendList.addAll(indexEntity.featuredRecommend.list)
         mClassifyList.add(indexEntity)

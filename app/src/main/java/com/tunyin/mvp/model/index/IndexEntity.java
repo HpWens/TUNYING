@@ -19,11 +19,20 @@ public class IndexEntity {
     private FreeListBean freeList;
     private GuessLikeBean guessLike;
     private FeaturedActivityBean featuredActivity;
+    private List<FeaturedActivityBean.ListBeanXXX> activity;
     private SleepTopBean sleepTop;
     private List<ClassifyListBean> classifyList;
     private List<BannerListBean> bannerList;
     private List<AnchorListBean> anchorList = new ArrayList<>();
     private String hotSearch;
+
+    public List<FeaturedActivityBean.ListBeanXXX> getActivity() {
+        return activity;
+    }
+
+    public void setActivity(List<FeaturedActivityBean.ListBeanXXX> activity) {
+        this.activity = activity;
+    }
 
     public String getHotSearch() {
         return hotSearch;
@@ -748,6 +757,15 @@ public class IndexEntity {
             private String id;
             private String create_date;
             private String modify_date;
+            private String activity;
+
+            public String getActivity() {
+                return activity;
+            }
+
+            public void setActivity(String activity) {
+                this.activity = activity;
+            }
 
             public String getImage() {
                 return image;

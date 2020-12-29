@@ -56,12 +56,6 @@
                         tools:text="888.00" />
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_marginRight="16dp"
-                    android:src="@mipmap/ic_eryu" />
-
 
             </LinearLayout>
 
