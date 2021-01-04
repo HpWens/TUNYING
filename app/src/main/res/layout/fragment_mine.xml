@@ -204,7 +204,7 @@
                         android:id="@+id/tv_01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="开通豚音贵族"
+                        android:text="开通耳屿贵族"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />

@@ -418,8 +418,9 @@ interface ApiService {
     /**
      * 付费精选banner
      */
+    @FormUrlEncoded
     @POST("api/home/paidSelectionBanner")
-    fun paidSelectionBanner(): Flowable<BaseEntity<PayStaffBannerEntity>>
+    fun paidSelectionBanner(@Field("noteClassId") noteClassId: String): Flowable<BaseEntity<PayStaffBannerEntity>>
 
 
     /**

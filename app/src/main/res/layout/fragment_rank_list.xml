@@ -1,122 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/recycler"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/transparent"
-        android:orientation="vertical">
+    android:background="@color/white"
+    android:clipToPadding="false"
+    android:overScrollMode="never"
+    android:scrollbars="none">
 
 
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="250dp"-->
-<!--            android:layout_marginTop="20dp"-->
-
-<!--            android:background="@color/transparent">-->
-
-<!--            <www.linwg.org.lib.LCardView-->
-<!--                android:id="@+id/rl_profile"-->
-<!--                android:layout_width="200dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:layout_marginStart="20dp"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:layout_marginEnd="20dp"-->
-<!--                app:cardUseCompatPadding="true"-->
-<!--                app:cornerRadius="13dp"-->
-<!--                app:shadowSize="8dp"-->
-<!--                app:shadowStartAlpha="30">-->
-
-<!--                <RelativeLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="@color/white">-->
-
-<!--                    <ImageView-->
-<!--                        android:id="@+id/image"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="100dp"-->
-<!--                        android:src="#fed256" />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/tv_title"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_below="@+id/image"-->
-<!--                        android:layout_centerHorizontal="true"-->
-<!--                        android:layout_marginTop="12dp"-->
-<!--                        android:text="请音乐睡眠区"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textSize="16sp" />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/tv_sub_title"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_below="@+id/tv_title"-->
-<!--                        android:layout_centerHorizontal="true"-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        android:text="请音乐睡眠区sfdihi"-->
-<!--                        android:textColor="@color/gray_light"-->
-<!--                        android:textSize="16sp" />-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_below="@+id/tv_sub_title"-->
-<!--                        android:gravity="center_horizontal"-->
-<!--                        android:orientation="horizontal"-->
-<!--                        android:paddingBottom="10dp">-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/tv_price_tip"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginTop="5dp"-->
-<!--                            android:text="钻石"-->
-<!--                            android:textColor="#67D0F0"-->
-<!--                            android:textSize="13sp" />-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/tv_price"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginTop="6dp"-->
-<!--                            android:text="55"-->
-<!--                            android:textColor="#67D0F0"-->
-<!--                            android:textSize="18sp" />-->
-<!--                    </LinearLayout>-->
-
-
-<!--                </RelativeLayout>-->
-
-<!--            </www.linwg.org.lib.LCardView>-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:src="@mipmap/icon_rank_gold" />-->
-
-
-<!--        </RelativeLayout>-->
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
-            android:scrollbars="none" />
-
-    </LinearLayout>
-
-
-</androidx.core.widget.NestedScrollView>
+</androidx.recyclerview.widget.RecyclerView>

@@ -86,7 +86,7 @@ class PayStuffActivity : BaseInjectActivity<PayStaffPresenter>(), PayStuffContra
         recycler?.layoutManager = mLayoutManager
         recycler?.adapter = mDiscoveryRVAdapter
         showLoading()
-        mPresenter.getBanner()
+        mPresenter.getBanner(typeId)
     }
 
     companion object {

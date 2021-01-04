@@ -2,7 +2,6 @@ package com.tunyin.ui.fragment.index
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.tunyin.BaseFragment
 import com.tunyin.R
 import com.tunyin.base.BaseRefreshFragment
 import com.tunyin.mvp.contract.index.RankListContract
@@ -37,7 +36,7 @@ class RankingListFragment : BaseRefreshFragment<RankListPresenter, RankListEntit
     }
 
     override fun showRankListData(rankListEntity: RankListEntity) {
-        mAdapter = RankListAdapter()
+        mAdapter = RankListAdapter(mType)
         mRecycler?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         mRankListList.addAll(rankListEntity.list)
         mAdapter?.dataList = mRankListList
@@ -54,8 +53,7 @@ class RankingListFragment : BaseRefreshFragment<RankListPresenter, RankListEntit
 
     override fun initDatas() {
         mType = arguments!!.getString("type")
-        mPresenter.getRankList("0", "20", mType)
-
+        mPresenter.getRankList("0", "200", mType)
     }
 
     companion object {

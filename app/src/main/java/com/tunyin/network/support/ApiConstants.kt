@@ -7,7 +7,7 @@ package com.tunyin
  *
  */
 object ApiConstants {
-//    val APP_BASE_URL = "https://ke.youdao.com/"
+//    val APP_BASE_URL = "https://ke.youdao.com/"  http://tyapi.xmhxz.net/
 
-    val APP_BASE_URL = "http://tyapi.xmhxz.net/"
+    val APP_BASE_URL = "https://api.itunyin.com/"
 }

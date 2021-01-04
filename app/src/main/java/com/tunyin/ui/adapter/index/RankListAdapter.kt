@@ -9,11 +9,16 @@ import com.tunyin.utils.ImageUtil
 import kotlinx.android.synthetic.main.item_ranking_list.view.*
 import kotlinx.android.synthetic.main.item_ranking_top.view.*
 
-class RankListAdapter : BaseMutableAdapter<RankListEntity.ListBean>() {
+class RankListAdapter(type: String) : BaseMutableAdapter<RankListEntity.ListBean>() {
     val TOP = 1
     val NORMAL = 2
-    override fun layoutId(viewType: Int): Int {
+    var type = "1"
 
+    init {
+        this.type = type
+    }
+
+    override fun layoutId(viewType: Int): Int {
         if (viewType == TOP) {
             return R.layout.item_ranking_top
         } else {
@@ -22,7 +27,7 @@ class RankListAdapter : BaseMutableAdapter<RankListEntity.ListBean>() {
     }
 
     override fun getViewHolder(view: View, viewType: Int): BaseViewHolder<*> {
-        return ViewHolder(view)
+        return ViewHolder(view, type)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -34,7 +39,15 @@ class RankListAdapter : BaseMutableAdapter<RankListEntity.ListBean>() {
 
     }
 
-    inner class ViewHolder(itemView: View) : BaseViewHolder<RankListEntity.ListBean>(itemView) {
+    inner class ViewHolder(itemView: View, type: String) : BaseViewHolder<RankListEntity.ListBean>(itemView) {
+        var type = "1"
+
+        var isFree = false
+
+        init {
+            this.type = type
+            isFree = type == "2"
+        }
 
         override fun bindData(itemBean: RankListEntity.ListBean) {
             if (position == 0) {
@@ -42,8 +55,9 @@ class RankListAdapter : BaseMutableAdapter<RankListEntity.ListBean>() {
                 itemView.tv_title_top.text = itemBean.title
                 itemView.tv_sub_title_top.text = itemBean.content
                 itemView.tv_price_top.text = itemBean.price
-                var isFree = itemBean.is_free != null && itemBean.is_free.equals("1")
-                itemView.tv_price_tip_top.visibility = if (isFree) View.GONE else View.VISIBLE
+                //var isFree = itemBean.is_free != null && itemBean.is_free.equals("1")
+                // itemView.tv_price_tip_top.visibility = if (isFree) View.GONE else View.VISIBLE
+                itemView.tv_price_tip_top.text = if (isFree) "免费" else "钻石"
                 itemView.tv_price_top.visibility = if (isFree) View.GONE else View.VISIBLE
             } else {
                 ImageUtil.load(itemBean.image).on(itemView.image)
@@ -58,9 +72,10 @@ class RankListAdapter : BaseMutableAdapter<RankListEntity.ListBean>() {
                     itemView.iv_rank_grade.setImageDrawable(itemView.context.resources.getDrawable(R.mipmap.icon_rank_normal))
                 }
 
-                var isFree = itemBean.is_free != null && itemBean.is_free.equals("1")
-                itemView.tv_price_tip.visibility = if (!isFree) View.GONE else View.VISIBLE
-                itemView.tv_price.visibility = if (!isFree) View.GONE else View.VISIBLE
+                //var isFree = itemBean.is_free != null && itemBean.is_free.equals("1")
+                //itemView.tv_price_tip.visibility = if (!isFree) View.GONE else View.VISIBLE
+                itemView.tv_price_tip.text = if (isFree) "免费" else "钻石"
+                itemView.tv_price.visibility = if (isFree) View.GONE else View.VISIBLE
             }
 
         }

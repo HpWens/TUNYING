@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.activity_vip_deposit.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 /**
- * 豚音贵族充值
+ * 耳屿贵族充值
  */
 class TunYinVIPDepositActivity : BaseInjectActivity<TunyinVipPresenter>(), View.OnClickListener, TunyinVipContract.View {
 
@@ -53,7 +53,7 @@ class TunYinVIPDepositActivity : BaseInjectActivity<TunyinVipPresenter>(), View.
 
     override fun initWidget() {
         StatusBarUtil.setColorNoTranslucent(this, AppUtils.getColor(R.color.white))
-        tv_title.text = "豚音贵族充值"
+        tv_title.text = "耳屿贵族充值"
         rb_monthly.setOnClickListener(this)
         rb_1.setOnClickListener(this)
         rb_6.setOnClickListener(this)
@@ -92,7 +92,7 @@ class TunYinVIPDepositActivity : BaseInjectActivity<TunyinVipPresenter>(), View.
         mPresenter.getTunyinVip()
 
         tv_web.setOnClickListener{
-            startActivity(mContext?.let { WebActivity.newIntent(it, "豚音贵族服务协议", "http://api.itunyin.com/api/html/h5?type=nobleservice") })
+            startActivity(mContext?.let { WebActivity.newIntent(it, "耳屿贵族服务协议", "http://api.itunyin.com/api/html/h5?type=nobleservice") })
         }
 
         tv_Web2.setOnClickListener {

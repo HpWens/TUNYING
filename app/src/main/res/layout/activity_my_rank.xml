@@ -393,7 +393,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="财富等级象征用户尊贵身份，可通过在豚音APP上消费钻石等方式获得财富值，累计足够的财富值会自动升级，并享有相应的特权。"
+                android:text="财富等级象征用户尊贵身份，可通过在耳屿APP上消费钻石等方式获得财富值，累计足够的财富值会自动升级，并享有相应的特权。"
                 android:textColor="#999999"
                 android:textSize="12sp"></TextView>
 

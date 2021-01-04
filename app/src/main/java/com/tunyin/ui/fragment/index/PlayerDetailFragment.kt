@@ -34,7 +34,7 @@ class PlayerDetailFragment : BaseRefreshFragment<PlayerDetailSinglePresenter, St
 
         // tv_detail.text = Html.fromHtml(palyDetailSingleEntity.detail, MImageGetter(tv_detail, mContext), null)
 
-        web_view.visibility = View.INVISIBLE
+        web_view.visibility = View.VISIBLE
         initWebView(web_view)
         web_view.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
@@ -43,9 +43,6 @@ class PlayerDetailFragment : BaseRefreshFragment<PlayerDetailSinglePresenter, St
             }
         }
         web_view.loadUrl("http://api.itunyin.com/api/html/noteDetail?id=${musicId}")
-        web_view.postDelayed({
-            web_view.visibility = View.VISIBLE
-        }, 400)
 
         // showDetailContent(palyDetailSingleEntity.detail)
 

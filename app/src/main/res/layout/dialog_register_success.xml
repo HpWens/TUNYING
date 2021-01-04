@@ -50,7 +50,7 @@
         android:layout_marginBottom="24dp"
         android:gravity="center"
         android:text="恭喜您注册成功，马上开启美妙的\n
-豚音之旅吧！"
+耳屿之旅吧！"
         android:textColor="#ff999999"
         android:textSize="13sp" />
 

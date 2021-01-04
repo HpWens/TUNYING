@@ -53,7 +53,7 @@
                     android:layout_below="@+id/tv_name"
                     android:layout_marginStart="10dp"
                     android:layout_toRightOf="@+id/iv_avatar"
-                    android:text="当前用户未开通豚音贵族"
+                    android:text="当前用户未开通耳屿贵族"
                     android:textColor="#4B4B4B"
                     android:textSize="10sp" />
 
@@ -318,7 +318,7 @@
                         android:id="@+id/tv_web"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="《豚音贵族服务协议》"
+                        android:text="《耳屿贵族服务协议》"
                         android:textColor="#999999"
                         android:textSize="13sp"
                         android:visibility="visible" />

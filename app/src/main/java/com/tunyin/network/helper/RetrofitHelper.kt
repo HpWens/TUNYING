@@ -196,7 +196,7 @@ class RetrofitHelper(private val mApiService: ApiService) {
     }
 
     //付费精选banner
-    fun paidSelectionBanner(): Flowable<BaseEntity<PayStaffBannerEntity>> = mApiService.paidSelectionBanner()
+    fun paidSelectionBanner(noteClassId: String): Flowable<BaseEntity<PayStaffBannerEntity>> = mApiService.paidSelectionBanner(noteClassId)
 
 
     //忘记密码
