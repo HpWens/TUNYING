@@ -223,6 +223,9 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
             isTry = false//不用试听
 
             EventBus.getDefault().post(PaySuccessfulEvent(mMusicId))
+            if (playerDirectoryFragment != null) {
+                playerDirectoryFragment.isRefresh = true
+            }
         } else {
             if (isListen!!) {//购买了单首歌
                 isTry = false//不用试听

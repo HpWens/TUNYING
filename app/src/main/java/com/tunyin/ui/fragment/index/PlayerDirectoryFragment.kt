@@ -48,19 +48,35 @@ class PlayerDirectoryFragment : BaseRefreshFragment<PlayerDirectoryPresenter, Pl
                 onChangeMusicListener.changeMusic(mAdapter!!.dataList[position].id.toString())
             }
         }
+
+        if (isRefresh) {
+            mAdapter?.let {
+                var list = it.dataList
+                for (i in list.indices) {
+                    list[i].isBuy = true
+                }
+                it.notifyDataSetChanged()
+            }
+        }
     }
 
     @Subscribe
     fun onPaySuccessfulEvent(event: PaySuccessfulEvent?) {
         if (event != null) {
-            if (event.musicId == mMusicId) {
-                mAdapter?.let {
-                    var list = it.dataList
-                    for (i in list.indices) {
-                        list[i].isBuy = true
-                    }
-                    it.notifyDataSetChanged()
+            refreshListeningStatus(event)
+        }
+    }
+
+    var isRefresh = false
+
+    fun refreshListeningStatus(event: PaySuccessfulEvent) {
+        if (event.musicId == mMusicId) {
+            mAdapter?.let {
+                var list = it.dataList
+                for (i in list.indices) {
+                    list[i].isBuy = true
                 }
+                it.notifyDataSetChanged()
             }
         }
     }

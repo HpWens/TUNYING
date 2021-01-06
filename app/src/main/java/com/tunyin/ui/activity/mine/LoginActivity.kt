@@ -153,7 +153,7 @@ class LoginActivity : BaseInjectActivity<LoginPresenter>(), View.OnClickListener
 
 
     override fun showError(msg: String) {
-        // super<LoginContract.View>.showError(msg)
+        super<LoginContract.View>.showError(msg)
         hideLoading()
     }
 

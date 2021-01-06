@@ -38,7 +38,13 @@ public abstract class BaseSubscriberPro<M> extends ResourceSubscriber<BaseEntity
     public void onNext(BaseEntity<M> mBaseEntity) {
         if (mView != null) {
             if (TextUtils.equals("400", mBaseEntity.code)) {
-                ToastUtils.INSTANCE.showToast(mBaseEntity.desc);
+                if (mBaseEntity.code.contains(": ")) {
+                    String message = mBaseEntity.code.substring(mBaseEntity.code.indexOf(": ") + 1);
+                    ToastUtils.INSTANCE.showToast(message);
+                } else {
+                    ToastUtils.INSTANCE.showToast(mBaseEntity.desc);
+                }
+                //ToastUtils.INSTANCE.showToast(mBaseEntity.desc);
             } else if (TextUtils.equals("401", mBaseEntity.code)) {
                 SelfBean.getInstance().setToken("");
                 Intent intent = LoginActivity.newInstance(AppUtils.getAppContext());
