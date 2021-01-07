@@ -183,7 +183,11 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
     }
 
     override fun onBufferingUpdate(percent: Int) {
-        progressSb.setSecondaryProgress(progressSb.getMax() * 100 / percent)
+        try {
+            progressSb.setSecondaryProgress(progressSb.getMax() * 100 / percent)
+        } catch (e: java.lang.Exception) {
+        }
+
     }
 
     companion object {
@@ -209,6 +213,9 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         isBuyCatlog = musicEntity.isBuyCatlog
         musicEntity.listeningTime?.let {
             mListeningTime = musicEntity.listeningTime
+        }
+        musicEntity.listening_time?.let {
+            mListeningTime = musicEntity.listening_time
         }
         payAllThemeId = musicEntity.themeId
         money = musicEntity.price
@@ -619,7 +626,7 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
 
     fun formatSecond(time: Int): String {
         var min = (time / (1000 * 60)).toString() + ""
-        var second = (time % (1000 * 60) / 1000).toString() + ""
+        var second = (time / 1000 % 60).toString() + ""
         if (min.length < 2) {
             min = "0$min"
         }

@@ -105,7 +105,10 @@ public class MyAudioPlayer {
                 handler.postDelayed(() -> startPlayer(), 1000);
             }
         });
-        mediaPlayer.setOnBufferingUpdateListener((mp, percent) -> myListeners.onBufferingUpdate(percent));
+        try {
+            mediaPlayer.setOnBufferingUpdateListener((mp, percent) -> myListeners.onBufferingUpdate(percent));
+        }catch (Exception e){
+        }
     }
 
     public void addOnPlayEventListener(OnPlayerEventListener listener) {

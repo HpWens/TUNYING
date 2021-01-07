@@ -40,12 +40,21 @@ public class MusicEntity {
     private String id;
     private long createDate;
     private String listeningTime;
+    private String listening_time;
     private String durationDict;
     private boolean isListen;//是否购买
     private boolean isBuyCatlog;//是否购买目录
     private String themeId;
     private String catalogPrice;
     private String isCollect;
+
+    public String getListening_time() {
+        return listening_time;
+    }
+
+    public void setListening_time(String listening_time) {
+        this.listening_time = listening_time;
+    }
 
     public String getIsCollect() {
         return isCollect;

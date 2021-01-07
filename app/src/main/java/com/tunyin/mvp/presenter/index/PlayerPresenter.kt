@@ -55,7 +55,6 @@ class PlayerPresenter @Inject constructor(private val mRetrofitHelper: RetrofitH
 //                        }else{
                         mView?.showMusicData(mData)
 //                        }
-
                     }
 
                 })

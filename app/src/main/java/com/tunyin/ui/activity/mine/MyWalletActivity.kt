@@ -15,6 +15,7 @@ import com.tunyin.R
 import com.tunyin.ToastUtils
 import com.tunyin.alipay.PayResult
 import com.tunyin.base.BaseInjectActivity
+import com.tunyin.base.WebActivity
 import com.tunyin.event.WXPayEvent
 import com.tunyin.mvp.contract.mine.MyWalletContract
 import com.tunyin.mvp.model.mine.MyWalletEntity
@@ -189,7 +190,7 @@ class MyWalletActivity : BaseInjectActivity<MyWalletPresenter>(), MyWalletContra
             }
 
             tv_protocol -> {
-                startActivity(Intent(this@MyWalletActivity, RechargeProtocolActivity::class.java))
+                startActivity(mContext?.let { WebActivity.newIntent(it, "充值协议", "https://api.itunyin.com/api/html/h5?type=rechargeagreement") })
             }
 
         }

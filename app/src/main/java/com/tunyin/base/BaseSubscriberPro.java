@@ -84,7 +84,11 @@ public abstract class BaseSubscriberPro<M> extends ResourceSubscriber<BaseEntity
     @Override
     public void onError(Throwable t) {
         if (mView != null) {
-            mView.showError(t.getMessage());
+            String message = t.getMessage();
+            if (message.contains(": ")) {
+                message = message.substring(message.indexOf(": ") + 1);
+            }
+            mView.showError(message);
 //            onError(t.getMessage());
         }
 
