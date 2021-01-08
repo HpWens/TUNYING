@@ -8,7 +8,6 @@ import android.os.IBinder
 import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import com.tunyin.MainActivity
 import com.tunyin.R
 import com.tunyin.ToastUtils
 import com.tunyin.base.BaseInjectActivity
@@ -50,7 +49,7 @@ class RegisterActivity : BaseInjectActivity<RegisterPresenter>(), View.OnClickLi
 
         RegisterSuccessDialog(mContext, RegisterSuccessDialog.OnClickListener {
             it.dismiss()
-            startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
+            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
         }).show()
     }
 
@@ -135,7 +134,6 @@ class RegisterActivity : BaseInjectActivity<RegisterPresenter>(), View.OnClickLi
 
             ll_agreement -> {
                 startActivity(mContext?.let { WebActivity.newIntent(it, "用户协议", "http://api.itunyin.com/api/html/h5?type=useragreement") })
-
             }
         }
     }

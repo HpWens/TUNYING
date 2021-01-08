@@ -211,12 +211,6 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
         tv_sub_title.text = musicEntity.content
         isListen = musicEntity.isListen
         isBuyCatlog = musicEntity.isBuyCatlog
-        musicEntity.listeningTime?.let {
-            mListeningTime = musicEntity.listeningTime
-        }
-        musicEntity.listening_time?.let {
-            mListeningTime = musicEntity.listening_time
-        }
         payAllThemeId = musicEntity.themeId
         money = musicEntity.price
         priceSingle = musicEntity.price
@@ -354,6 +348,10 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
             override fun changeMusic(id: String) {
                 changeMusicById(id)
             }
+
+            override fun updateListeningTime(time: String) {
+                mListeningTime = time
+            }
         })
         fragments.add(PlayerDetailFragment.newInstance(mMusicId.toString()))
         fragments.add(playerDirectoryFragment)
@@ -374,7 +372,7 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
     private fun changeMusicById(id: String) {
         mMusicId = id
         MyAudioPlayer.get().songId = mMusicId
-        mListeningTime = Constants.TRY_LISTEN.toString()
+        // mListeningTime = Constants.TRY_LISTEN.toString()
         tryEnd = false
         play.setImageDrawable(mContext!!.resources.getDrawable(R.mipmap.icon_pause))
         handler.removeCallbacksAndMessages(null)
@@ -626,7 +624,7 @@ class PlayerActivity : BaseInjectActivity<PlayerPresenter>(), PlayerContract.Vie
 
     fun formatSecond(time: Int): String {
         var min = (time / (1000 * 60)).toString() + ""
-        var second = (time / 1000 % 60).toString() + ""
+        var second = (time / 1000).toString() + ""
         if (min.length < 2) {
             min = "0$min"
         }

@@ -34,6 +34,11 @@ class PlayerDirectoryFragment : BaseRefreshFragment<PlayerDirectoryPresenter, Pl
         // 保存 list
         if (playerDirectoryEntity?.list != null) {
             MyPlayService.currentPlayList = playerDirectoryEntity.list
+            if (playerDirectoryEntity.list.size > 0) {
+                if (onChangeMusicListener != null) {
+                    onChangeMusicListener.updateListeningTime(playerDirectoryEntity.list[0].listening_time)
+                }
+            }
         }
 
         hideLoading()
@@ -46,6 +51,7 @@ class PlayerDirectoryFragment : BaseRefreshFragment<PlayerDirectoryPresenter, Pl
                 mAdapter!!.setCurrentPos((position + 1).toString())
                 mAdapter!!.notifyDataSetChanged()
                 onChangeMusicListener.changeMusic(mAdapter!!.dataList[position].id.toString())
+                onChangeMusicListener.updateListeningTime(mAdapter!!.dataList[position].listening_time)
             }
         }
 
@@ -129,6 +135,8 @@ class PlayerDirectoryFragment : BaseRefreshFragment<PlayerDirectoryPresenter, Pl
 
     interface OnChangeMusicListener {
         fun changeMusic(id: String)
+
+        fun updateListeningTime(time: String)
     }
 
 
