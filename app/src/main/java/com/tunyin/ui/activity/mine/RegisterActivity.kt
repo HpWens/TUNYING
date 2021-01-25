@@ -66,8 +66,10 @@ class RegisterActivity : BaseInjectActivity<RegisterPresenter>(), View.OnClickLi
         rl_send_cde.setOnClickListener(this)
         ly_confirm.setOnClickListener(this)
         ll_agreement.setOnClickListener(this)
+        tv_privacy.setOnClickListener(this)
 
         tv_protocol.paint.flags = Paint.UNDERLINE_TEXT_FLAG
+        tv_privacy.paint.flags = Paint.UNDERLINE_TEXT_FLAG
 
         initCountDownTimer()
     }
@@ -134,6 +136,10 @@ class RegisterActivity : BaseInjectActivity<RegisterPresenter>(), View.OnClickLi
 
             ll_agreement -> {
                 startActivity(mContext?.let { WebActivity.newIntent(it, "用户协议", "http://api.itunyin.com/api/html/h5?type=useragreement") })
+            }
+
+            tv_privacy -> {
+                startActivity(mContext?.let { WebActivity.newIntent(it, "隐私协议", "https://api.itunyin.com/api/html/h5?type=policy") })
             }
         }
     }
