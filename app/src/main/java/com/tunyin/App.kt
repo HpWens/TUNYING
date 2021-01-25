@@ -10,6 +10,7 @@ import com.tunyin.myservice.PlayService
 import com.tunyin.myservice.db.DBManager
 import com.tunyin.utils.AppContext
 import com.tunyin.utils.AppUtils
+import com.umeng.commonsdk.UMConfigure
 import com.vondear.rxtool.RxTool
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.cache.converter.SerializableDiskConverter
@@ -70,6 +71,8 @@ class App : Application() {
         RxTool.init(this)
         // 初始化
         initEasyHttp()
+
+        UMConfigure.init(this, "600e9608f1eb4f3f9b6ff14b", "channel", UMConfigure.DEVICE_TYPE_PHONE, "1b701c35133244f789c484f4ff40965e")
     }
 
     companion object {
