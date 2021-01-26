@@ -9,7 +9,6 @@ import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.meis.base.mei.entity.UserInfoEntity;
-import com.meis.base.mei.service.TTAdManagerHolder;
 import com.meis.base.mei.service.UserService;
 import com.vondear.rxtool.RxTool;
 import com.zhouyou.http.EasyHttp;
@@ -55,12 +54,6 @@ public class BaseApplication extends Application {
         initEasyHttp();
 
         // initTTAdSdk();
-    }
-
-    // 初始化广告穿山甲
-    private void initTTAdSdk() {
-        // 初始化
-        TTAdManagerHolder.init(this);
     }
 
     private void initService() {
