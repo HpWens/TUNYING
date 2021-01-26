@@ -72,7 +72,7 @@ class App : Application() {
         // 初始化
         initEasyHttp()
 
-        UMConfigure.init(this, "600e9608f1eb4f3f9b6ff14b", "channel", UMConfigure.DEVICE_TYPE_PHONE, "1b701c35133244f789c484f4ff40965e")
+        UMConfigure.init(this, "600e9608f1eb4f3f9b6ff14b", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "1b701c35133244f789c484f4ff40965e")
     }
 
     companion object {

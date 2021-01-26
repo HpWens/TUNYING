@@ -30,6 +30,7 @@ import com.tunyin.ui.fragment.mine.MineFragment
 import com.tunyin.ui.fragment.purchased.PurchasedFragment
 import com.tunyin.utils.ImageUtil
 import com.tunyin.utils.StatusBarUtil
+import com.umeng.commonsdk.UMConfigure
 import com.umeng.message.IUmengRegisterCallback
 import com.umeng.message.PushAgent
 import kotlinx.android.synthetic.main.activity_main.*
@@ -185,6 +186,7 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
 
         ImageUtil.load(SelfBean.instance.headUrl).isCircle.on(ivIvatar)
 
+        UMConfigure.init(this, "600e9608f1eb4f3f9b6ff14b", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "1b701c35133244f789c484f4ff40965e")
         var pushAgent = PushAgent.getInstance(this)
         pushAgent.register(object : IUmengRegisterCallback {
             override fun onSuccess(p0: String?) {
@@ -192,6 +194,7 @@ class MainActivity : BaseInjectActivity<MainPresenter>(), OnTabSelectListener, M
             }
 
             override fun onFailure(p0: String?, p1: String?) {
+                Log.e("--------------", "bbb**************" + p0 + "**" +p1)
             }
         })
     }
