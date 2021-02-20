@@ -36,10 +36,11 @@ public class HttpUtils {
     }
 
     // 微信登录
-    public void wechatLogin(String openId, CallBack<String> callBack) {
+    public void wechatLogin(String openId, String unionid, CallBack<String> callBack) {
         EasyHttp.post("api/user/thirdPartyLogin")
                 .params("type", "wechat")
                 .params("openid", openId)
+                .params("unionid", unionid)
                 .execute(callBack);
     }
 

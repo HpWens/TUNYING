@@ -97,6 +97,11 @@ class RegisterActivity : BaseInjectActivity<RegisterPresenter>(), View.OnClickLi
                 mContext?.startActivity(intent)
             }
             ly_confirm -> {
+                if (!cb_protocol.isChecked) {
+                    ToastUtils.showToast("请勾选用户协议，隐私协议")
+                    return
+                }
+
                 if (TextUtils.isEmpty(et_code.text)) {
                     ToastUtils.showToast("请输入验证码")
                     return

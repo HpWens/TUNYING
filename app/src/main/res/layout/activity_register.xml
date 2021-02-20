@@ -125,10 +125,12 @@
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
 
-            <TextView
+            <CheckBox
+                android:id="@+id/cb_protocol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="注册即视为同意"
+                android:text="是否同意"
+                android:checked="true"
                 android:textColor="#999999"
                 android:textSize="13sp" />
 

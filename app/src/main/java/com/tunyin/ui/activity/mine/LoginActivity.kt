@@ -102,7 +102,7 @@ class LoginActivity : BaseInjectActivity<LoginPresenter>(), View.OnClickListener
                     override fun loginSuccess(info: ThirdInfoEntity?) {
                         var openId = info?.wxInfo?.openid
                         openId?.let {
-                            HttpUtils.getInstance().wechatLogin(it, object : SimpleCallBack<String>() {
+                            HttpUtils.getInstance().wechatLogin(it, info?.wxInfo?.unionid, object : SimpleCallBack<String>() {
                                 override fun onSuccess(t: String?) {
                                     var result = ParseJsonUtils.parseDataToResult(t, LoginEntity::class.java)
                                     if (result.isOk) {
